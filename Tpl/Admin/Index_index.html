@@ -1,0 +1,723 @@
+﻿<!DOCTYPE html>
+<!--
+BeyondAdmin - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.2.0
+Version: 1.0.0
+Purchase: http://wrapbootstrap.com
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- Head -->
+<head>
+    <meta charset="utf-8" />
+    <title>小说后台管理系统</title>
+
+    <meta name="description" content="Dashboard" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="__PUBLIC__/Admin/img/favicon.png" type="image/x-icon">
+
+
+    <!--Basic Styles-->
+    <link href="__PUBLIC__/Admin/css/bootstrap.min.css" rel="stylesheet" />
+    <link id="bootstrap-rtl-link" href="" rel="stylesheet" />
+    <link href="__PUBLIC__/Admin/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="__PUBLIC__/Admin/css/weather-icons.min.css" rel="stylesheet" />
+
+    <!--Beyond styles-->
+    <link id="beyond-link" href="__PUBLIC__/Admin/css/beyond.min.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/Admin/css/demo.min.css" rel="stylesheet" />
+    <link href="__PUBLIC__/Admin/css/typicons.min.css" rel="stylesheet" />
+    <link href="__PUBLIC__/Admin/css/animate.min.css" rel="stylesheet" />
+    <link id="skin-link" href="" rel="stylesheet" type="text/css" />
+
+    <!--Skin Script: Place this script in head to load scripts for skins and rtl support-->
+   <script src="__PUBLIC__/Admin/js/skins.min.js"></script>
+</head>
+<!-- /Head -->
+<!-- Body -->
+<body>
+    <!-- Loading Container -->
+    <div class="loading-container" id="App-loading-wrap">
+        <div class="loading-progress">
+            <div class="rotator">
+                <div class="rotator">
+                    <div class="rotator colored">
+                        <div class="rotator">
+                            <div class="rotator colored">
+                                <div class="rotator colored"></div>
+                                <div class="rotator"></div>
+                            </div>
+                            <div class="rotator colored"></div>
+                        </div>
+                        <div class="rotator"></div>
+                    </div>
+                    <div class="rotator"></div>
+                </div>
+                <div class="rotator"></div>
+            </div>
+            <div class="rotator"></div>
+        </div>
+    </div>
+    <!--  /Loading Container -->
+    <!-- Navbar -->
+    <div class="navbar">
+        <div class="navbar-inner">
+            <div class="navbar-container">
+                <!-- Navbar Barnd -->
+                <div class="navbar-header pull-left">
+                    <a href="#" class="navbar-brand">
+                        <small>
+                            <img src="__PUBLIC__/Admin/img/logo.png" alt="" />
+                        </small>
+                    </a>
+                </div>
+                <!-- /Navbar Barnd -->
+
+                <!-- Sidebar Collapse -->
+                <div class="sidebar-collapse" id="sidebar-collapse">
+                    <i class="collapse-icon fa fa-bars"></i>
+                </div>
+                <!-- /Sidebar Collapse -->
+                <!-- Account Area and Settings --->
+                <div class="navbar-header pull-right">
+                    <div class="navbar-account">
+                        <ul class="account-area">
+
+                            <li class="message">
+                                <if condition="$messageCount gt 0">
+                                    <a class="wave in dropdown-toggle" data-toggle="dropdown" title="待处理留言" href="{:U('Admin/Message/messageList')}" data-loader="App-loader" data-loadername="留言列表">
+                                        <i class="icon fa fa-comment"></i>
+                                        <span class="badge">{$messageCount}</span>
+                                    </a>
+                                    <else />
+                                    <a class="dropdown-toggle" data-toggle="dropdown" title="待处理留言" href="{:U('Admin/Message/messageList')}" data-loader="App-loader" data-loadername="留言列表">
+                                        <i class="icon fa fa-comment"></i>
+                                    </a>
+                                </if>
+                            </li>
+
+                            <li class="chapter">
+                                <if condition="$chapterCount gt 0">
+                                    <a class="wave in dropdown-toggle" data-toggle="dropdown" title="待审核章节" href="{:U('Admin/Book/bookChapterList')}" data-loader="App-loader" data-loadername="章节列表">
+                                        <i class="icon fa fa-tasks"></i>
+                                        <span class="badge">{$chapterCount}</span>
+                                    </a>
+                                    <else/>
+                                    <a class="wave in dropdown-toggle" data-toggle="dropdown" title="待审核章节" href="{:U('Admin/Book/bookChapterList')}" data-loader="App-loader" data-loadername="章节列表">
+                                        <i class="icon fa fa-tasks"></i>
+                                    </a>
+                                </if>
+                            </li>
+                            <li>
+                                <a class="login-area dropdown-toggle" data-toggle="dropdown">
+                                    <div class="avatar" title="View your public profile">
+                                        <img id="admin_headimg" src="__UPLOAD__/{$admin.headimg}">
+                                    </div>
+                                    <section>
+                                        <h2><span class="profile"><span>{$admin.nickname}</span></span></h2>
+                                    </section>
+                                </a>
+                                <!--Login Area Dropdown-->
+                                <ul class="pull-right dropdown-menu dropdown-arrow dropdown-login-area">
+                                    <li class="username"><a>{$admin.nickname}</a></li>
+                                    <li class="email" style="padding-left:2px;"><a>{$admin.email}</a></li>
+                                    <!--Avatar Area-->
+                                    <li>
+                                        <div class="avatar-area">
+                                            <img src="__UPLOAD__/{$admin.headimg}" class="avatar">
+                                            <span class="caption">{$admin.nickname}</span>
+                                        </div>
+                                    </li>
+                                    <!--Avatar Area-->
+                                    <li class="edit">
+                                        <!--<a href="profile.html" class="pull-left">Profile</a>-->
+                                        <a href="{:U('Admin/Index/adminSet',array('id'=>$admin['id']))}" class="pull-right" data-loader="App-loader" data-loadername="管理员设置">设置</a>
+                                    </li>
+                                    <!--Theme Selector Area-->
+                                    <li class="theme-area">
+                                        <ul class="colorpicker" id="skin-changer">
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#5DB2FF;" rel="__PUBLIC__/Admin/css/skins/blue.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#2dc3e8;" rel="__PUBLIC__/Admin/css/skins/azure.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#03B3B2;" rel="__PUBLIC__/Admin/css/skins/teal.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#53a93f;" rel="__PUBLIC__/Admin/css/skins/green.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#FF8F32;" rel="__PUBLIC__/Admin/css/skins/orange.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#cc324b;" rel="__PUBLIC__/Admin/css/skins/pink.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#AC193D;" rel="__PUBLIC__/Admin/css/skins/darkred.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#8C0095;" rel="__PUBLIC__/Admin/css/skins/purple.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#0072C6;" rel="__PUBLIC__/Admin/css/skins/darkblue.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#585858;" rel="__PUBLIC__/Admin/css/skins/gray.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#474544;" rel="__PUBLIC__/Admin/css/skins/black.min.css"></a></li>
+                                            <li><a class="colorpick-btn" href="#" style="background-color:#001940;" rel="__PUBLIC__/Admin/css/skins/deepblue.min.css"></a></li>
+                                        </ul>
+                                    </li>
+                                    <!--/Theme Selector Area-->
+                                    <li class="dropdown-footer">
+                                        <a href="{:U('Admin/Public/logout')}">
+                                            退出
+                                        </a>
+                                    </li>
+                                </ul>
+                                <!--/Login Area Dropdown-->
+                            </li>
+
+                        </ul>
+                        </div>
+                        <!-- Settings -->
+                    </div>
+                </div>
+                <!-- /Account Area and Settings -->
+            </div>
+        </div>
+    </div>
+    <!-- /Navbar -->
+    <!-- Main Container -->
+    <div class="main-container container-fluid">
+        <!-- Page Container -->
+        <div class="page-container">
+            <!-- Page Sidebar -->
+            <div class="page-sidebar" id="sidebar">
+                <!-- Page Sidebar Header-->
+               <!-- <div class="sidebar-header-wrapper">
+                    <input type="text" class="searchinput" />
+                    <i class="searchicon fa fa-search"></i>
+                    <div class="searchhelper">Search Reports, Charts, Emails or Notifications</div>
+                </div>-->
+                <!-- /Page Sidebar Header -->
+                <!-- Sidebar Menu -->
+                <ul class="nav sidebar-menu">
+                    <!--系统首页-->
+                    <li class="active">
+                        <a href="{:U('Admin/Index/main')}" id="AppHome" data-loader="App-loader" data-loadername="系统首页">
+                            <i class="menu-icon glyphicon glyphicon-home"></i>
+                            <span class="menu-text"> 系统首页 </span>
+                        </a>
+                    </li><!--系统设置-->
+                    <li>
+                        <a href="#" class="menu-dropdown">
+                            <i class="menu-icon fa fa-th"></i>
+                            <span class="menu-text"> 系统设置 </span>
+                            <i class="menu-expand"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li>
+                                <a id="adminList" href="{:U('Admin/Index/adminList')}" data-loader="App-loader" data-loadername="管理员管理">
+                                    <span class="menu-text">系统管理员</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--会员中心-->
+                    <li>
+                        <a href="#" class="menu-dropdown">
+                            <i class="menu-icon fa fa-user"></i>
+                            <span class="menu-text"> 会员中心 </span>
+                            <i class="menu-expand"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li>
+                                <a  id="user" href="{:U('Admin/User/userList')}" data-loader="App-loader" data-loadername="会员列表" >
+                                    <span class="menu-text">会员列表</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--书籍管理-->
+                    <li>
+                        <a href="#" class="menu-dropdown">
+                            <i class="menu-icon fa fa-book"></i>
+                            <span class="menu-text"> 书籍管理 </span>
+
+                            <i class="menu-expand"></i>
+                        </a>
+
+                        <ul class="submenu">
+                            <li>
+                                <a  id="bookClass" href="{:U('Admin/Book/bookClassList')}" data-loader="App-loader" data-loadername="分类列表" >
+                                    <span class="menu-text">分类列表</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a  id="book" href="{:U('Admin/Book/bookList')}" data-loader="App-loader" data-loadername="书籍列表" >
+                                    <span class="menu-text">书籍列表</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a  id="label" href="{:U('Admin/Label/labelList')}" data-loader="App-loader" data-loadername="标签列表" >
+                                    <span class="menu-text">标签列表</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                    <!--章节管理-->
+                    <li>
+                        <a href="#" class="menu-dropdown">
+                            <i class="menu-icon fa fa-pencil-square-o"></i>
+                            <span class="menu-text"> 章节管理 </span>
+                            <i class="menu-expand"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li>
+                                <a  id="chapter" href="{:U('Admin/Book/bookChapterList')}" data-loader="App-loader" data-loadername="章节列表" >
+                                    <span class="menu-text">章节列表</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--收藏管理-->
+                    <li>
+                        <a href="#" class="menu-dropdown">
+                            <i class="menu-icon fa fa-star"></i>
+                            <span class="menu-text"> 收藏管理 </span>
+                            <i class="menu-expand"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li>
+                                <a  id="collection" href="{:U('Admin/Collection/collectionList')}" data-loader="App-loader" data-loadername="收藏列表" >
+                                    <span class="menu-text">收藏列表</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!--留言管理-->
+                    <li>
+                        <a href="#" class="menu-dropdown">
+                            <i class="menu-icon fa fa-comment"></i>
+                            <span class="menu-text"> 留言管理 </span>
+                            <i class="menu-expand"></i>
+                        </a>
+                        <ul class="submenu">
+                            <li>
+                                <a  id="message" href="{:U('Admin/Message/messageList')}" data-loader="App-loader" data-loadername="留言列表" >
+                                    <span class="menu-text">留言列表</span>
+                                </a>
+                            </li>
+                        </ul>
+
+
+
+                </ul>
+                <!-- /Sidebar Menu -->
+            </div>
+            <!-- /Page Sidebar -->
+            <!-- Page Content -->
+            <div class="page-content">
+                <!-- Page Breadcrumb -->
+                <div class="page-breadcrumbs">
+                    <ul class="breadcrumb" id="App-bread">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="#">首页</a>
+                        </li>
+                        <li class="active">系统首页</li>
+                    </ul>
+                </div>
+                <!-- /Page Breadcrumb -->
+                <!-- Page Header -->
+                <div class="page-header position-relative">
+                    <div class="header-title">
+                        <h1 id="App-loader-title">
+                            系统首页
+                        </h1>
+                    </div>
+                    <!--Header Buttons-->
+                    <div class="header-buttons">
+                        <a class="sidebar-toggler" href="#">
+                            <i class="fa fa-arrows-h"></i>
+                        </a>
+                        <a class="refresh" id="refresh-toggler" id="refresh-toggler" href="{:U('Admin/Index/mian')}" data-loader="App-loader" data-name="系统主页">
+                            <i class="glyphicon glyphicon-refresh"></i>
+                        </a>
+                        <a class="fullscreen" id="fullscreen-toggler" href="#">
+                            <i class="glyphicon glyphicon-fullscreen"></i>
+                        </a>
+                    </div>
+                    <!--Header Buttons End-->
+                </div>
+                <!-- /Page Header -->
+                <!-- Page Body -->
+                <div class="page-body" id="App-loader">
+
+                </div>
+                <!-- /Page Body -->
+            </div>
+            <!-- /Page Content -->
+        </div>
+        <!-- /Page Container -->
+        <!-- Main Container -->
+
+    </div>
+    <!--全局隐藏控件-->
+    <div class="hide">
+        <!--AppReloader-->
+        <a id="App-reloader" href="#">hxb</a>
+    </div>
+    <!--Basic Scripts-->
+    <script src="__PUBLIC__/Admin/js/jquery-2.0.3.min.js"></script>
+    <script src="__PUBLIC__/Admin/js/bootstrap.min.js"></script>
+
+    <!--Beyond Scripts-->
+    <script src="__PUBLIC__/Admin/js/beyond.min.js"></script>
+
+
+    <!--Page Related Scripts-->
+    <!--Sparkline Charts Needed Scripts-->
+    <script src="__PUBLIC__/Admin/js/charts/sparkline/jquery.sparkline.js"></script>
+    <script src="__PUBLIC__/Admin/js/charts/sparkline/sparkline-init.js"></script>
+
+    <!--Easy Pie Charts Needed Scripts-->
+    <script src="__PUBLIC__/Admin/js/charts/easypiechart/jquery.easypiechart.js"></script>
+    <script src="__PUBLIC__/Admin/js/charts/easypiechart/easypiechart-init.js"></script>
+
+
+    <!--封装的ajax请求-->
+    <script src="__PUBLIC__/Admin/js/ajax.js"></script>
+    <!--表单验证-->
+    <script src="__PUBLIC__/Admin/js/validation/bootstrapValidator.js"></script>
+    <!--提示插件-->
+    <script src="__PUBLIC__/Admin/js/toastr/toastr.js"></script>
+    <!--弹窗插件-->
+    <script src="__PUBLIC__/Admin/js/bootbox/bootbox.js"></script>
+
+
+
+</body>
+<!--  /Body -->
+<script>
+    var RootPath = "__ROOT__";
+    var AppLoaderTitle = $('#App-loader-title');
+    var AppLoaderRefresh = $('#refresh-toggler');
+    var AppLoaderReloader = $('#App-reloader');
+    var AppSbLi = $('.sidebar-menu li');
+    //主导航高亮
+    var AppSideli = $('.submenu li');
+    //公共设置HTML内容方法
+    function setHtml(id, html) {
+        $(id).html(html);
+    }
+
+    //初始化主框架加载后的操作
+    function initFrame() {
+        var AppLoaderTitle = $('#App-loader-title');
+        var AppLoaderRefresh = $('#refresh-toggler');
+        var AppLoaderReloader = $('#App-reloader');
+        //处理Frame加载后的所有链接
+
+        $(document).on('click', 'a',function() {
+            //$(AppSideli).removeClass('active');
+            var loader = $(this).data('loader');
+            var tourl = $(this).attr('href');
+            var name = $(this).data('loadername');
+            $(AppLoaderReloader).attr('href', tourl).data('loader', loader).data('loadername', name);
+            if (loader) {
+                //高亮主导航
+                //加载条显示
+                $('#App-loading-wrap').show();
+
+                var li = $(this).parent('li');
+                //$(li).siblings().removeClass('active');
+                $(AppSbLi).removeClass('active');
+                $(li).addClass('active');
+                //如果是主Loader
+                if (loader == 'App-loader') {
+                    setHtml(AppLoaderTitle, name);
+                    $(AppLoaderRefresh).attr('href', tourl).data('loader', 'App-loader').data('loadername', name);
+                }
+                $('#' + loader).empty().load(tourl, function() {
+                    initLoader(loader);
+                    //加载条隐藏
+                    $('#App-loading-wrap').hide();
+                });
+                return false;
+            }
+        });
+    }
+    //初始化Loader加载后的操作
+    function initLoader(loader) {
+
+        //加载Widget特效
+        InitiateWidgets();
+
+        //处理Loader加载后的所有链接
+        var loaderlinks = $('#' + loader + ' a');
+        $( loaderlinks).on('click', function() {
+            var loader = $(this).data('loader');
+            var tourl = $(this).attr('href');
+            var search = $(this).data('search');
+            var name = $(this).data('loadername');
+            //特殊按钮特效--全部阻止
+            var type = $(this).data('type');
+
+            if (type) {
+                switch (type) {
+                    case 'del':
+                        var content = $(this).data('content');
+                        if (!content) content = "确定要删除吗？";
+                        var toajax = $(this).data('ajax');
+                        var funok = function() {
+                            var callok = function() {
+                                //成功删除后刷新
+                                $(AppLoaderReloader).trigger('click');
+                                return false;
+                            };
+                            var callerr = function() {
+                                //拦截错误
+                                return false;
+                            };
+                            $.App.ajax('post', toajax, 'nodata', callok, callerr);
+                        }
+                        $.App.confirm(content, funok);
+                        return false;
+                        //
+                        break;
+                    case 'confirm':
+                        var content = $(this).data('content');
+                        if (!content) content = "确定要更改吗？";
+                        var toajax = $(this).data('ajax');
+                        var funok = function() {
+                            var callok = function() {
+                                //成功更改后刷新
+                                $(AppLoaderReloader).trigger('click');
+                                return false;
+                            };
+                            var callerr = function() {
+                                //拦截错误
+                                return false;
+                            };
+                            $.App.ajax('post', toajax, 'nodata', callok, callerr);
+                        }
+                        $.App.confirm(content, funok);
+                        return false;
+                        //
+                        break;
+                    default:
+                        $.App.alert('danger', '此Type属性系统未定义！');
+                        break;
+                }
+
+            } else {
+                //不存在特殊效果时，绑定Reloader刷新地址
+                $(AppLoaderReloader).attr('href', tourl).data('loader', loader).data('loadername', name).data('search', search);
+            }
+
+            if (loader) {
+                //如果是主Loader
+                //加载条显示
+                $('#App-loading-wrap').show();
+
+                if (loader == 'App-loader') {
+                    setHtml(AppLoaderTitle, name);
+                    $(AppLoaderRefresh).attr('href', tourl).data('loader', 'App-loader').data('loadername', name);
+                }
+                //如果有搜索条件绑定
+                if (search) {
+                    var sv = $('#' + search).serialize();
+                    if (sv) {
+                        tourl = tourl + '?' + sv;
+                    }
+                }
+                $('#' + loader).empty().load(tourl, function() {
+                    initLoader(loader);
+                    //加载条隐藏
+                    $('#App-loading-wrap').hide();
+                });
+                return false;
+            }
+        });
+
+    }
+    //公共设置面包屑导航
+    function setBread(html) {
+        $('#App-bread').empty().html(html);
+        $('#App-bread a').on('click', function() {
+            var loader = $(this).data('loader');
+            var name = $(this).data('loadername');
+            var tourl = $(this).attr('href');
+            setHtml(AppLoaderTitle, name);
+            $(AppLoaderRefresh).attr('href', tourl).data('loader', 'App-loader').data('loadername', name);
+            $('#' + loader).empty().load(tourl, function() {
+                initLoader(loader);
+            });
+            return false;
+        });
+    }
+
+    //App默认图片上传管理器
+    function appImguploader(fbid, isall) {
+        //fbid 查找带回的文本框ID,全局唯一
+        //isall 多图,单图模式
+        $.ajax({
+            type: "post",
+            url: "{:U('Admin/Upload/indeximg')}",
+            data: {
+                'fbid': fbid,
+                'isall': isall
+            },
+            dataType: "json",
+            //beforeSend:$.App.loading(),
+            success: function(mb) {
+                //$.App.loading();
+                bootbox.dialog({
+                    message: mb,
+                    title: "图片上传管理器",
+                    className: "modal-darkorange",
+                    buttons: {
+                        "追加": {
+                            className: "btn-success",
+                            callback: function() {
+                                if (isall == 'false') {
+                                    $('#' + fbid).val($('#App-uploader-findback').val());
+                                } else {
+                                    $('#' + fbid).val($('#' + fbid).val() + $('#App-uploader-findback').val());
+                                }
+                            }
+                        },
+                        "替换": {
+                            className: "btn-blue",
+                            callback: function() {
+                                $('#' + fbid).val($('#App-uploader-findback').val());
+                            }
+                        },
+                        "取消": {
+                            className: "btn-danger",
+                            callback: function() {}
+                        }
+                    }
+                });
+            },
+            error: function(xhr) {
+                $.App.alert('danger', '通讯失败！请重试！');
+            }
+        });
+        return false;
+    }
+    //App默认图片预览器
+    function appImgviewer(fbid) {
+        //fbid 查找带回的文本框ID,全局唯一
+        //isall 多图,单图模式
+        var ids = $('#' + fbid).val();
+        if (!ids) {
+            $.App.alert('danger', '您还没有图片可以预览！');
+            return false;
+        }
+        $.ajax({
+            type: "post",
+            url: "{:U('Admin/Index/appImgviewer')}",
+            data: {
+                'ids': ids
+            },
+            dataType: "json",
+            success: function(mb) {
+                bootbox.dialog({
+                    message: mb,
+                    title: "图片预览器",
+                    className: "modal-darkorange",
+                    buttons: {
+                        success: {
+                            label: "确定",
+                            className: "btn-blue",
+                            callback: function() {}
+                        },
+                        "取消": {
+                            className: "btn-danger",
+                            callback: function() {}
+                        }
+                    }
+                });
+            },
+            error: function(xhr) {
+                $.App.alert('danger', '通讯失败！请重试！');
+            }
+        });
+        return false;
+    }
+
+    $(document).ready(function() {
+        initFrame();
+        //初始化图表
+        //InitiateEasyPieChart.init();
+        $('#AppHome').trigger('click');
+
+    });
+
+</script>
+
+<script>
+    $(function(){
+        function timeout(){
+            //每隔10秒ajax向后台请求获取未处理留言和未审核章节
+            $.ajax({
+                url:"{:U('Admin/index/timeout')}",
+                type:"post",
+                dataType:"json",
+                success:function(data){
+                    //未处理留言数量数据处理
+                    var message_html = '';
+                    var chapter_html = '';
+                    var message_url = "{:U('Admin/Message/messageList')}";
+                    var chapter_url = "{:U('Admin/Book/bookChapterList')}";
+                    if(data.messageCount>0){
+                        message_html += '<a class="wave in dropdown-toggle" data-toggle="dropdown" title="待处理留言" href="'+message_url+'" data-loader="App-loader" data-loadername="留言列表">'
+                            + '<i class="icon fa fa-comment"></i>'
+                            + '<span class="badge">'+data.messageCount+'</span>';
+                        + '</a>';
+                    }else{
+                        message_html += '<a class="dropdown-toggle" data-toggle="dropdown" title="待处理留言" href="'+message_url+'" data-loader="App-loader" data-loadername="留言列表">'
+                            + '<i class="icon fa fa-comment"></i>'
+                            + '</a>';
+                    }
+                    //未审核章节数量数据处理
+                    if(data.chapterCount>0){
+                        chapter_html += '<a class="wave in dropdown-toggle" data-toggle="dropdown" title="待审核章节" href="'+chapter_url+'" data-loader="App-loader" data-loadername="章节列表">'
+                            + '<i class="icon fa fa-tasks"></i>'
+                            + '<span class="badge">'+data.chapterCount+'</span>';
+                        + '</a>';
+                    }else{
+                        chapter_html += '<a class="dropdown-toggle" data-toggle="dropdown" title="待审核章节" href="'+chapter_url+'" data-loader="App-loader" data-loadername="章节列表">'
+                            + '<i class="icon fa fa-tasks"></i>'
+                            + '</a>';
+                    }
+                    $('.message').html(message_html);
+                    $('.chapter').html(chapter_html);
+                }
+            });
+        }
+        setInterval(function(){
+            timeout();
+        },10000);
+    });
+</script>
+
+<script>
+
+    /***
+     * ajax请求返回页面（实现局部刷新）
+     * @param url 请求路径
+     * @param method 请求方法POST/GET
+     * @param params 请求参数
+     * @param container 返回页面数据存放容器
+     * @param callback 回调函数
+     */
+    function ajaxReturnPage(url, method, params, container, callback) {
+        $.ajax(url, {type: method, data: params}).done(function (response) {
+            response = JSON.parse(response);
+            if (response.status == 1) {
+                $(container).html(response.data);
+                $('[data-toggle="table"]').bootstrapTable();
+                if (callback)
+                    callback();
+
+            } else {
+                swal(response.msg, "", "error");
+            }
+        }).fail(function () {
+            console.error('ajax请求失败！')
+        });
+    }
+</script>
+
+</html>

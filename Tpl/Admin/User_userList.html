@@ -1,0 +1,195 @@
+
+<div class="row">
+	<div class="col-xs-12 col-md-12">
+		<div class="widget">
+			<div class="widget-header bg-blue">
+				<i class="widget-icon fa fa-arrow-down"></i>
+				<span class="widget-caption">会员列表</span>
+				<div class="widget-buttons">
+					<a href="#" data-toggle="maximize">
+						<i class="fa fa-expand"></i>
+					</a>
+					<a href="#" data-toggle="collapse">
+						<i class="fa fa-minus"></i>
+					</a>
+					<a href="#" data-toggle="dispose">
+						<i class="fa fa-times"></i>
+					</a>
+				</div>
+			</div>
+			<div class="widget-body">
+				<div class="table-toolbar">
+					<a href="#" class="btn btn-danger" id="App-delall">
+						<i class="fa fa-delicious"></i>全部删除
+					</a>
+					<div class="pull-right">
+						<form id="App-search">
+							<label for="">状态:</label>
+							<label style="margin-bottom: 0px;">
+								<select class="form-control" name="status" >
+									<option value="0" <eq name="status" value="0">selected</eq> >请选择...</option>
+									<option value="1" <eq name="status" value="1">selected</eq> >启用</option>
+									<option value="2" <eq name="status" value="2">selected</eq> >禁用</option>
+								</select>
+							</label>
+							<label for="">姓名:</label>
+							<label style="margin-bottom: 0px;">
+								<input name="name" type="search" class="form-control input-sm" value="{$name}" placeholder="请输入姓名">
+							</label>
+							<a href="{:U('Admin/User/userList/')}" class="btn btn-success" data-loader="App-loader" data-loadername="会员列表" data-search="App-search">
+								<i class="fa fa-search"></i>搜索
+							</a>
+						</form>
+					</div>
+				</div>
+
+				<table id="App-table" class="table table-bordered table-hover">
+					<thead class="bordered-darkorange">
+						<tr role="row">
+							<th width="30px"><div class="checkbox" style="margin-bottom: 0px; margin-top: 0px;">
+									<label style="padding-left: 4px;"> <input type="checkbox" class="App-checkall colored-blue">
+                                     <span class="text"></span>
+									</label>                                    
+                                </div></th>
+							<th>ID</th>
+							<th>姓名</th>
+							<th>头像</th>
+							<th>性别</th>
+							<th>手机号</th>
+							<th>电子邮箱</th>
+							<th>详细地址</th>
+							<th>个人简介</th>
+							<th>添加时间</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<volist name="cache" id="vo">
+							<tr id="item{$vo.id}">
+								<td style="height:50px;line-height:50px">
+									<div class="checkbox" style="margin-bottom: 0px; margin-top: 0px;">
+										<label style="padding-left: 4px;"> <input name="checkvalue" type="checkbox" class="colored-blue App-check" value="{$vo.id}">
+	                                     <span class="text"></span>
+										</label>                                    
+	                                </div>
+								</td>
+								<td style="height:50px;line-height:50px" class="sorting_1">{$vo.id}</td>
+								<td style="height:50px;line-height:50px">{$vo.name}</td>
+								<td style="height:50px;line-height:50px"><img style="width:50px;height:50px;" src="/Upload/{$vo.img}" data-img="/Upload/img/{$vo.img}" class="img"></td>
+								<td style="height:50px;line-height:50px">
+									<if condition="$vo['sex'] eq 0">男
+									<elseif condition="$vo['sex'] eq 1"/>女
+									</if>
+								</td>
+								<td style="height:50px;line-height:50px">{$vo.tel}</td>
+								<td style="height:50px;line-height:50px">{$vo.email}</td>
+								<td style="height:50px;line-height:50px">{$vo.address}</td>
+								<td>{$vo.intro}</td>
+								<td style="height:50px;line-height:50px">{$vo.ctime|date="Y-m-d H:i:s",###}</td>
+								<td style="height:50px;line-height:50px">
+									<if condition="$vo['status'] eq 1">
+									<button class="btn btn-danger btn-xs status" data-id="{$vo.id}" data-status="{$vo.status}"><i class="fa fa-arrow-down"></i>禁用</button>
+									<a href="{:U('Admin/User/user/')}" class="btn btn-danger btn-xs" data-type = "del" data-ajax="{:U('Admin/User/userDel/',array('id'=>$vo['id']))}"><i class="fa fa-trash-o"></i> 删除</a>
+									<else/>
+										<button class="btn btn-success btn-xs status" data-id="{$vo.id}" data-status="{$vo.status}"><i class="fa fa-arrow-up"></i>启用</button>
+										<a href="{:U('Admin/User/user/')}" class="btn btn-danger btn-xs" data-type = "del" data-ajax="{:U('Admin/User/userDel/',array('id'=>$vo['id']))}"><i class="fa fa-trash-o"></i> 删除</a>
+								</if>
+								</td>
+							</tr>
+						</volist>
+												
+					</tbody>
+				</table>
+				<div class="row DTTTFooter">
+					{$page}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--面包屑导航封装-->
+<div id="tmpbread" style="display: none;">{$breadhtml}</div>
+<script type="text/javascript">
+	setBread($('#tmpbread').html());
+</script>
+<!--/面包屑导航封装-->
+<!--全选特效封装/全部删除-->
+<script type="text/javascript">
+	//全选
+	var checkall=$('#App-table .App-checkall');
+	var checks=$('#App-table .App-check');
+	var trs=$('#App-table tbody tr');
+	$(checkall).on('click',function(){
+		if($(this).is(":checked")){			
+			$(checks).prop("checked","checked");
+		}else{
+			$(checks).removeAttr("checked");
+		}		
+	});
+	$(trs).on('click',function(){
+		var c=$(this).find("input[type=checkbox]");
+		if($(c).is(":checked")){
+			$(c).removeAttr("checked");
+		}else{
+			$(c).prop("checked","checked");
+		}		
+	});
+	//全删
+	$('#App-delall').on('click',function(){
+		var checks=$(".App-check:checked");
+		var chk='';
+		$(checks).each(function(){
+			chk+=$(this).val()+',';
+		});
+		if(!chk){
+			$.App.alert('danger','请选择要删除的项目！');
+			return false;
+		}
+		var toajax="{:U('Admin/User/userDel')}"+"/id/"+chk;
+		var funok=function(){
+			var callok=function(){
+				//成功删除后刷新
+				$('#refresh-toggler').trigger('click');
+				return false;
+			};
+			var callerr=function(){
+				//拦截错误
+				return false;
+			};
+			$.App.ajax('post',toajax,'nodata',callok,callerr);
+		}						
+		$.App.confirm("确认要删除吗？",funok);
+	});
+
+	//图片放大点击事件
+	$('.img').click(function(){
+	    var img_src = $(this).data('img');
+	    var img = "<img src='"+img_src+"'>";
+        bootbox.dialog({
+            message: img,
+            title: "头像",
+            className: "modal-darkorange",
+            buttons: {
+                success: {
+                    label: "确定",
+                    className: "btn-blue",
+                    callback: function() {}
+                },
+                "取消": {
+                    className: "btn-danger",
+                    callback: function() {}
+                }
+            }
+        });
+	});
+
+	//启用和禁用点击事件
+	$('.status').click(function(){
+	   var status = $(this).attr('data-status');
+	   var id = $(this).attr('data-id');
+        $.App.ajax('post',"{:U('Admin/User/updateStatus')}",{id:id,status:status},function(){
+            $('#user').trigger('click');
+		});
+	});
+</script>
+<!--/全选特效封装-->

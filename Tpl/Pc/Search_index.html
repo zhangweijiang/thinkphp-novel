@@ -1,0 +1,243 @@
+<extend name="Public/base"/>
+<block name="body">
+    <style>
+        .pagination .current{
+            background: #2dc3e8;
+        }
+        .pagination > div > a, .pager > div > a {
+            color: #444;
+            background-color: #fff;
+            margin: 0 -1px 0 0;
+            border-color: #ccc;
+        }
+        .pagination>div>a, .pagination>div>span {
+            position: relative;
+            float: left;
+            padding: 6px 12px;
+            margin-left: -1px;
+            line-height: 1.42857143;
+            color: #428bca;
+            text-decoration: none;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+        .search-filter dl dd a.active{
+            background:#333;
+            color:white;
+        }
+    </style>
+    <div class="search-container">
+        <div class="search-wrapper cf">
+            <input type="text" id="s-box" placeholder="请输入小说名称" value="{:I('get.name')}">
+            <a class="search-btn" id="search-btn" href="javascript:">搜索</a>
+        </div>
+    </div>
+    <div class="result-wrapper container cf">
+        <div class="main-content-wrapper pull-left">
+            <div class="search-filter">
+                <ul>
+                    <li class="bookType">
+                        <em>站点</em>
+                        <dl>
+                            <dd>
+                                <a data-type="1" class="J_filter_item" href="{:U('Pc/Search/index/type/1')}">男生</a>
+                                <a data-type="2" class="J_filter_item" href="{:U('Pc/Search/index/type/2')}">女生</a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="bookClass">
+                        <em>分类</em>
+                        <dl>
+                            <dd>
+                                <volist name="sexClassList" id="vo">
+                                    <a data-class-id="{$vo.id}" class="J_filter_item" href="{:U('Pc/Search/index')}<notempty name='Think.GET.status'>/status/{:I('get.status')}</notempty>/type/{:I('get.type')}<notempty name='Think.GET.count'>/count/{:I('get.count')}</notempty>/class_id/{$vo.id}">{$vo.name}<cite>({$vo.count})</cite></a>
+                                </volist>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="bookStatus">
+                        <em>状态</em>
+                        <dl>
+                            <dd>
+                                <volist name="bookStatus" id="vo">
+                                    <a data-status="{$vo.id}" class="J_filter_item" href="{:U('Pc/Search/index')}<notempty name='Think.GET.class_id'>/class_id/{:I('get.class_id')}</notempty>/type/{:I('get.type')}<notempty name='Think.GET.count'>/count/{:I('get.count')}</notempty>/status/{$vo.id}">{$vo.name}<cite>({$vo.count})</cite></a>
+                                </volist>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="bookCount">
+                        <em>字数</em>
+                        <dl>
+                            <dd>
+                                <volist name="bookCount" id="vo">
+                                    <a data-count="{$vo.id}" class="J_filter_item" href="{:U('Pc/Search/index')}<notempty name='Think.GET.class_id'>/class_id/{:I('get.class_id')}</notempty>/type/{:I('get.type')}<notempty name='Think.GET.status'>/status/{:I('get.status')}</notempty>/count/{$vo.id}">{$vo.name}<cite>({$vo.count})</cite></a>
+                                </volist>
+                            </dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+            <div id="result-list">
+                <div class="book-img-text">
+                    <ul>
+                        <volist name="bookList" id="vo">
+                            <li>
+                                <div class="book-img-box">
+                                    <a href="{:U('Pc/Book/index')}/id/{$vo.id|base64_encode}" target="_blank"><img src="__UPLOAD__/{$vo.img}"></a>
+                                </div>
+                                <div class="book-mid-info">
+                                    <h4>
+                                        <a href="{:U('Pc/Book/index')}/id/{$vo.id|base64_encode}" target="_blank">
+                                            {$vo.name}
+                                        </a>
+                                    </h4>
+                                    <p class="author">
+                                        <img src="__PUBLIC__/Pc/images/user.png">
+                                        <a class="name" href="{:U('Pc/Book/index')}/id/{$vo.id|base64_encode}" target="_blank">{$vo.username}</a>
+                                        <em>|</em>
+                                        <a href="javascript:" target="_blank">{$vo.class_name}</a>
+                                        <em>|</em>
+                                        <if condition="$vo.status eq 1">
+                                            <span>连载</span>
+                                            <elseif condition="$vo.status eq 2"/>
+                                            <span>完本</span>
+                                        </if>
+                                    </p>
+                                    <p class="intro">
+                                        {$vo.intro}
+                                    </p>
+                                    <notempty name="vo.bookChapter.update_time">
+                                        <p class="update">
+                                            <a href="javascript:" target="_blank">{$vo.bookChapter.title}</a>
+                                            <em>·</em>
+                                            <span>{$vo.bookChapter.update_time|date='Y-m-d H:i:s',###}</span>
+                                        </p>
+                                    </notempty>
+                                </div>
+                                <div class="book-right-info">
+                                    <div class="total">
+                                        <p><span> {$vo.count}</span>总字数</p>
+                                    </div>
+                                    <p class="btn">
+                                        <a class="red-btn" href="{:U('Pc/Book/index')}/id/{$vo.id|base64_encode}" target="_blank">书籍详情</a>
+                                        <notempty name="vo.is_collection">
+                                            <a class="blue-btn add-book disabled"  href="javascript:" >已在书架</a>
+                                            <else/>
+                                            <a class="blue-btn add-book"  href="javascript:" data-id="{$vo.id}">加入书架</a>
+                                        </notempty>
+                                    </p>
+                                </div>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+            <div class="page-box cf" data-l1="3">
+                <div class="pagination-wrapper custom-pagination pull-right" id="page-container">
+                    <div class="pagination">
+                        {$page}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-side-wrapper pull-right">
+            <div class="other-rec-wrapper">
+                <h3 class="lang">搜这本书的还看</h3>
+                <ul>
+                    <volist name="searchBookList" id="vo">
+                        <li>
+                            <div class="img-box">
+                                <a href="javascript:" target="_blank">
+                                    <img src="__UPLOAD__/{$vo.img}">
+                                </a>
+                            </div>
+                            <div class="book-info">
+                                <h4>
+                                    <a href="{:U('Pc/Book/index')}/id/{$vo.id|base64_encode}" target="_blank">{$vo.name}</a>
+                                </h4>
+                                <p class="author">
+                                    <img src="__PUBLIC__/Pc/images/user.png">
+                                    <a href="{:U('Pc/Book/index')}/id/{$vo.id|base64_encode}" target="_blank">{$vo.username}</a>
+                                </p>
+                                <p class="intro">{:mt_rand(60,99)}%的用户读过</p>
+                            </div>
+                        </li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</block>
+
+<!--js脚本-->
+<block name="script">
+    <script>
+        //站点选中设置
+        $('.bookType dl dd a').each(function(){
+            if($(this).attr('data-type')=="{:I('get.type')}"){
+                $('.bookType dl dd a').removeClass('active');
+                $(this).addClass('active');
+            }
+        });
+        //分类选中设置
+        $('.bookClass dl dd a').each(function(){
+            if($(this).attr('data-class-id')=="{:I('get.class_id')}"){
+                $('.bookClass dl dd a').removeClass('active');
+                $(this).addClass('active');
+            }
+        });
+        //状态选中设置
+        $('.bookStatus dl dd a').each(function(){
+            if($(this).attr('data-status')=="{:I('get.status')}"){
+                $('.bookStaus dl dd a').removeClass('active');
+                $(this).addClass('active');
+            }
+        });
+        //状字数选中设置
+        $('.bookCount dl dd a').each(function(){
+            if($(this).attr('data-count')=="{:I('get.count')}"){
+                $('.bookCount dl dd a').removeClass('active');
+                $(this).addClass('active');
+            }
+        });
+        //搜索
+        $('#search-btn').click(function(){
+           var name = $('#s-box').val();
+           if(name==""){
+               window.location.href = '/Pc/Search/index';
+           }else{
+               window.location.href = '/Pc/Search/index/name/'+name;
+           }
+        });
+
+        //加入书架点击事件
+        $('.add-book').on('click',function(){
+            var book_id = $(this).data('id');
+            $.ajax({
+                url:"{:U('Pc/BookCase/addCollection')}",
+                type:"post",
+                data:{book_id:book_id},
+                dataType:"json",
+                success:function(data){
+                    if(data.status==1){
+                        layer.msg(data.msg, {icon: 1,time:2000},function(){
+                            window.location.reload();
+                        });
+                    }else{
+                        if(data.data=='redirect'){
+                            layer.msg(data.msg, {icon: 2,time:2000},function(){
+                                window.location.href = "{:U('Pc/Login/index')}";
+                            });
+                        }else{
+                            layer.msg(data.msg, {icon: 2,time:2000},function(){
+                                window.location.reload();
+                            });
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</block>
+<!--js脚本-->

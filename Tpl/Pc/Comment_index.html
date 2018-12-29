@@ -1,0 +1,155 @@
+<extend name="Public/base"/>
+<block name="body">
+    <style>
+        .pagination .current{
+            background: #2dc3e8;
+        }
+        .pagination > div > a, .pager > div > a {
+            color: #444;
+            background-color: #fff;
+            margin: 0 -1px 0 0;
+            border-color: #ccc;
+        }
+        .pagination>div>a, .pagination>div>span {
+            position: relative;
+            float: left;
+            padding: 6px 12px;
+            margin-left: -1px;
+            line-height: 1.42857143;
+            color: #428bca;
+            text-decoration: none;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+    </style>
+    <div class="personal-wrapper container">
+        <div class="row">
+            <div class="personal-sideBar">
+                <h4>个人中心</h4>
+                <ul>
+                    <li><a href="{:U('Pc/PersonSetting/index')}"><i class="fa fa-user-o"></i>个人信息</a></li>
+                    <li><a href="{:U('Pc/BookManage/index')}"><i class="fa fa-book"></i>作品管理</a></li>
+                    <li class="active"><a href="{:U('Pc/Comment/index')}"><i class="fa fa-bell-o"></i>消息中心</a></li>
+                    <li><a href="{:U('Pc/BookCase/index')}"><i class="fa fa-desktop"></i>我的书架</a></li>
+                </ul>
+            </div>
+            <div class="personal-content">
+                <h3 class="personal-title">消息中心</h3>
+                <div class="messageList-wrapper">
+                    <ul class="message-list">
+                        <volist name="commentList" id="vo">
+                                <li>
+                                    <div class="message-wrapper unread">
+                                        <h3 class="message-title">
+                                            <span class="user"> <em>{$vo.user_name}</em> </span>对《<a class="book-name" href="{:U('Pc/Book/index')}/id/{$vo.book_id|base64_encode}">{$vo.book_name}</a>》的章节
+                                            <a class="chapter-title" href="{:U('Pc/Chapter/index')}/id/{$vo.chapter_id|base64_encode}"> "{$vo.chapter_title}" </a> 进行了评论：</h3>
+                                        <label class="label label-danger">评论</label>
+                                        <p class="message-content">{$vo.content}</p>
+                                    </div>
+                                    <span class="time pull-right">{$vo.content_time|date='Y-m-d',###}</span>
+                                    <div class="message-btn text-right">
+                                        <empty name="vo.reply_time">
+                                            <a class="reply" href="javascript:">回复</a>
+                                        </empty>
+                                    </div>
+                                    <div class="reply-comment">
+                                        <textarea class="form-control reply-content" cols="30" rows="3" placeholder="请输入回复内容" required></textarea>
+                                        <a class="reply-btn btn red-btn" data-id="{$vo.id}">回复</a>
+                                    </div>
+                                    <notempty name="vo.reply_time">
+                                        <div class="message-wrapper">
+                                            <label class="label label-warning">回复</label>
+                                            <p class="message-content">{$vo.reply}</p>
+                                        </div>
+                                        <span class="time pull-right">{$vo.reply_time|date='Y-m-d H:i:s'}</span>
+                                        <div class="message-btn text-right">
+                                            <a class="delete" href="javascript:" data-id="{$vo.id}" >删除</a>
+                                        </div>
+                                    </notempty>
+                                </li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="page-box cf" data-l1="3">
+            <div class="pagination-wrapper custom-pagination pull-right" id="page-container">
+                <div class="pagination">
+                    {$page}
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script>
+        (function () {
+            // 展开回复区域块
+            $('.message-btn .reply').on('click', function () {
+                $(this).parent().siblings(".reply-comment").fadeToggle('fast');
+            });
+
+            // 提交回复
+            $('.reply-comment .reply-btn').on('click', function () {
+                var commentId = $(this).data('id');
+                var commentContent = $(this).siblings('.reply-content').val();
+                if (commentContent == null || commentContent == "") {
+                    layer.msg('回复内容不能为空');
+                }
+                // TODO:ajax操作
+                $.ajax({
+                    url:"{:U('Pc/Comment/reply')}",
+                    type:"post",
+                    data:{
+                        id:commentId,
+                        reply:commentContent
+                    },
+                    dataType:'json',
+                    success:function(data){
+                        if(data.status==1){
+                            layer.msg(data.msg, {icon: 1,time:2000},function(){
+                                window.location.reload();
+                            });
+                        }else{
+                            layer.msg(data.msg, {icon: 2,time:2000},function(){
+                                window.location.reload();
+                            });
+                        }
+                    }
+                })
+
+            });
+
+            // 删除评论
+            $('.message-btn .delete').on('click', function () {
+                var commentId = $(this).data('id');
+                var type = $(this).data('type');
+                // TODO:ajax请求删除
+                layer.confirm('您确定删除这条回复吗？', {
+                    btn: ['确定','取消'] //按钮
+                }, function(){ //确定
+                    $.ajax({
+                        url:"{:U('Pc/Comment/deleteReply')}",
+                        type:'post',
+                        dataType:"json",
+                        data:{id:commentId},
+                        success:function(data){
+                            if(data.status==1){
+                                layer.msg(data.msg, {icon: 1,time:2000},function(){
+                                    window.location.reload();
+                                });
+                            }else{
+                                layer.msg(data.msg, {icon: 2,time:2000},function(){
+                                    window.location.reload();
+                                });
+                            }
+                        }
+
+                    });
+                }, function(){ //取消
+
+                });
+            });
+        })();
+    </script>
+</block>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页</title>
+    <!-- 插件样式引入 -->
+    <link rel="stylesheet" href="__PUBLIC__/Pc/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Pc/plugins/font-awesome/css/font-awesome.css">
+
+    <!-- 插件重写样式、公共样式及页面主要样式引入 -->
+    <link rel="stylesheet" href="__PUBLIC__/Pc/css/plugins.reset.css">
+    <link rel="stylesheet" href="__PUBLIC__/Pc/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/Pc/css/icon.css">
+    <link rel="stylesheet" href="__PUBLIC__/Pc/css/main.css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="logo"><a href="#" target="_blank"></a></div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="login-area-wrapper cf">
+                <div class="login-op-img pull-left">
+                    <img src="__PUBLIC__/Pc/images/loginBg.jpg" alt="登录">
+                </div>
+                <div class="login-wrapper pull-left">
+                    <div class="login-header">
+                        <h4 class="login-title">账号登录</h4>
+                    </div>
+                    <div class="login-body">
+                        <form action="{:U('Pc/Login/index')}" method="post">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                                <input type="text" name="name" class="form-control" placeholder="请输入用户名" required>
+                            </div>
+
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                                <input type="password" name="password" class="form-control" placeholder="请输入密码" required>
+                            </div>
+                            <div class="form-inline">
+                                <input type="text" name="verify" class="form-control" placeholder="请输入验证码" style="width:48%;float:left" required>
+                                <img src="{:U('Pc/Login/verify')}" alt="验证码" id="verifyimg" style="height:33px;margin-left:5px;width:50%;float:left"/>
+                            </div>
+                            <input type="submit" class="btn red-btn form-control" style="margin-top:16px;" value="登录">
+                            <div class="login-footer">
+                                <a class="pull-left" href="{:U('Pc/Register/index')}">立即注册</a>
+                                <a class="pull-right" href="javascript:" onclick="sendEmail();">忘记密码？</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="site-map">
+                    <ul>
+                        <li><a href="javascript:">系统简介</a></li>
+                        <li><a href="javascript:">广告服务</a></li>
+                        <li><a href="javascript:">试用洽谈</a></li>
+                        <li><a href="javascript:">网站地图</a></li>
+                        <li><a href="javascript:">联系方式</a></li>
+                        <li><a href="javascript:">关于我们</a></li>
+                    </ul>
+                </div>
+                <div class="copyright">
+                    Copyright © 2017 <a href="javascript:">Gallonce</a> , Inc. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+
+<script src="__PUBLIC__/Pc/plugins/jquery/jquery.min.js"></script>
+<script src="__PUBLIC__/Pc/plugins/layui/layui.all.js"></script>
+<script src="__PUBLIC__/Pc/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/Pc/js/common.js"></script>
+<script src="__PUBLIC__/Pc/js/main.js"></script>
+<!--sweetalert2-->
+<link rel="stylesheet" href="__PUBLIC__/Pc/css/sweetalert2.min.css">
+<script src="__PUBLIC__/Pc/js/sweetalert2.min.js"></script>
+<script>
+    $('#verifyimg').on('click', function () {
+        $(this).attr('src', "{:U('Admin/Public/verify')}");
+    });
+    var verifyimg = $('#verifyimg');
+    verifyimg.attr('src',verifyimg.attr('src')+'/a/'+Math.random());
+
+    //忘记密码
+    function sendEmail(){
+        swal({
+            title: '请输入电子邮箱',
+            input: 'email'
+        }).then(function(email) {
+            if (email) {
+                $.ajax({
+                    url:"{:U('Pc/Login/sendPassword')}",
+                    type:"post",
+                    dataType:"json",
+                    data:{email:email},
+                    success:function(data){
+                        if(data.status==1){
+                            swal({
+                                type: 'success',
+                                html: '成功发送邮箱: ' + email + '，请注意查收！'
+                            })
+                        }else if(data.status==0){
+                            swal({
+                                type: 'error',
+                                html: data.msg
+                            })
+                        }
+                    }
+                });
+                /* swal({
+                 type: 'success',
+                 html: '成功发送邮箱: ' + email + '，请注意查收！'
+                 }).then(function() {
+                 alert(5);
+                 });*/
+            }
+        });
+    }
+</script>
+</body>
+</html>

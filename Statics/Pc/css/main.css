@@ -1,0 +1,4830 @@
+.w990 {
+    width: 990px;
+}
+
+a {
+    text-decoration: none;
+    color: #262626;
+    outline: 0;
+}
+
+a:hover {
+    color: #ed4259;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+}
+
+.bg-grey {
+    background-color: rgb(247, 246, 242);
+}
+
+.button {
+    position: relative;
+    border: 1px solid #1FA9FF;
+    border-radius: 2px;
+    text-align: center;
+    color: #FFF;
+    background: #1FA9FF;
+    box-sizing: content-box;
+}
+
+.button:hover {
+    color: #FFF;
+    background: #3D8CD9;
+}
+
+.button.white {
+    border: 1px solid #DDD;
+    color: #333;
+    background: #FFF;
+}
+
+.button.white:hover {
+    background: #F6F6F6;
+}
+
+@font-face {
+    font-family: layui-icon;
+    src: url(../plugins/layui/font/iconfont.eot?v=213);
+    src: url(../plugins/layui/font/iconfont.eot?v=213#iefix) format('embedded-opentype'), url(../plugins/layui/font/iconfont.svg?v=213#iconfont) format('svg'), url(../plugins/layui/font/iconfont.woff?v=213) format('woff'), url(../plugins/layui/font/iconfont.ttf?v=213) format('truetype')
+}
+
+.layui-icon {
+    font-family: layui-icon !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+/* module */
+h3.wrapper-title {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 25px;
+    overflow: hidden;
+    height: 24px;
+    padding-bottom: 4px;
+    color: #1a1a1a;
+    box-sizing: content-box;
+    border-bottom: 1px solid #666;
+}
+
+h3.wrapper-title i {
+    font-family: Arail, PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    margin: 0 5px;
+}
+
+.user-photo {
+    position: relative;
+    z-index: 1;
+    width: 44px;
+    height: 44px;
+    margin: 8px 8px 0 10px;
+}
+
+.gray {
+    color: #a6a6a6;
+}
+
+/* details */
+h3.wrap-title {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+.lang {
+    font-family: FZZCYSK;
+    font-weight: 400;
+}
+
+.blue-btn {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #3f5a93;
+    border-color: #3f5a93;
+    transition: color .3s, background-color .3s;
+}
+
+.blue-btn:hover {
+    color: #2972cc;
+    border-color: #2972cc;
+    background: #f0f5ff;
+}
+
+.blue:hover {
+    color: #2972cc;
+}
+
+.mb10 {
+    margin-bottom: 10px;
+}
+
+.mb30 {
+    margin-bottom: 30px;
+}
+
+/* index.html 首页 */
+.top-nav {
+    height: 35px;
+    border-bottom: 1px solid #e5e5e5;
+    background: #f7f7f7;
+}
+
+.top-nav a {
+    font: 12px/35px PingFangSC-Regular, '-apple-system', Simsun;
+    overflow: hidden;
+    height: 35px;
+    color: grey;
+    transition: color .3s, background-color .3s;
+}
+
+.top-nav a.black {
+    color: #262626;
+}
+
+.top-nav a:hover {
+    color: #ed4259;
+}
+
+.top-nav .login-box a {
+    color: #a6a6a6;
+}
+
+.top-nav .login-box a.black {
+    color: #262626;
+}
+
+.top-nav .login-box a i,
+.top-nav .login-box a:hover {
+    color: #ed4259;
+}
+
+.top-nav .sign-in i.black {
+    color: #262626;
+    transition: color .3s, background-color .3s;
+}
+
+.top-nav a:hover i.black {
+    color: #ed4259;
+}
+
+.top-nav .login-box span {
+    font: 12px/35px PingFangSC-Regular, '-apple-system', Simsun;
+    color: #a6a6a6;
+}
+
+.top-nav em {
+    font: 12px/35px Arial;
+    margin: 0 10px;
+    color: #d9d9d9;
+}
+
+.logo-wrapper {
+    overflow: hidden;
+    height: 84px;
+    line-height: 84px;
+    padding: 20px 0;
+    box-sizing: content-box;
+}
+
+.logo-wrapper .logo {
+    width: 219px;
+    height: 52px;
+}
+
+.logo-wrapper .search-wrapper {
+    width: auto;
+}
+
+.logo-wrapper .search-wrapper .input-group-btn button,
+.logo-wrapper .search-wrapper .input-group input[type=text] {
+    height: 40px;
+}
+
+.logo-wrapper .search-wrapper .input-group input[type=text] {
+    margin-top: 22px;
+    border: 1px solid #dbdbdb;
+    box-sizing: border-box;
+}
+
+.logo-wrapper .search-wrapper .input-group input[type=text]:focus {
+    border-color: #c9c9c9;
+}
+
+.logo-wrapper .book-shelf {
+    display: inline-block;
+    vertical-align: middle;
+    overflow: hidden;
+    width: 120px;
+    height: 40px;
+    background: #fff;
+}
+
+.logo-wrapper .book-shelf a {
+    font: 14px/1 PingFangSC-Regular, '-apple-system', Simsun;
+    display: block;
+    width: 118px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    color: #262626;
+    border: 1px solid #e6e6e6;
+    box-sizing: content-box;
+}
+
+.logo-wrapper .book-shelf a:hover {
+    color: #fff;
+    border: 1px solid #ed4259;
+    background: #ed4259;
+    transition: color .3s, background-color .3s;
+}
+
+.main-nav-wrapper {
+    position: relative;
+    z-index: 30;
+    margin-bottom: 10px;
+    background-color: #3e3d43;
+}
+
+.main-nav-wrapper .main-nav {
+    position: relative;
+    height: 40px;
+    background-color: #3e3d43;
+}
+
+.main-nav-wrapper .main-nav li {
+    float: left;
+}
+
+.main-nav-wrapper .main-nav li.active{
+    background:#ed4259;
+}
+
+.main-nav-wrapper .main-nav li.first {
+    position: relative;
+    width: 216px;
+    height: 40px;
+    margin-right: 30px;
+    cursor: pointer;
+    background-color: #313035;
+}
+
+.main-nav-wrapper .main-nav li b {
+    font-weight: 400;
+}
+
+.main-nav-wrapper .main-nav li.first b {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 0;
+    height: 0;
+    margin-left: -5px;
+    transition: all .5s;
+    border-top: 5px solid #a6a6a6;
+    border-right: 5px solid transparent;
+    border-bottom: 0 none;
+    border-left: 5px solid transparent;
+}
+
+.main-nav-wrapper .main-nav li.first b strong {
+    position: absolute;
+    top: -7px;
+    right: -5px;
+    width: 0;
+    height: 0;
+    border-top: 5px solid #333;
+    border-right: 5px solid transparent;
+    border-bottom: 0 none;
+    border-left: 5px solid transparent;
+}
+
+.main-nav-wrapper .main-nav li.first:hover b {
+    -webkit-transform: rotateX(-180deg);
+    -moz-transform: rotateX(-180deg);
+    transform: rotateX(-180deg);
+}
+
+.main-nav-wrapper .main-nav li a {
+    font: 16px/38px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    float: left;
+    height: 38px;
+    padding: 0 32px;
+    color: #fff;
+    border-bottom: 2px solid #333;
+    box-sizing: content-box;
+    transition: color .3s, background-color .3s;
+}
+
+.main-nav-wrapper .main-nav li.nav-li a:hover {
+    line-height: 34px;
+    height: 36px;
+    transition: none;
+    border-top: 2px solid #ed4259;
+    border-bottom: 2px solid #252428;
+    background-color: #252428;
+}
+
+.main-nav-wrapper .main-nav li.first span {
+    font: 16px/38px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    display: block;
+    padding: 0 0 0 18px;
+    transition: all .5s;
+    color: #fff;
+    background-color: #313035;
+}
+
+.main-nav-wrapper .main-nav li.first:hover span {
+    background-color: #252428;
+}
+
+.main-nav-wrapper .main-nav li.first span i {
+    float: left;
+    width: 16px;
+    height: 14px;
+    margin: 13px 8px 0 0;
+    vertical-align: middle;
+}
+
+.classify-list {
+    position: relative;
+    top: -11px;
+    width: 214px;
+    height: 420px;
+    border: 1px solid #e6e6e6;
+    border-top: none;
+    box-sizing: content-box;
+}
+
+#type-hover .classify-list {
+    position: absolute;
+    z-index: 100;
+    top: 40px;
+    left: 0;
+    display: none;
+    animation: .15s ease-out;
+    animation-name: fadeinT;
+    box-shadow: 0 3px 5px #ccc;
+}
+
+.classify-list dd {
+    float: left;
+    width: 50%;
+    height: 60px;
+    background: #f7f6f2;
+    box-sizing: content-box;
+}
+
+.classify-list dd.even {
+    background: #fcfcfa;
+}
+
+.classify-list dd a {
+    display: block;
+    color: #333;
+    transition: color .3s, background-color .3s;
+}
+
+.classify-list dd a:hover {
+    color: #ed4259;
+}
+
+.classify-list dd a cite {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    width: 85px;
+    height: 43px;
+    padding-top: 17px;
+    padding-left: 17px;
+    box-sizing: content-box;
+}
+
+.classify-list dd a cite em {
+    float: left;
+    width: 24px;
+    height: 24px;
+    font-size: 22px;
+    margin: 2px 8px 0 0;
+    box-sizing: content-box;
+    transition: margin ease-out .3s;
+}
+
+.classify-list dd a:hover cite em {
+    margin: 2px 11px 0 -3px;
+}
+
+.classify-list dd a cite .info {
+    float: left;
+    max-width: 42px;
+}
+
+.classify-list dd a cite .info b,
+.classify-list dd a cite .info i {
+    display: block;
+    cursor: pointer;
+    text-align: left;
+}
+
+.classify-list dd a cite .info i {
+    font: 14px/1 PingFangSC-Regular, '-apple-system', Simsun;
+    white-space: nowrap;
+}
+
+.classify-list dd a cite .info b {
+    font: 12px/1.5 Arial;
+    transition: color .2s;
+    color: #999;
+}
+
+.classify-list dd a:hover cite b {
+    color: #ed4259;
+}
+
+.book-list-wrapper .book-list li,
+.classify-list dd {
+    overflow: hidden;
+}
+
+.focus-box {
+    width: calc(100% - 225px);
+    margin-left: 9px;
+}
+
+.focus-box #myFocus {
+    width: 100%;
+    height: 399px;
+}
+
+.hot-work-wrapper {
+    margin-bottom: 40px;
+}
+
+.hot-work-box {
+    width: 201px;
+    margin-right: 30px;
+    box-sizing: content-box;
+}
+
+.hot-work-box h3.wrapper-title {
+    font-size: 22px;
+    line-height: 30px;
+    overflow: hidden;
+    padding-bottom: 8px;
+}
+
+.hot-work-box .hot-work-info {
+    overflow: hidden;
+    height: 395px;
+    background: #f7f5f0;
+}
+
+.hot-work-box .hot-work-slide {
+    margin-bottom: 185px;
+    padding: 24px 0;
+}
+
+.three-slide-wrapper {
+    position: relative;
+    z-index: 1;
+    height: 112px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.three-slide-wrapper a {
+    display: inline-block;
+    width: 84px;
+    height: 112px;
+    cursor: pointer;
+    box-shadow: 0 1px 8px #7f7f7f;
+}
+
+.three-slide-wrapper a img {
+    height: 100%;
+    width: 100%;
+}
+
+.info-text {
+    width: 180px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.info-text h3 {
+    font: 700 16px/24px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    overflow: hidden;
+    height: 24px;
+    margin-bottom: 5px;
+}
+
+.info-text h3 a {
+    color: #1a1a1a;
+    transition: color .3s, background-color .3s;
+}
+
+.info-text .author {
+    font: 12px/16px PingFangSC-Regular, '-apple-system', Simsun;
+    padding: 3px 0 5px;
+    color: #bf2c24;
+}
+
+.info-text .author a {
+    color: #bf2c24;
+    transition: color .3s, background-color .3s;
+}
+
+.info-text .author em {
+    font-family: Arial;
+    margin: 0 5px;
+}
+
+.info-text .total {
+    font: 12px/18px PingFangSC-Regular, '-apple-system', Simsun;
+    margin-bottom: 10px;
+}
+
+.info-text .total b {
+    font-family: Arial;
+    font-size: 18px;
+    margin-right: 3px;
+    vertical-align: middle;
+}
+
+.info-text .total span {
+    vertical-align: middle;
+}
+
+.info-text .intro {
+    font: 12px/20px PingFangSC-Regular, '-apple-system', Simsun;
+    overflow: hidden;
+    height: 80px;
+    margin-bottom: 20px;
+    text-align: left;
+    color: #626260;
+}
+
+.read-btn {
+    font: 14px/28px PingFangSC-Regular, '-apple-system', Simsun;
+    display: block;
+    width: 98px;
+    height: 28px;
+    text-align: center;
+    color: #fff;
+    border: 1px solid #bf2c24;
+    border-radius: 15px;
+    background: #bf2c24;
+}
+
+.hot-work-box .read-btn {
+    margin: 0 auto;
+    transition: color .3s, background-color .3s;
+}
+
+.hot-classify-wrapper {
+    width: 939px;
+    padding-top: 4px;
+    box-sizing: content-box;
+}
+
+.hot-classify-wrapper li {
+    position: relative;
+    z-index: 1;
+    float: left;
+    width: 216px;
+    margin: 0 25px 30px 0;
+    box-sizing: content-box;
+}
+
+.hot-classify-wrapper li.mr0 {
+    margin-right: 0;
+}
+
+.hot-classify-wrapper li.mb0 {
+    margin-bottom: 0;
+}
+
+.hot-classify-wrapper h3.wrapper-title {
+    position: relative;
+    overflow: visible;
+    margin-bottom: 5px;
+}
+
+.hot-classify-wrapper .hot-book-list dd {
+    overflow: hidden;
+}
+
+.hot-classify-wrapper .hot-book-list dd a {
+    font: 14px/32px PingFangSC-Regular, '-apple-system', Simsun;
+    float: left;
+    margin-left: -8px;
+    color: #1a1a1a;
+    transition: color .3s, background-color .3s;
+}
+
+.hot-classify-wrapper .hot-book-list dd a:hover {
+    color: #ed4259;
+}
+
+.hot-classify-wrapper .hot-book-list dd a.classify {
+    overflow: hidden;
+    width: 56px;
+    height: 32px;
+    margin-right: 5px;
+    color: grey;
+}
+
+.hot-classify-wrapper .hot-book-list dd a.classify:hover {
+    color: #ed4259;
+}
+
+.hot-classify-wrapper .hot-book-list dd a.name {
+    overflow: hidden;
+    max-width: 168px;
+    height: 32px;
+}
+
+.hot-classify-wrapper .hot-book-list dd a.classify em {
+    font-family: PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    font-size: 13px;
+}
+
+.hot-classify-wrapper li.erciyuan .hot-book-list dd a.classify {
+    width: 70px;
+}
+
+.hot-classify-wrapper li.erciyuan .hot-book-list dd a.name {
+    max-width: 150px;
+}
+
+.hot-classify-wrapper li .book-wrapper {
+    padding: 0 0 5px;
+}
+
+.hot-classify-wrapper li .book-wrapper.bd {
+    border-bottom: 1px solid #ebebeb;
+    margin-bottom: 13px;
+}
+
+.book-wrapper .book-info {
+    width: 132px;
+}
+
+.book-wrapper .book-info .tag {
+    font-family: PingFangSC-Regular, '-apple-system', Simsun;
+    font-size: 12px;
+    line-height: 18px;
+    display: block;
+    overflow: hidden;
+    width: 50px;
+    height: 18px;
+    margin-bottom: 2px;
+    padding: 0 3px;
+    text-align: center;
+    color: #bf2c24;
+    border: 1px solid #df9591;
+}
+
+.book-wrapper .book-info h4 {
+    font: 16px/24px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    overflow: hidden;
+    height: 24px;
+    color: #1a1a1a;
+    margin: 0;
+}
+
+.book-wrapper .book-info p.digital {
+    font-size: 12px;
+    overflow: hidden;
+    height: 24px;
+    margin-bottom: 4px;
+    padding: 3px 0 0;
+    color: #bf2c24;
+}
+
+.book-wrapper .book-info p.digital em {
+    font-family: Arial;
+    font-size: 18px;
+    margin-right: 3px;
+}
+
+.book-wrapper .book-info .desc {
+    font-family: PingFangSC-Regular, '-apple-system', Simsun;
+    font-size: 12px;
+    overflow: hidden;
+    height: 16px;
+    color: #666;
+}
+
+.book-wrapper .book-cover {
+    position: relative;
+    z-index: 4;
+    float: right;
+    width: 52px;
+    height: 91px;
+    margin-top: -3px;
+    margin-right: 8px;
+    text-align: center;
+}
+
+:root .book-cover {
+    -webkit-transform: perspective(60px) rotateY(-10deg);
+    -moz-transform: perspective(60px) rotateY(-10deg);
+    transform: perspective(60px) rotateY(-10deg);
+}
+
+.book-wrapper .book-cover .link {
+    position: relative;
+    z-index: 10;
+    display: inline-block;
+    transform: translateZ(50px);
+    transition: color .3s, background-color .3s;
+}
+
+.book-wrapper .book-cover img {
+    width: 60px;
+    height: 87px;
+    outline: 1px solid transparent;
+}
+
+:root .book-cover img {
+    width: 52px;
+    height: 87px;
+}
+
+.hot-classify-wrapper li .book-wrapper .book-info {
+    width: 144px;
+}
+
+.hot-classify-wrapper li .book-wrapper .book-info .digital {
+    height: auto;
+}
+
+.hot-classify-wrapper li .book-wrapper .book-info .digital em {
+    font-size: 14px;
+}
+
+.footer {
+    background-color: #222;
+    color: #676767;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.footer a {
+    color: #676767;
+    transition: color .3s ease;
+}
+
+.footer a:hover {
+    color: #eee;
+}
+
+.footer .site-map {
+    margin: 10px 0;
+}
+
+.footer .site-map ul {
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    list-style: none;
+}
+
+.footer .site-map ul > li {
+    display: inline-block;
+    padding: 0 15px;
+    border-left: 1px solid #676767;
+    font-size: 12px;
+}
+
+.footer .site-map ul > li:first-child {
+    border-left: none;
+}
+
+.footer .copyright {
+    font-size: 13px;
+}
+
+.footer .copyright a {
+    position: relative;
+    white-space: nowrap;
+}
+
+.footer .copyright a::after {
+    position: absolute;
+    bottom: -2px;
+    left: 100%;
+    width: 0;
+    border-bottom: 1px solid #fff;
+    content: "";
+    transition: width 350ms, left 350ms;
+}
+
+.footer .copyright a:hover::after {
+    left: 0;
+    transition: width 350ms ease 0s;
+    width: 100%;
+}
+
+/* login.html 登录注册页 */
+.header {
+    height: 79px;
+    border-bottom: 1px solid #DFDFDF;
+    box-sizing: content-box;
+}
+
+.header .logo {
+    padding-top: 14px;
+}
+
+.header .logo a {
+    float: left;
+    width: 219px;
+    height: 52px;
+    background: url(https://qidian.gtimg.com/qd/images/logo.0.2.png);
+}
+
+.login-area-wrapper {
+    position: relative;
+    z-index: 1;
+    padding: 100px 0;
+    min-height: 430px;
+    box-sizing: content-box;
+}
+
+.login-op-img {
+    position: relative;
+    z-index: 1;
+    width: 534px;
+    height: 400px;
+    padding-left: 110px;
+    margin-right: 78px;
+    box-sizing: content-box;
+}
+
+.login-op-img img {
+    display: block;
+    width: 534px;
+    height: 400px;
+}
+
+.login-wrapper {
+    position: relative;
+    z-index: 1;
+    width: 398px;
+    background: white;
+    border: 1px solid #E6E6E6;
+    padding: 0 25px 35px;
+}
+
+.login-wrapper .login-header {
+    width: 100%;
+    border-bottom: 2px solid #E6E6E6;
+}
+
+.login-header .login-title {
+    width: 108px;
+    height: 45px;
+    font-size: 16px;
+    line-height: 48px;
+    text-align: center;
+    color: #1A1A1A;
+    border-bottom: 2px solid #BF2C24;
+    margin-bottom: -2px;
+}
+
+.login-wrapper .login-body {
+    padding: 40px 38px 18px;
+}
+
+.login-body .input-group {
+    width: 100%;
+}
+
+.login-body .input-group,
+.login-body .form-inline {
+    margin-bottom: 15px;
+}
+
+.login-body .input-group .input-group-addon {
+    padding: 6px 0 6px 10px;
+    width: 20px;
+    color: #A6A6A6;
+    background: transparent;
+    border-color: #e6e6e6;
+}
+
+.login-body .input-group input {
+    border-left: none;
+    border-color: #e6e6e6;
+}
+
+.login-body .input-group input:focus {
+    border-color: #e6e6e6;
+}
+
+.login-footer {
+    margin-top: 10px;
+}
+
+.login-footer a {
+    color: #666;
+}
+
+.login-footer a:hover {
+    color: inherit;
+}
+
+/* list.html 书籍列表页 */
+.all-pro-wrap {
+    min-height: 500px;
+    padding: 20px 0 0;
+}
+
+.range-sidebar {
+    width: 216px;
+    margin-right: 20px;
+}
+
+.range-sidebar .site {
+    height: 29px;
+}
+
+.range-sidebar .site .tab {
+    font-size: 0;
+}
+
+.range-sidebar .site li {
+    display: inline-block;
+}
+
+.range-sidebar .site li a {
+    font: 12px/25px PingFangSC-Regular, '-apple-system', Simsun;
+    display: inline-block;
+    width: 60px;
+    height: 29px;
+    text-align: center;
+    transition: color .3s, background-color .3s;
+}
+
+.range-sidebar .site li.active a {
+    font-weight: 700;
+    height: 28px;
+    color: #ed4259;
+    border-top: 2px solid #ed4259;
+    border-right: 1px solid #e6e6e6;
+    border-left: 1px solid #e6e6e6;
+    background: #fff;
+}
+
+.range-sidebar .select-list {
+    margin-top: 15px;
+}
+
+.range-sidebar .site,
+.select-list .work-filter {
+    border-bottom: 1px solid #ebebeb;
+}
+
+.select-list .sub-type,
+.select-list .work-filter ul {
+    overflow: hidden;
+}
+
+.select-list .work-filter {
+    margin-bottom: 15px;
+    padding-bottom: 6px;
+}
+
+.select-list .work-filter h3 {
+    font-family: PingFangSC-Regular, '-apple-system', Simsun;
+    font-size: 12px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.select-list .work-filter ul {
+    min-height: 27px;
+}
+
+.select-list .work-filter ul li {
+    float: left;
+    height: 20px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    padding: 0 4px;
+    text-align: center;
+}
+
+.select-list .work-filter ul li.active {
+    background: #333;
+}
+
+.select-list .work-filter ul li a {
+    font: 12px/20px PingFangSC-Regular, '-apple-system', Simsun;
+    display: block;
+    transition: color .3s, background-color .3s;
+}
+
+.select-list .work-filter ul li.active a {
+    color: #fff;
+}
+
+.select-list .work-filter ul li.arrow a {
+    position: relative;
+    z-index: 3;
+}
+
+.select-list .work-filter ul li.more a {
+    position: relative;
+    z-index: 3;
+    padding-right: 10px;
+    color: #3f5a93;
+}
+
+.select-list .work-filter ul li.more a:hover {
+    color: #2972cc;
+}
+
+.select-list .work-filter ul li.more a span {
+    position: absolute;
+    top: 7px;
+    right: -3px;
+    width: 0;
+    height: 0;
+    border-top: 5px solid #3f5a93;
+    border-right: 5px solid transparent;
+    border-bottom: 0 none;
+    border-left: 5px solid transparent;
+}
+
+.select-list .work-filter ul li.more a span i {
+    position: absolute;
+    top: -7px;
+    right: -5px;
+    width: 0;
+    height: 0;
+    border-top: 5px solid #fff;
+    border-right: 5px solid transparent;
+    border-bottom: 0 none;
+    border-left: 5px solid transparent;
+}
+
+.select-list .work-filter.tag {
+    border-bottom: none;
+}
+
+.main-content-wrapper {
+    width: 934px;
+    padding-top: 10px;
+}
+
+.book-img-text {
+    padding-top: 10px;
+}
+
+.book-img-text li {
+    height: 162px;
+    padding-top: 25px;
+    border-top: 1px solid #e6e6e6;
+    box-sizing: content-box;
+}
+
+.book-img-text li:first-child {
+    padding-top: 0;
+    border-top: none;
+}
+
+.book-img-text .all-img-list li {
+    float: left;
+    width: 467px;
+}
+
+.book-img-text .all-img-list li:first-child + li {
+    padding-top: 0;
+    border-top: none;
+}
+
+.book-img-text .book-img-box,
+.book-img-text .book-mid-info {
+    float: left;
+}
+
+.book-img-text .book-img-box {
+    position: relative;
+    z-index: 3;
+    width: 102px;
+    height: 136px;
+    margin-right: 16px;
+}
+
+.book-img-text .book-img-box a {
+    display: block;
+    overflow: hidden;
+    width: 102px;
+    height: 136px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .35);
+    transition: color .3s, background-color .3s;
+}
+
+.book-img-text .book-img-box a img {
+    width: 102px;
+    height: 136px;
+    -webkit-transition: -webkit-transform .4s ease-out;
+    -moz-transition: -moz-transform .4s ease-out;
+    -ms-transition: -ms-transform .4s ease-out;
+    transition: transform .4s ease-out;
+}
+
+.book-img-text .book-img-box a img:hover {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.book-img-text .book-mid-info {
+    width: 542px;
+    margin-top: 5px;
+}
+
+.book-img-text .all-img-list li .book-mid-info {
+    width: 334px;
+}
+
+.book-img-text .book-mid-info h4 {
+    font: 18px/24px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    overflow: hidden;
+    height: 24px;
+    margin-bottom: 8px;
+}
+
+.book-img-text .book-mid-info h4 a {
+    transition: color .3s, background-color .3s;
+}
+
+.book-img-text .book-mid-info h4 cite.red-kw {
+    color: #bf2c24;
+}
+
+.book-img-text .book-mid-info p {
+    font-family: PingFangSC-Regular, '-apple-system', Simsun;
+    font-size: 12px;
+}
+
+.book-img-text .book-mid-info p.author,
+.other-rec-wrap li .book-info .author {
+    overflow: hidden;
+}
+
+.book-img-text .book-mid-info p.author {
+    overflow: hidden;
+    height: 16px;
+    margin-bottom: 6px;
+}
+
+.book-img-text .book-mid-info p.author img {
+    float: left;
+    width: 14px;
+    height: 14px;
+    margin: 1px 5px 0 0;
+}
+
+.book-img-text .book-mid-info p.author a {
+    line-height: 16px;
+    float: left;
+    color: #a6a6a6;
+    transition: color .3s, background-color .3s;
+}
+
+.book-img-text .book-mid-info p.author a:hover {
+    color: #ed4259;
+}
+
+.book-img-text .book-mid-info p.author a.name:hover {
+    color: #262626;
+}
+
+.book-img-text .book-mid-info p.author em {
+    font-family: Arial;
+    float: left;
+    margin: 1px 8px 0;
+    color: #e6e6e6;
+}
+
+.book-img-text .book-mid-info p.author i {
+    font-family: PingFangSC-Regular, '-apple-system', Simsun;
+    line-height: 16px;
+    float: left;
+    margin: 0 3px;
+    color: #a6a6a6;
+}
+
+.book-img-text .book-mid-info p.author span {
+    line-height: 16px;
+    float: left;
+    color: #a6a6a6;
+}
+
+.book-img-text .all-img-list li .book-mid-info p.author span {
+    color: #a6a6a6;
+}
+
+.book-img-text .book-mid-info p.intro {
+    font-size: 14px;
+    line-height: 24px;
+    overflow: hidden;
+    height: 48px;
+    margin-bottom: 8px;
+    color: #666;
+}
+
+.book-img-text .book-mid-info p.update {
+    line-height: 22px;
+}
+
+.book-img-text .all-img-list li .book-mid-info p.update {
+    color: inherit;
+}
+
+.book-img-text .book-mid-info p.update em,
+.book-img-text .book-mid-info p.update span {
+    display: inline-block;
+    vertical-align: middle;
+    color: #b5b5b5;
+}
+
+.book-img-text .all-img-list li .book-mid-info p.update span {
+    color: #a6a6a6;
+}
+
+.book-img-text .book-mid-info p.update a {
+    display: inline-block;
+    vertical-align: middle;
+    color: #3f5a93;
+}
+
+.book-img-text .book-mid-info p.update a:hover {
+    color: #2972cc;
+}
+
+/* search.html 小说搜索页 */
+.search-container {
+    height: 40px;
+    padding: 30px 0;
+    box-sizing: content-box;
+}
+
+.search-wrapper {
+    width: 480px;
+    margin: 0 auto;
+}
+
+.search-wrapper input {
+    font: 14px/38px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    line-height: 38px;
+    float: left;
+    width: 375px;
+    height: 38px;
+    padding: 0 12px;
+    border: 1px solid #dbdbdb;
+    border-right: none;
+    box-sizing: content-box;
+}
+
+.search-wrapper .search-btn {
+    font: 18px/40px FZZCYSK;
+    float: left;
+    width: 80px;
+    height: 40px;
+    text-align: center;
+    text-indent: 5px;
+    letter-spacing: 4px;
+    color: #fff;
+    background: #bf2c24;
+    transition: color .3s, background-color .3s;
+    box-sizing: content-box;
+}
+
+.search-wrapper .search-btn:hover {
+    background: #ed4259;
+}
+
+.result-wrapper {
+    padding: 0 0 30px;
+    box-sizing: content-box;
+}
+
+.main-content-wrapper {
+    padding: 0;
+}
+
+.search-filter {
+    margin-bottom: 10px;
+    padding: 16px 12px 0;
+    background: #f7f6f2;
+}
+
+.search-filter li {
+    overflow: hidden;
+}
+
+.search-filter li.selected {
+    margin-bottom: 5px;
+}
+
+.search-filter li em {
+    font: 700 12px/20px PingFangSC-Regular, '-apple-system', Simsun;
+    float: left;
+    margin-right: 20px;
+    color: #1a1a1a;
+}
+
+.search-filter li dl {
+    float: left;
+    max-width: 840px;
+}
+
+.search-filter dl dd a {
+    font: 12px/20px PingFangSC-Regular, '-apple-system', Simsun;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 15px;
+    transition: color .3s, background-color .3s;
+}
+
+
+.search-filter dl dd cite {
+    font: 12px/18px Arial;
+    display: inline-block;
+    transition: all .1s;
+    vertical-align: middle;
+    color: #a6a6a6;
+}
+
+.book-img-text .book-right-info {
+    float: right;
+    position: relative;
+    width: 224px;
+    height: 136px;
+    margin-top: 5px;
+}
+
+.book-img-text .book-right-info .total {
+    text-align: right;
+}
+
+.book-img-text .book-right-info .total p {
+    font: 12px/16px PingFangSC-Regular, '-apple-system', Simsun;
+    margin-bottom: 6px;
+    color: #666;
+}
+
+.book-img-text .book-right-info .total p span {
+    font: 12px/18px PingFangSC-Regular, '-apple-system', Simsun;
+    margin-right: 3px;
+    color: #262626;
+}
+
+.book-img-text .book-right-info .btn {
+    font-size: 0;
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    padding: 0;
+}
+
+.book-img-text .book-right-info .btn a {
+    font: 14px/32px PingFangSC-Regular, '-apple-system', Simsun;
+    display: inline-block;
+    width: 98px;
+    height: 32px;
+    text-align: center;
+    vertical-align: middle;
+    border-width: 1px;
+    border-style: solid;
+    transition: color .3s, background-color .3s;
+}
+
+.book-img-text .book-right-info .btn a.red-btn {
+    margin-right: 24px;
+    color: #fff;
+    border-color: #bf2c24;
+    background: #bf2c24;
+}
+
+.book-img-text .book-right-info .btn a.red-btn:hover {
+    border-color: #ed4259;
+    background: #ed4259;
+}
+
+.book-img-text .book-right-info .btn a.blue-btn {
+    color: #3f5a93;
+    border-color: #3f5a93;
+}
+
+.book-img-text .book-right-info .btn a.blue-btn:hover {
+    color: #2972cc;
+    border-color: #2972cc;
+    background: #f0f5ff;
+}
+
+.other-rec-wrapper {
+    width: 206px;
+}
+
+.other-rec-wrapper h3 {
+    font-size: 18px;
+    line-height: 21px;
+    position: relative;
+    z-index: 2;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #666;
+}
+
+.other-rec-wrapper li {
+    position: relative;
+    z-index: 1;
+    height: 97px;
+    padding: 15px 0;
+    border-bottom: 1px solid #e6e6e6;
+    box-sizing: content-box;
+}
+
+.other-rec-wrapper li:last-of-type {
+    border-bottom: none;
+}
+
+.other-rec-wrapper li .img-box {
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 72px;
+    height: 96px;
+    margin-right: 12px;
+}
+
+.other-rec-wrapper li .img-box a {
+    display: block;
+    overflow: hidden;
+    width: 72px;
+    height: 96px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .35);
+    transition: color .3s, background-color .3s;
+}
+
+.other-rec-wrapper li .img-box a img {
+    width: 72px;
+    height: 96px;
+    -webkit-transition: -webkit-transform .3s ease-out;
+    -moz-transition: -moz-transform .3s ease-out;
+    -ms-transition: -ms-transform .3s ease-out;
+    transition: transform .3s ease-out;
+}
+
+.other-rec-wrapper li .img-box a img:hover {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.other-rec-wrapper li .book-info {
+    position: absolute;
+    z-index: 1;
+    left: 90px;
+    width: 130px;
+}
+
+.other-rec-wrapper li .book-info h4 {
+    font: 16px/21px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    overflow: hidden;
+    height: 21px;
+    margin-bottom: 8px;
+}
+
+.other-rec-wrapper li .book-info h4 a {
+    transition: color .3s, background-color .3s;
+}
+
+.other-rec-wrapper li .book-info .author {
+    height: 16px;
+    margin-bottom: 8px;
+}
+
+.other-rec-wrapper li .book-info .author img {
+    float: left;
+    width: 14px;
+    height: 14px;
+    margin: 2px 5px 0 0;
+}
+
+.other-rec-wrapper li .book-info .author a {
+    font: 12px/16px PingFangSC-Regular, '-apple-system', Simsun;
+    float: left;
+    color: #a6a6a6;
+    transition: color .3s, background-color .3s;
+}
+
+.other-rec-wrapper li .book-info .author a:hover {
+    color: inherit;
+}
+
+.other-rec-wrapper li .book-info .intro {
+    font: 12px/20px PingFangSC-Regular, '-apple-system', Simsun;
+    overflow: hidden;
+    height: 40px;
+    color: #666;
+}
+
+/* book.html 书本详情页 */
+.pin-nav-wrapper {
+    position: relative;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 42px;
+    margin-bottom: 16px;
+    transition: .5s all;
+    transform: translateZ(10px);
+    background: #3e3d43;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .4);
+}
+
+.pin-nav-wrapper .nav-list {
+    height: 42px;
+    margin-left: -10px;
+    box-sizing: content-box;
+}
+
+.pin-nav-wrapper .nav-list li {
+    float: left;
+    box-sizing: content-box;
+}
+
+.pin-nav-wrapper .nav-list li.site {
+    width: 95px;
+    margin-right: 28px;
+}
+
+.pin-nav-wrapper .nav-list li a {
+    font: 14px/42px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    height: 42px;
+    padding: 0 15px;
+    color: #ccc;
+    transition: color .3s, background-color .3s;
+    box-sizing: content-box;
+}
+
+.pin-nav-wrapper .nav-list li.active a {
+    line-height: 38px;
+    height: 40px;
+    transition: none;
+    border-top: 2px solid #ed4259;
+    background: #2b2a2e;
+    color: #fff;
+}
+
+.pin-nav-wrapper .nav-list li.more a {
+    width: 46px;
+}
+
+.pin-nav-wrapper .nav-list li.more a .fa {
+    margin-left: 8px;
+}
+
+.pin-nav-wrapper .nav-list li .dropdown {
+    position: relative;
+    display: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+}
+
+.pin-nav-wrapper .nav-list li .dropdown a {
+    font: 14px/38px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    height: auto;
+    padding: 2px 15px;
+    color: #ccc;
+    border-top: none;
+}
+
+.pin-nav-wrapper .nav-list li.more .dropdown a {
+    width: 56px;
+    padding: 0 10px;
+}
+
+.pin-nav-wrapper .nav-list li .dropdown a:hover {
+    color: #fff;
+    background: #000;
+}
+
+.pin-nav-wrapper .nav-list li.active .dropdown {
+    display: block;
+    animation: .15s ease-out;
+    animation-name: fadeinT;
+    background: #2b2a2e;
+}
+
+.pin-nav-wrapper .min-user li {
+    position: relative;
+    z-index: 11;
+}
+
+.pin-nav-wrapper.need-search .min-user li:first-child {
+    display: block;
+}
+
+.pin-nav-wrapper .min-user li.line {
+    height: 24px;
+    margin: 10px 0 0;
+    border-right: 1px solid #515056;
+}
+
+.pin-nav-wrapper .min-user li a {
+    position: relative;
+    z-index: 10;
+    margin-right: 0;
+    color: #fff;
+    background: 0 0;
+}
+
+.pin-nav-wrapper .min-user li.book-shelf a:hover {
+    color: #ed4259;
+}
+
+.pin-nav-wrapper.need-search .min-user li:first-child + li.line {
+    display: block;
+}
+
+.pin-nav-wrapper .min-user li #pin-search {
+    display: inline-block;
+    height: 42px;
+    line-height: 42px;
+    margin-right: 10px;
+    padding: 0;
+    color: #ccc;
+}
+
+.pin-nav-wrapper .min-user li .pin-input {
+    padding: 3px 8px 3px 12px;
+    margin-left: 10px;
+    margin-right: 5px;
+    color: #ccc;
+    border-radius: 42px;
+    border-color: #666;
+    vertical-align: middle;
+    background: transparent;
+    transition: all .3s ease;
+}
+
+.pin-nav-wrapper .min-user li .pin-input:focus {
+    color: #444;
+    background: #fff;
+}
+
+.pin-nav-wrapper .min-user li #pin-search:hover {
+    color: #fff;
+}
+
+.pin-nav-wrapper .min-user li.sign-out {
+    position: relative;
+    padding: 0 6px 0 15px;
+}
+
+.pin-nav-wrapper .min-user li.sign-out a {
+    display: inline;
+    margin-right: 8px;
+    padding: 0;
+    color: #ccc;
+}
+
+.pin-nav-wrapper .min-user li.sign-out a:hover {
+    color: #fff;
+}
+
+.pin-nav-wrapper .min-user li.sign-in a {
+    overflow: hidden;
+    min-width: 80px;
+    max-width: 156px;
+    padding: 0 20px 0 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.pin-nav-wrapper .min-user li.sign-in a i {
+    padding-right: 5px;
+}
+
+.pin-nav-wrapper .min-user li.sign-in .dropdown {
+    position: absolute;
+    top: 42px;
+    right: 0;
+    width: 100%;
+}
+
+.pin-nav-wrapper .min-user li.sign-in .dropdown a {
+    text-align: left;
+}
+
+.pin-nav-wrapper .min-user li.sign-in .dropdown a i {
+    padding-right: 0;
+}
+
+.pin-nav-wrapper .min-user li.book-shelf em {
+    margin-top: -2px;
+}
+
+.pin-nav-wrapper .min-user li.book-shelf i {
+    margin-left: 5px;
+}
+
+.top-bg-box {
+    position: absolute;
+    top: 42px;
+    left: 0;
+    width: 100%;
+    height: 255px;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+}
+
+@media (max-width: 1920px) {
+    .top-bg-box {
+        height: 292px;
+    }
+}
+
+.border-shadow {
+    position: relative;
+    z-index: 10;
+    width: 990px;
+    height: 120px;
+    margin: 0 auto;
+    border: 2px solid #e9e9e9;
+    border: 2px solid rgba(0, 0, 0, .1);
+    border-bottom: none;
+    box-sizing: content-box;
+}
+
+.border-shadow span {
+    position: absolute;
+    z-index: 2;
+    width: 2px;
+    top: 120px;
+    height: 120px;
+    box-sizing: content-box;
+}
+
+.border-shadow span:first-child {
+    left: -2px;
+}
+
+.border-shadow span:first-child {
+    background: url('../images/shadow_slider1.png') 0 0 no-repeat;
+}
+
+.border-shadow span:first-child + span {
+    right: -2px;
+}
+
+.border-shadow span:first-child + span {
+    background: url('../images/shadow_slider2.png') -2px 0 no-repeat;
+}
+
+.book-detail-wrapper {
+    position: relative;
+    z-index: 10;
+    min-height: 700px;
+    margin: 0 auto;
+    margin-top: -120px;
+    box-sizing: content-box;
+}
+ .disabled{
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.6;
+    color: #a6a6a6;
+    border-color: #a6a6a6;
+}
+
+.book-information {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    background: #fff;
+}
+
+.book-img {
+    width: 72px;
+    height: 96px;
+    margin-right: 12px;
+}
+
+.book-information .book-img {
+    float: left;
+    width: 144px;
+    height: 192px;
+    margin: 20px 20px 0;
+}
+
+.book-img a {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, .35), 0 0 5px #f9f2e9 inset;
+    transition: color .3s, background-color .3s;
+}
+
+.book-img a img {
+    width: 100%;
+    height: 100%;
+    -webkit-transition: -webkit-transform .3s ease-out;
+    -moz-transition: -moz-transform .3s ease-out;
+    -ms-transition: -ms-transform .3s ease-out;
+    transition: transform .3s ease-out;
+    color: #fcfcfa;
+}
+
+.book-img a img:hover {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.book-information .book-img a, .book-information .book-img img {
+    display: block;
+}
+
+.book-information .book-info {
+    float: left;
+    width: 560px;
+    margin-top: 20px;
+}
+
+.book-information .book-info h1 {
+    font: 700 28px/38px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    overflow: hidden;
+    height: 38px;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.book-information .book-info h1 span {
+    font: 14px/20px PingFangSC-Regular, '-apple-system', Simsun;
+    margin-left: 20px;
+}
+
+.book-information .book-info h1 span a {
+    color: #262626;
+    transition: color .3s, background-color .3s;
+}
+
+.book-information .book-info h1 span a:hover {
+    color: #ed4259;
+}
+
+.book-information .book-info .tag {
+    font-size: 0;
+    overflow: hidden;
+    height: 25px;
+    margin-bottom: 12px;
+}
+
+.blue {
+    color: #3f5a93;
+}
+
+.book-information .book-info .tag a,
+.book-information .book-info .tag span {
+    font: 12px/22px PingFangSC-Regular, '-apple-system', Simsun;
+    display: inline-block;
+    overflow: hidden;
+    height: 22px;
+    margin-right: 12px;
+    padding: 0 10px;
+    text-align: center;
+    vertical-align: middle;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 15px;
+}
+
+.book-information .book-info .tag a.blue,
+.book-information .book-info .tag span.blue {
+    color: #3f5a93;
+    border-color: #9fadc9;
+}
+
+.book-information .book-info .tag a.red,
+.book-information .book-info .tag span.red {
+    color: #bf2c24;
+    border-color: #ffb0b4;
+    transition: color .3s, background-color .3s, border .3s;
+}
+
+.book-information .book-info .tag a.red:hover,
+.book-information .book-info .tag span.red:hover {
+    border-color: #ed4259;
+}
+
+.book-information .book-info .tag + .intro {
+    font: 14px/20px PingFangSC-Regular, '-apple-system', Simsun;
+    overflow: hidden;
+    height: 20px;
+    margin-bottom: 11px;
+}
+
+.book-information .book-info .tag + p + p {
+    overflow: hidden;
+    height: 24px;
+    margin-bottom: 14px;
+    color: #666;
+}
+
+.book-information .book-info .tag + p + p em {
+    font: 20px/22px Arial;
+    letter-spacing: .5px;
+    color: #262626;
+}
+
+.book-information .book-info .tag + p + p cite,
+.book-information .book-info .tag + p + p em,
+.book-information .book-info .tag + p + p i {
+    float: left;
+}
+
+.book-information .book-info .tag + p + p cite {
+    font: 12px/20px PingFangSC-Regular, '-apple-system', Simsun;
+    margin-top: 2px;
+    margin-left: 3px;
+}
+
+.book-information .book-info .tag + p + p cite span {
+    font: 12px/20px PingFangSC-Regular, '-apple-system', Simsun;
+}
+
+.book-information .book-info .tag + p + p i {
+    font: 18px/22px PingFangSC-Regular, '-apple-system', Simsun;
+    margin: 0 10px;
+    color: #e6e6e6;
+}
+
+.book-information .book-info .tag + p + p + p a {
+    font: 14px/34px PingFangSC-Regular, '-apple-system', Simsun;
+    display: inline-block;
+    width: 120px;
+    height: 34px;
+    margin-right: 20px;
+    text-align: center;
+    vertical-align: middle;
+    border-width: 1px;
+    border-style: solid;
+    transition: color .3s, background-color .3s;
+}
+
+.content-nav-wrapper {
+    margin-bottom: 34px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.content-nav-wrapper .nav-wrapper li {
+    font: 18px/40px FZZCYSK;
+    float: left;
+    overflow: hidden;
+    height: 40px;
+    padding: 0 21px;
+    text-align: center;
+}
+
+.content-nav-wrapper .nav-wrapper li.active {
+    line-height: 40px;
+    margin-bottom: -1px;
+    border-bottom: 2px solid #ed4259;
+}
+
+.content-nav-wrapper .nav-wrapper li a {
+    display: block;
+    overflow: hidden;
+    max-height: 36px;
+    color: #a6a6a6;
+    transition: color .3s, background-color .3s;
+}
+
+.content-nav-wrapper .nav-wrapper li a:hover {
+    color: #ed4259;
+}
+
+.content-nav-wrapper .nav-wrapper li.active a {
+    color: #ed4259;
+}
+
+.content-nav-wrapper .nav-wrapper li a i {
+    font: 14px/40px FZZCYSK;
+}
+
+.left-wrapper {
+    width: 700px;
+    padding-bottom: 40px;
+}
+
+.book-info-detail {
+    margin-bottom: 20px;
+}
+
+.book-intro {
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.book-intro p {
+    font: 14px/28px PingFangSC-Regular, '-apple-system', Simsun;
+    margin: 0;
+    overflow: hidden;
+}
+
+.book-state {
+    position: relative;
+    z-index: 2;
+}
+
+.book-state li:after, .book-state li:before {
+    display: table;
+    content: '';
+}
+
+.book-state li:after {
+    clear: both;
+}
+
+.book-state li b {
+    font: 14px/24px PingFangSC-Regular, '-apple-system', Simsun;
+    float: left;
+    width: 98px;
+    margin: 19px 20px 0 0;
+    color: #999;
+}
+
+.book-state li .detail {
+    float: left;
+    width: 542px;
+    padding: 20px 0;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.book-state li .detail .tag-wrapper {
+    font-size: 0;
+}
+
+.book-state li a {
+    transition: color .3s, background-color .3s;
+}
+
+.book-state li a,
+.book-state li cite,
+.book-state li i,
+.book-state li span,
+.book-state li strong {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.book-state li a,
+.book-state li cite {
+    font: 14px/20px PingFangSC-Regular, '-apple-system', Simsun;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.book-state li .detail .tag-wrapper .tags {
+    font: 12px/16px PingFangSC-Regular, '-apple-system', Simsun;
+    display: inline-block;
+    margin-right: 8px;
+    padding: 3px 9px;
+    vertical-align: middle;
+    color: #3f5a93;
+    border: 1px solid #3f5a93;
+    border-radius: 100px;
+}
+
+.book-state li .detail .tag-wrapper .tags:hover {
+    color: #2972cc;
+}
+
+.book-state li.update .detail {
+    border-bottom: none;
+}
+
+.book-state li em.null,
+.book-state li em.time {
+    color: #999;
+}
+
+.book-state li .detail .time,
+.book-state li .detail a.blue,
+.book-state li .detail i {
+    display: inline-block;
+    float: left;
+    vertical-align: middle;
+}
+
+.book-state li .detail p a.blue {
+    font: 14px/22px PingFangSC-Regular, '-apple-system', Simsun;
+}
+
+.book-state li .detail p i {
+    font-family: Arial;
+    margin: 2px 10px 0;
+    color: #a6a6a6;
+}
+
+.book-state li .detail p .time {
+    font: 14px/22px Arial;
+}
+
+.book-state li .detail .tag-wrapper.mt10 {
+    margin-top: 10px;
+}
+
+.book-state li .detail .tag-wrapper .tags.red {
+    color: #bf2c24;
+    border: 1px solid #bf2c24;
+}
+
+.left-wrapper h3 {
+    font-size: 22px;
+    line-height: 25px;
+    height: 25px;
+    margin-top: 0;
+    margin-bottom: 14px;
+}
+
+.like-more h3 {
+    margin-bottom: 14px;
+}
+
+.like-more li {
+    float: left;
+    width: 86px;
+    margin-left: 36px;
+}
+
+.like-more li:first-child {
+    margin-left: 0;
+}
+
+.like-more li .book-img {
+    width: 84px;
+    height: 112px;
+    margin-bottom: 7px;
+}
+
+.like-more li h4 {
+    font: 700 14px/21px PingFangSC-Regular, '-apple-system', Simsun;
+    overflow: hidden;
+    height: 21px;
+    margin: 0;
+}
+
+.like-more li h4 a {
+    transition: color .3s, background-color .3s;
+}
+
+.like-more li p {
+    font: 12px/20px PingFangSC-Regular, '-apple-system', Simsun;
+    overflow: hidden;
+    height: 40px;
+    color: #666;
+}
+
+.right-wrapper {
+    width: 250px;
+    padding-top: 6px;
+}
+
+.book-list-wrapper {
+    width: 250px;
+}
+
+.book-list-wrapper .strongrec-list {
+    padding: 20px 12px 12px;
+    background: #f7f6f2;
+}
+
+.book-list-wrapper .book-list li {
+    height: 31px;
+    border-top: 1px solid #e6e6e6;
+}
+
+.book-list-wrapper .book-list li:first-child {
+    border-top: none;
+}
+
+.book-list-wrapper .book-list li a {
+    font: 14px/32px PingFangSC-Regular, '-apple-system', Simsun;
+    float: left;
+    transition: color .3s, background-color .3s;
+}
+
+.book-list-wrapper .book-list li a.channel {
+    overflow: hidden;
+    min-width: 56px;
+    height: 32px;
+    margin-left: -8px;
+    color: grey;
+}
+
+.book-list-wrapper .book-list li a.channel em {
+    font-family: PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    font-size: 13px;
+}
+
+.book-list-wrapper .book-list li a.name {
+    overflow: hidden;
+    max-width: 100px;
+    margin-left: -3px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: #1a1a1a;
+}
+
+.book-list-wrapper .book-list li a.name {
+    max-width: 155px;
+}
+
+.book-list-wrapper .book-list li a:hover {
+    color: #ed4259;
+}
+
+.break-rules-report {
+    width: 250px;
+    margin-bottom: 40px;
+    padding: 8px 0;
+    background: #f7f6f2;
+}
+
+.break-rules-report .icon-warning {
+    display: block;
+    float: left;
+    width: 16px;
+    height: 14px;
+    margin-left: 10px;
+}
+
+.break-rules-report a {
+    font: 12px/16px PingFangSC-Regular, '-apple-system', Simsun;
+    float: left;
+    margin-left: 5px;
+    color: #999;
+    transition: color .3s, background-color .3s;
+}
+
+.break-rules-report a:hover {
+    color: #ed4259;
+}
+
+.catalog-content-wrapper {
+    padding: 16px 0 0;
+}
+
+.volume {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+.cover {
+    position: absolute;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: #fff;
+}
+
+.volume h3 {
+    font: 700 18px/24px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    overflow: hidden;
+    height: 24px;
+    padding-bottom: 11px;
+    border-bottom: 1px solid #666;
+    box-sizing: content-box;
+}
+
+.volume h3 .subscri,
+.volume h3 .subscribe {
+    position: relative;
+    z-index: 2;
+    float: right;
+}
+
+.volume h3 .subscri .btn,
+.volume h3 .subscribe .btn {
+    font: 14px/28px PingFangSC-Regular, '-apple-system', Simsun;
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    display: block;
+    width: 96px;
+    height: 28px;
+    transition: background-color .5s;
+    text-align: center;
+    color: #fff;
+    background: #bf2c24;
+}
+
+.volume h3 .subscri .btn b,
+.volume h3 .subscribe .btn b {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    margin-right: 3px;
+    vertical-align: 0;
+}
+
+.volume h3 i {
+    font-family: Arail;
+}
+
+.volume h3 .count {
+    font: 14px/19px PingFangSC-Regular, '-apple-system', Simsun;
+    color: #666;
+    margin-left: 10px;
+}
+
+.volume h3 .count cite {
+    font-family: Arial;
+    margin: 0 3px;
+}
+
+.volume ul {
+    overflow: hidden;
+    width: 1050px;
+}
+
+.volume li {
+    font: 14px/40px PingFangSC-Regular, '-apple-system', Simsun;
+    float: left;
+    overflow: hidden;
+    width: 290px;
+    height: 40px;
+    padding-right: 60px;
+    border-bottom: 1px solid #ebebeb;
+    box-sizing: content-box;
+}
+
+.volume li a {
+    float: left;
+    overflow: hidden;
+    max-width: 240px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    transition: color .3s, background-color .3s;
+}
+
+.volume li .fa {
+    font-size: 16px;
+    float: right;
+    color: #bfbfbf;
+    line-height: 40px;
+}
+
+.user-commentWrapper {
+    overflow: hidden;
+}
+
+.user-comment-wrapper .comment-head {
+    position: relative;
+    z-index: 1;
+}
+
+.user-comment-wrapper h3 {
+    margin-bottom: 0;
+    color: #a6a6a6;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e6e6e6;
+    box-sizing: content-box;
+}
+
+.user-comment-wrapper h3 span {
+    cursor: pointer;
+    transition: color .3s;
+    color: #262626;
+}
+
+.user-comment-wrapper h3 .grey {
+    font-family: Arial;
+    font-size: 20px;
+    padding: 0 12px;
+    color: #a6a6a6;
+}
+
+.user-comment-wrapper h3 span.grey {
+    padding: 0;
+    font-size: 16px;
+}
+
+.discuss-list {
+    font-family: PingFangSC-Regular, '-apple-system', Simsun;
+}
+
+.discuss-list ul {
+    margin-bottom: 10px;
+}
+
+.discuss-list li {
+    padding: 16px 0;
+    border-top: 1px solid #e5e5e5;
+}
+
+.discuss-list li:first-child {
+    border-top: none;
+}
+
+.discuss-list li .user-photo {
+    float: left;
+    margin: 0 12px 0 0;
+}
+
+.user-photo a,
+.user-photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+}
+
+.user-photo a {
+    transition: color .3s, background-color .3s;
+}
+
+.discuss-list li .discuss-info {
+    float: left;
+    width: 643px;
+}
+
+.discuss-list .users {
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.discuss-list .users .blue {
+    margin-right: 4px;
+    transition: color .3s, background-color .3s;
+}
+
+.discuss-list .text {
+    font-size: 14px;
+    line-height: 22px;
+    overflow: hidden;
+    height: 22px;
+    margin-top: 4px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.discuss-list .info {
+    line-height: 1;
+    margin-top: 16px;
+    color: #a6a6a6;
+    font-size: 0;
+}
+
+.discuss-list .info a,
+.discuss-list .info span {
+    display: inline;
+}
+
+.discuss-list .info span {
+    font-size: 14px;
+    vertical-align: baseline;
+}
+
+.discuss-list .info .mr20 {
+    margin-right: 20px;
+}
+
+.discuss-list .author-reply {
+    padding-top: 10px;
+    border-top: 1px solid #e5e5e5;
+    box-sizing: content-box;
+}
+
+.discuss-list .author-reply p {
+    color: #a6a6a6;
+}
+
+.discuss-list .author-reply .reply-content {
+    color: #262626;
+    text-indent: 2em;
+}
+
+/* chapter.html 小说阅读页 */
+.read-wrapper {
+    padding: 15px;
+}
+
+.read-wrapper .breadcrumb {
+    position: relative;
+    z-index: 1;
+    width: 800px;
+    height: 22px;
+    margin: 0 auto 21px;
+    padding-left: 0;
+    color: #1a1a1a;
+    font-size: 13px;
+    background-color: transparent;
+}
+
+.read-wrapper .breadcrumb li a,
+.read-wrapper .breadcrumb li.active {
+    color: #1a1a1a;
+}
+
+.read-wrapper .breadcrumb li a {
+    transition: all .3s;
+}
+
+.read-wrapper .breadcrumb li a:hover {
+    color: #ed4259;
+}
+
+.read-wrapper .read-main-wrapper {
+    font-family: PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    font-size: 14px;
+    position: relative;
+    z-index: 101;
+    width: 800px;
+    margin: 0 auto;
+}
+
+.text-wrapper {
+    min-height: 600px;
+    margin-bottom: 24px;
+    border: 1px solid #d8d8d8;
+}
+
+.book-cover-wrapper {
+    height: 662px;
+    margin: 8px;
+    text-align: center;
+    border: 1px solid #d8d8d8;
+}
+
+.book-cover-wrapper .book-photo {
+    width: 128px;
+    height: 168px;
+    margin: 64px auto 24px;
+    border: 1px solid #efece5;
+    background: #fffbf2;
+}
+
+.book-cover-wrapper .book-photo img {
+    display: block;
+    width: 120px;
+    height: 160px;
+    margin: 4px auto;
+}
+
+.book-cover-wrapper h1 {
+    font: 32px/45px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    overflow: hidden;
+    height: 45px;
+    margin-top: 0;
+    margin-bottom: 7px;
+}
+
+.book-cover-wrapper h2 {
+    font: 14px/26px PingFangSC-Regular, '-apple-system', Simsun;
+    overflow: hidden;
+    height: 26px;
+    margin-top: 0;
+    margin-bottom: 48px;
+    color: #999;
+    color: rgba(0, 0, 0, .4);
+}
+
+.book-cover-wrapper h2 a {
+    margin-right: 5px;
+    color: #999;
+    color: rgba(0, 0, 0, .4);
+    transition: color .3s;
+}
+
+.book-cover-wrapper h2 a:hover {
+    color: #ed4259;
+}
+
+.book-cover-wrapper .info-list {
+    margin: 0 auto 48px;
+}
+
+.book-cover-wrapper .info-list ul {
+    width: auto;
+    font-size: 0;
+}
+
+.book-cover-wrapper .info-list li {
+    font-size: 14px;
+    display: inline-block;
+}
+
+.book-cover-wrapper .info-list li:first-child {
+    margin-right: 94px;
+}
+
+.book-cover-wrapper .info-list li:first-child + li {
+    margin-right: 80px;
+}
+
+.book-cover-wrapper .info-list li:first-child + li + li p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.book-cover-wrapper .info-list li p {
+    font: 18px/26px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    margin-top: 0;
+    margin-bottom: 5px;
+    white-space: nowrap
+}
+
+.book-cover-wrapper .info-list li span {
+    font: 12px/16px PingFangSC-Regular, '-apple-system', Simsun;
+    display: block;
+    color: #999;
+    color: rgba(0, 0, 0, .4);
+}
+
+.book-cover-wrapper .info-list li em {
+    font: 18px/30px Arial;
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 2px;
+}
+
+.book-cover-wrapper h3 {
+    font: 16px/26px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    overflow: hidden;
+    height: 26px;
+    margin-top: 0;
+    margin-bottom: 48px;
+}
+
+.book-cover-wrapper h4 {
+    font: 12px/16px PingFangSC-Regular, '-apple-system', Simsun;
+    margin-top: 0;
+    margin-bottom: 48px;
+    color: #999;
+    color: rgba(0, 0, 0, .4);
+}
+
+.book-cover-wrapper h4 a {
+    margin-right: 10px;
+    color: #999;
+    color: rgba(0, 0, 0, .4);
+}
+
+.book-cover-wrapper h4 em {
+    font-family: PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    font-size: 12px;
+}
+
+.book-cover-wrapper h5,
+.book-cover-wrapper h6 {
+    margin: 0;
+    font: 14px/26px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    color: #666;
+}
+
+.book-cover-wrapper h6 {
+    color: #999;
+    color: rgba(0, 0, 0, .4);
+}
+
+.main-text-wrapper {
+    padding: 60px 64px;
+}
+
+.main-text-wrapper .text-head {
+    position: relative;
+    z-index: 5;
+    margin-bottom: 12px;
+}
+
+.main-text-wrapper .text-head h3 {
+    font: 24px/32px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    overflow: hidden;
+    height: 32px;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.main-text-wrapper .book-info {
+    font: 12px/16px PingFangSC-Regular, '-apple-system', Simsun;
+    height: 34px;
+    line-height: 16px;
+}
+
+.main-text-wrapper .book-info a,
+.main-text-wrapper .book-info span {
+    font-family: PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    margin-right: 16px;
+    color: #999;
+    color: rgba(0, 0, 0, .4);
+}
+
+.main-text-wrapper .book-info a {
+    transition: color .3s;
+}
+
+.main-text-wrapper .book-info a:hover {
+    color: #ed4259
+}
+
+.main-text-wrapper .book-info span {
+    margin-right: 6px;
+}
+
+.main-text-wrapper .book-info span i,
+.main-text-wrapper .book-info span em {
+    font-style: normal;
+    margin-right: 5px;
+}
+
+.main-text-wrapper .book-info span i {
+    font-size: 14px;
+}
+
+.main-text-wrapper .read-content p {
+    line-height: 1.8;
+    overflow: hidden;
+    margin: .8em 0
+}
+
+.body-mark {
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    opacity: .2;
+    background: #e5e4db;
+    z-index: 1;
+}
+
+.left-bar-list,
+.right-bar-list {
+    position: fixed;
+    width: 60px;
+}
+
+.left-bar-list {
+    z-index: 102;
+    top: 116px;
+    left: 50%;
+    margin-left: -468px;
+}
+
+.right-bar-list {
+    z-index: 101;
+    bottom: 0;
+    right: 50%;
+    margin-right: -468px;
+}
+
+.left-bar-list dd,
+.right-bar-list dd {
+    position: relative;
+    z-index: 100;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-top: none;
+    box-sizing: content-box;
+}
+
+.left-bar-list dd:first-child,
+.right-bar-list dd:first-child {
+    border-top: 1px solid rgba(0, 0, 0, .1);
+}
+
+.left-bar-list dd a,
+.right-bar-list dd a {
+    display: block;
+    width: 58px;
+    height: 58px;
+    padding-top: 12px;
+    color: #333;
+    text-align: center;
+}
+
+.left-bar-list dd a:hover,
+.left-bar-list dd a:hover span,
+.right-bar-list dd a:hover,
+.right-bar-list dd a:hover span {
+    color: #ed4259;
+}
+
+.left-bar-list dd a .fa,
+.right-bar-list dd a .fa {
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin: 0 auto 6px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: color .3s ease;
+}
+
+.right-bar-list dd.backTop a {
+    padding-top: 0;
+}
+
+.right-bar-list dd.backTop a i {
+    line-height: 58px;
+}
+
+.left-bar-list dd a span,
+.right-bar-list dd a span {
+    color: #999;
+    transition: color .3s ease;
+}
+
+.left-bar-list dd.active,
+.right-bar-list dd.active {
+    z-index: 101;
+    width: 69px;
+    border-right: none;
+    background: url("../images/body_theme1_bg.png") repeat;
+    box-shadow: -10px 5px 25px -4px rgba(0, 0, 0, .2);
+}
+
+.panel-wrapper {
+    background: url("../images/body_theme1_bg.png") repeat;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .2);
+}
+
+.panel-wrapper .close-panel {
+    font-size: 22px;
+    line-height: 24px;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    color: #a6a6a6;
+    font-weight: normal;
+    transform: rotate(0);
+    transition: .5s;
+}
+
+.panel-wrapper .close-panel:hover {
+    transform: rotate(90deg);
+    color: #1a1a1a;
+}
+
+.left-bar-list .panel-wrapper {
+    position: absolute;
+    z-index: 100;
+    top: 0;
+    left: 69px;
+    width: 798px;
+    display: none;
+}
+
+.left-bar-list .panel-wrapper.setting {
+    width: 480px;
+}
+
+.left-bar-list .panel-wrapper .panel-box {
+    padding: 40px 0 40px 24px;
+    border: 1px solid rgba(0, 0, 0, .05);
+}
+
+.left-bar-list .panel-wrapper .panel-box h4 {
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 28px;
+    font-weight: bold;
+    transition: all .3s;
+}
+
+.left-bar-list .panel-list-wrapper {
+    position: relative;
+    z-index: 1;
+    min-height: 235px;
+    box-sizing: content-box;
+}
+
+.left-bar-list .panel-wrapper.catalog .panel-box {
+    padding-left: 0;
+}
+
+.left-bar-list .panel-wrapper.catalog .catalog-tab {
+    margin: 0 0 20px 24px;
+}
+
+.left-bar-list .panel-wrapper.catalog .catalog-tab span {
+    font-size: 18px;
+    line-height: 22px;
+    margin-right: 20px;
+    padding: 0 2px 4px;
+    cursor: pointer;
+    transition: color .3s;
+    color: #a6a6a6;
+}
+
+.left-bar-list .panel-wrapper.catalog .catalog-tab span.active,
+.left-bar-list .panel-wrapper.catalog .catalog-tab span:hover {
+    color: #ed4259;
+}
+
+.left-bar-list .panel-wrapper.catalog .catalog-tab span.active {
+    border-bottom: 1px solid #ed4259;
+}
+
+.left-bar-list .panel-wrapper.catalog .catalog-list-wrapper h3 {
+    position: relative;
+    margin: 0;
+    z-index: 2;
+    transition: background .3s;
+}
+
+.left-bar-list .panel-wrapper.catalog .catalog-list-wrapper h3:hover {
+    background: rgba(0, 0, 0, .05);
+}
+
+.left-bar-list .panel-wrapper.catalog .catalog-list-wrapper h3 i {
+    font: 700 18px/40px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    display: block;
+    width: 754px;
+    height: 34px;
+    margin-left: 24px;
+    padding-bottom: 6px;
+    cursor: pointer;
+    border-bottom: 1px solid #c4c4c4; /* e5e5e5 */
+    box-sizing: content-box;
+}
+
+.left-bar-list .panel-wrapper.catalog .catalog-list-wrapper h3 em {
+    font-size: 16px;
+    line-height: 16px;
+    float: right;
+    width: 16px;
+    height: 16px;
+    margin: 12px 12px 0 0;
+}
+
+.left-bar-list .panel-wrapper.catalog .catalog-list-wrapper h3 em.fa-chevron-up {
+    display: none;
+}
+
+.left-bar-list .panel-wrapper.catalog .catalog-list-wrapper h3.active em.fa-chevron-down {
+    display: none;
+}
+
+.left-bar-list .panel-wrapper.catalog .catalog-list-wrapper h3.active em.fa-chevron-up {
+    display: block;
+}
+
+.left-bar-list .panel-wrapper.catalog .catalog-list-wrapper h3 cite {
+    float: left;
+    overflow: hidden;
+    max-width: 90%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.left-bar-list .panel-wrapper.catalog .catalog-list-wrapper .volume-list {
+    display: none;
+    clear: both;
+    margin-bottom: 20px;
+}
+
+.left-bar-list .panel-wrapper.catalog .catalog-list-wrapper .volume-list ul {
+    overflow: hidden;
+    padding-left: 24px;
+}
+
+.left-bar-list .panel-wrapper.catalog .catalog-list-wrapper .volume-list li {
+    font: 16px/40px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    float: left;
+    width: 376px;
+    border-top: 1px solid #d5d5d5;
+}
+
+.left-bar-list .panel-wrapper.catalog .catalog-list-wrapper .volume-list li:first-child,
+.left-bar-list .panel-wrapper.catalog .catalog-list-wrapper .volume-list li:first-child + li {
+    border-top: none;
+}
+
+.left-bar-list .panel-wrapper.catalog .catalog-list-wrapper .volume-list li:after,
+.left-bar-list .panel-wrapper.catalog .catalog-list-wrapper .volume-list li:before {
+    display: table;
+    content: '';
+}
+
+.left-bar-list .panel-wrapper.catalog .catalog-list-wrapper .volume-list li:after {
+    clear: both;
+}
+
+.left-bar-list .panel-wrapper.catalog .catalog-list-wrapper .volume-list li a {
+    float: left;
+    overflow: hidden;
+    max-width: 80%;
+    color: #262626;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    transition: color .3s, background-color .3s;
+}
+
+.left-bar-list .panel-wrapper.catalog .catalog-list-wrapper .volume-list li a:hover {
+    color: #ed4259;
+}
+
+.left-bar-list .panel-wrapper.catalog .catalog-list-wrapper .volume-list li.on a {
+    color: #ed4259;
+}
+
+.left-bar-list .panel-wrapper.catalog .bookmark-list-wrapper,
+.left-bar-list .panel-wrapper.catalog .catalog-scroll-wrapper {
+    overflow: auto;
+}
+
+.left-bar-list .panel-wrapper.setting li {
+    font-size: 0;
+    margin-top: 28px;
+}
+
+.left-bar-list .panel-wrapper.setting li:first-child {
+    margin-top: 0;
+}
+
+.left-bar-list .panel-wrapper.setting li i {
+    font: 12px/16px PingFangSC-Regular, '-apple-system', Simsun;
+    display: inline-block;
+    margin-right: 16px;
+    vertical-align: middle;
+    color: #666;
+}
+
+.left-bar-list .panel-wrapper.setting li span {
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.left-bar-list .panel-wrapper.setting li.theme-list span {
+    line-height: 32px;
+    width: 34px;
+    height: 34px;
+    margin-right: 16px;
+    border: 1px solid #e5e5e5;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 100%;
+}
+
+.left-bar-list .panel-wrapper.setting li.theme-list span.active {
+    border: 1px solid #ed4259;
+}
+
+.left-bar-list .panel-wrapper.setting li.theme-list span.active:before {
+    content: '\f00c';
+    font-family: 'FontAwesome';
+    font-size: 14px;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    color: #ed4259;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.left-bar-list .panel-wrapper.setting li.theme-list span.theme-0 {
+    background: #faf5eb;
+    background: rgba(250, 245, 235, .8);
+}
+
+.left-bar-list .panel-wrapper.setting li.theme-list span.theme-1 {
+    background: #f5eacc;
+    background: rgba(245, 234, 204, .8);
+}
+
+.left-bar-list .panel-wrapper.setting li.theme-list span.theme-2 {
+    background: #e6f2e6;
+    background: rgba(230, 242, 230, .8);
+}
+
+.left-bar-list .panel-wrapper.setting li.theme-list span.theme-3 {
+    background: #e4f1f5;
+    background: rgba(228, 241, 245, .8);
+}
+
+.left-bar-list .panel-wrapper.setting li.theme-list span.theme-4 {
+    background: #f5e4e4;
+    background: rgba(245, 228, 228, .8);
+}
+
+.left-bar-list .panel-wrapper.setting li.theme-list span.theme-5 {
+    background: #e0e0e0;
+    background: rgba(224, 224, 224, .8);
+}
+
+.left-bar-list .panel-wrapper.setting li.theme-list span.theme-6 {
+    position: relative;
+    background: #191b1c;
+    background: rgba(25, 27, 28, .8);
+}
+
+.left-bar-list .panel-wrapper.setting li.font-size,
+.left-bar-list .panel-wrapper.setting li.page-width {
+    font-size: 0;
+}
+
+.left-bar-list .panel-wrapper.setting li.font-size cite,
+.left-bar-list .panel-wrapper.setting li.page-width cite {
+    display: inline-block;
+    width: 270px;
+    height: 34px;
+    vertical-align: middle;
+    border: 1px solid #e5e5e5;
+    border-radius: 2px;
+    background: #fff;
+    background: rgba(255, 255, 255, .5);
+    box-sizing: content-box;
+}
+
+.left-bar-list .panel-wrapper.setting li.font-family span {
+    width: 78px;
+    height: 34px;
+    margin-right: 16px;
+    transition: color .3s;
+    border: 1px solid #e5e5e5;
+    border: 1px solid rgba(0, 0, 0, .1);
+    border-radius: 2px;
+    background: #fff;
+    background: rgba(255, 255, 255, .5);
+}
+
+.left-bar-list .panel-wrapper.setting li.font-family span.yahei,
+.left-bar-list .panel-wrapper.setting li.read-mode span.yahei {
+    font: 14px/34px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+}
+
+.left-bar-list .panel-wrapper.setting li.font-family span.active,
+.left-bar-list .panel-wrapper.setting li.read-mode span.active {
+    color: #ed4259;
+    border: 1px solid #ed4259;
+    background: #fff0f2;
+}
+
+.left-bar-list .panel-wrapper.setting li.font-size span,
+.left-bar-list .panel-wrapper.setting li.page-width span {
+    line-height: 34px;
+    height: 34px;
+    font-size: 14px;
+}
+
+.left-bar-list .panel-wrapper.setting li.font-size span:first-child,
+.left-bar-list .panel-wrapper.setting li.page-width span:first-child {
+    width: 89px;
+}
+
+.left-bar-list .panel-wrapper.setting li.font-size b,
+.left-bar-list .panel-wrapper.setting li.page-width b {
+    display: inline-block;
+    height: 20px;
+    vertical-align: middle;
+    border-right: 1px solid #e5e5e5;
+}
+
+.left-bar-list .panel-wrapper.setting li.font-size span.lang + b + span,
+.left-bar-list .panel-wrapper.setting li.page-width span.lang + b + span {
+    width: 89px;
+}
+
+.left-bar-list .panel-wrapper.setting li.font-size span.lang,
+.left-bar-list .panel-wrapper.setting li.page-width span.lang {
+    font-size: 16px;
+    width: 90px;
+    cursor: default;
+    color: #a6a6a6;
+    font-style: normal;
+}
+
+.left-bar-list .panel-wrapper.setting .btn-wrapper {
+    padding: 48px 0 0;
+    text-align: center;
+    font-size: 0;
+}
+
+.left-bar-list .panel-wrapper.setting .btn-wrapper a {
+    display: inline-block;
+    vertical-align: middle;
+    letter-spacing: normal;
+    word-spacing: normal;
+    font: 14px/34px PingFangSC-Regular, '-apple-system', Simsun;
+    width: 100px;
+    height: 34px;
+    border-radius: 2px;
+    transition: color .3s, background-color .3s;
+}
+
+.left-bar-list .panel-wrapper.setting .btn-wrapper a.grey-btn {
+    display: inline-block;
+    vertical-align: middle;
+    letter-spacing: normal;
+    word-spacing: normal;
+    width: 98px;
+    height: 32px;
+    font: 14px/34px PingFangSC-Regular, '-apple-system', Simsun;
+    border-radius: 2px;
+    line-height: 32px;
+    margin-left: 40px;
+    transition: color .3s, background-color .3s;
+}
+
+.red-btn {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #fff;
+    border-color: #bf2c24;
+    background: #bf2c24;
+}
+
+.red-btn:hover {
+    color: #fff;
+    border-color: #ed4259;
+    background: #ed4259;
+}
+
+.grey-btn {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: #1a1a1a;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ccc;
+    border-color: rgba(0, 0, 0, .2);
+    background: #fbfbfb;
+    background: rgba(255, 255, 255, .5);
+}
+
+.grey-btn:hover {
+    color: #1a1a1a;
+}
+
+.chapter-control {
+    height: 70px;
+    margin-bottom: 24px;
+    text-align: center;
+    border: 1px solid #d8d8d8;
+    background: url("../images/body_theme1_bg.png") repeat;
+    font-size: 0;
+}
+
+.chapter-control a,
+.chapter-control span {
+    display: inline-block;
+    vertical-align: middle;
+    letter-spacing: normal;
+    word-spacing: normal;
+}
+
+.chapter-control a {
+    font: 18px/70px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    width: 33.2%;
+    text-decoration: none;
+    color: #262626;
+    outline: 0;
+    transition: color .3s, background-color .3s;
+}
+
+.chapter-control a:hover {
+    color: #1a1a1a;
+    background: #ede9e1;
+    background: rgba(0, 0, 0, .03);
+}
+
+.chapter-control span {
+    height: 32px;
+    border-right: 1px solid #d8d8d8;
+}
+
+.chapter-control a.disabled {
+    cursor: default;
+    color: #ccc;
+    background: 0 0;
+}
+
+#J_commentWrapper {
+    display: none;
+    padding: 0 20px 20px;
+}
+
+#J_commentWrapper .comment-text-wrap h3 {
+    font: 16px/24px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+    margin-bottom: 12px;
+    margin-top: 0;
+}
+
+#J_commentWrapper .comment-text-wrap h3 span {
+    font: 14px/20px PingFangSC-Regular, '-apple-system', Simsun;
+    margin-right: 10px;
+    color: #a6a6a6;
+}
+
+#J_commentWrapper .comment-text-wrap .count-text {
+    position: relative;
+    z-index: 1;
+    height: 88px;
+    border: 1px solid #e6e6e6;
+    background: #fff;
+    width: 550px;
+    margin-bottom: 12px;
+    padding-top: 8px;
+}
+
+#J_commentWrapper .comment-text-wrap .count-text .count {
+    font: 12px/14px PingFangSC-Regular, '-apple-system', Simsun;
+    position: absolute;
+    z-index: 1;
+    right: 5px;
+    bottom: 5px;
+    color: #bfbfbf;
+}
+
+#J_commentWrapper .comment-text-wrap .count-text textarea {
+    font-family: PingFangSC-Regular, '-apple-system', Simsun;
+    font-size: 12px;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 58px;
+    line-height: 1.8;
+    padding: 0 12px;
+    color: #666;
+    border: none;
+    resize: none;
+}
+
+#J_commentWrapper .comment-text-wrap .count-text + p {
+    text-align: right;
+}
+
+#J_commentWrapper .comment-text-wrap .count-text + p a {
+    font: 12px/24px PingFangSC-Regular, '-apple-system', Simsun;
+    display: inline-block;
+    width: 80px;
+    height: 24px;
+    text-align: center;
+    color: #fff;
+    border-radius: 2px;
+    transition: color .3s, background-color .3s;
+}
+
+body .panel-wrapper.comment {
+    width: auto;
+}
+
+body .panel-wrapper.comment .layui-layer-title {
+    background: transparent;
+    border: none;
+}
+
+body.w640 .read-wrapper .breadcrumb,
+body.w640 .read-main-wrapper {
+    width: 640px;
+}
+
+body.w640 .left-bar-list {
+    margin-left: -388px;
+}
+
+body.w640 .right-bar-list {
+    margin-right: -388px;
+}
+
+body.w800 .read-wrapper .breadcrumb,
+body.w800 .read-main-wrapper {
+    width: 800px;
+}
+
+body.w900 .read-wrapper .breadcrumb,
+body.w900 .read-main-wrapper {
+    width: 900px;
+}
+
+body.w900 .left-bar-list {
+    margin-left: -518px;
+}
+
+body.w900 .right-bar-list {
+    margin-right: -518px;
+}
+
+body.w1280 .read-wrapper .breadcrumb,
+body.w1280 .read-main-wrapper {
+    width: 1280px;
+}
+
+body.w1280 .left-bar-list {
+    margin-left: -708px;
+}
+
+body.w1280 .right-bar-list {
+    margin-right: -708px;
+}
+
+body.bg-theme-1,
+body.bg-theme-1 .text-wrapper,
+body.bg-theme-1 .float-wrapper .left-bar-list dd a,
+body.bg-theme-1 .float-wrapper .right-bar-list dd a,
+body.bg-theme-1 .chapter-control {
+    background: url("../images/body_theme1_bg.png") repeat;
+}
+
+body.bg-theme-1 .float-wrapper .left-bar-list dd.active,
+body.bg-theme-1 .float-wrapper .left-bar-list dd.active a,
+body.bg-theme-1 .float-wrapper .left-bar-list .panel-wrapper,
+body.bg-theme-1 .panel-wrapper.comment {
+    background: url("../images/theme_1_popup_bg.png") repeat;
+}
+
+body.bg-theme-2,
+body.bg-theme-2 .text-wrapper,
+body.bg-theme-2 .float-wrapper .left-bar-list dd a,
+body.bg-theme-2 .float-wrapper .right-bar-list dd a,
+body.bg-theme-2 .chapter-control {
+    background: #f3e9c6 url("../images/body_theme2_bg.png") repeat;
+}
+
+body.bg-theme-2 .float-wrapper .left-bar-list dd.active,
+body.bg-theme-2 .float-wrapper .left-bar-list dd.active a,
+body.bg-theme-2 .float-wrapper .left-bar-list .panel-wrapper,
+body.bg-theme-2 .panel-wrapper.comment {
+    background: #f8f1d9 url("../images/theme_2_popup_bg.png") repeat;
+}
+
+body.bg-theme-3,
+body.bg-theme-3 .text-wrapper,
+body.bg-theme-3 .float-wrapper .left-bar-list dd a,
+body.bg-theme-3 .float-wrapper .right-bar-list dd a,
+body.bg-theme-3 .chapter-control {
+    background: #e2eee2 url("../images/body_theme3_bg.png") repeat;
+}
+
+body.bg-theme-3 .float-wrapper .left-bar-list dd.active,
+body.bg-theme-3 .float-wrapper .left-bar-list dd.active a,
+body.bg-theme-3 .float-wrapper .left-bar-list .panel-wrapper,
+body.bg-theme-3 .panel-wrapper.comment {
+    background: #f3fbf3 url("../images/theme_3_popup_bg.png") repeat;
+}
+
+body.bg-theme-4,
+body.bg-theme-4 .text-wrapper,
+body.bg-theme-4 .float-wrapper .left-bar-list dd a,
+body.bg-theme-4 .float-wrapper .right-bar-list dd a,
+body.bg-theme-4 .chapter-control {
+    background: #e2eff3 url("../images/body_theme4_bg.png") repeat;
+}
+
+body.bg-theme-4 .float-wrapper .left-bar-list dd.active,
+body.bg-theme-4 .float-wrapper .left-bar-list dd.active a,
+body.bg-theme-4 .float-wrapper .left-bar-list .panel-wrapper,
+body.bg-theme-4 .panel-wrapper.comment {
+    background: #e7f5f6 url("../images/theme_4_popup_bg.png") repeat;
+}
+
+body.bg-theme-5,
+body.bg-theme-5 .text-wrapper,
+body.bg-theme-5 .float-wrapper .left-bar-list dd a,
+body.bg-theme-5 .float-wrapper .right-bar-list dd a,
+body.bg-theme-5 .chapter-control {
+    background: #dcdcdc url("../images/body_theme5_bg.png") repeat;
+}
+
+body.bg-theme-5 .float-wrapper .left-bar-list dd.active,
+body.bg-theme-5 .float-wrapper .left-bar-list dd.active a,
+body.bg-theme-5 .float-wrapper .left-bar-list .panel-wrapper,
+body.bg-theme-5 .panel-wrapper.comment {
+    background: #e8e8e8 url("../images/theme_5_popup_bg.png") repeat;
+}
+
+body.bg-theme-6,
+body.bg-theme-6 .text-wrapper,
+body.bg-theme-6 .float-wrapper .left-bar-list dd a,
+body.bg-theme-6 .float-wrapper .left-bar-list dd.active,
+body.bg-theme-6 .float-wrapper .left-bar-list dd.active a,
+body.bg-theme-6 .float-wrapper .left-bar-list .panel-wrapper,
+body.bg-theme-6 .float-wrapper .right-bar-list dd a,
+body.bg-theme-6 .chapter-control,
+body.bg-theme-6 .panel-wrapper.comment {
+    background: #111 url("../images/body_theme6_bg.png") repeat;
+}
+
+body.bg-theme-6 .read-wrapper .breadcrumb li:before,
+body.bg-theme-6 .read-wrapper .breadcrumb li a,
+body.bg-theme-6 .read-wrapper .breadcrumb li.active {
+    color: grey;
+}
+
+body.bg-theme-6 .float-wrapper .left-bar-list dd,
+body.bg-theme-6 .float-wrapper .right-bar-list dd,
+body.bg-theme-6 .text-wrapper,
+body.bg-theme-6 .book-cover-wrapper,
+body.bg-theme-6 .float-wrapper .left-bar-list .panel-wrapper .panel-box,
+body.bg-theme-6 .chapter-control,
+body.bg-theme-6 .chapter-control span,
+body.bg-theme-6 .left-bar-list .panel-wrapper.catalog .catalog-list-wrapper h3 i,
+body.bg-theme-6 .left-bar-list .panel-wrapper.catalog .catalog-list-wrapper .volume-list li {
+    border-color: #444;
+}
+
+body.bg-theme-6 .float-wrapper .left-bar-list dd a i,
+body.bg-theme-6 .float-wrapper .right-bar-list dd a i,
+body.bg-theme-6 .left-bar-list .panel-wrapper .panel-box h4,
+body.bg-theme-6 .panel-wrapper.comment h3,
+body.bg-theme-6 .panel-wrapper.comment h3 span,
+body.bg-theme-6 .chapter-control a,
+body.bg-theme-6 .book-cover-wrapper h1,
+body.bg-theme-6 .book-cover-wrapper h2,
+body.bg-theme-6 .book-cover-wrapper h2 a,
+body.bg-theme-6 .book-cover-wrapper .info-list li p,
+body.bg-theme-6 .book-cover-wrapper .info-list li span,
+body.bg-theme-6 .book-cover-wrapper .info-list li em,
+body.bg-theme-6 .book-cover-wrapper h3,
+body.bg-theme-6 .book-cover-wrapper h5,
+body.bg-theme-6 .book-cover-wrapper h6,
+body.bg-theme-6 .main-text-wrapper .text-head h3,
+body.bg-theme-6 .main-text-wrapper .book-info a,
+body.bg-theme-6 .main-text-wrapper .book-info span,
+body.bg-theme-6 .read-main-wrapper .read-content,
+body.bg-theme-6 .left-bar-list .panel-wrapper.catalog .catalog-list-wrapper h3,
+body.bg-theme-6 .left-bar-list .panel-wrapper.catalog .catalog-list-wrapper .volume-list li a {
+    color: #666;
+}
+
+body.bg-theme-6 .left-bar-list .panel-wrapper.setting li.font-family span,
+body.bg-theme-6 .left-bar-list .panel-wrapper.setting li.font-size cite,
+body.bg-theme-6 .left-bar-list .panel-wrapper.setting li.page-width cite,
+body.bg-theme-6 .left-bar-list .panel-wrapper.setting .btn-wrapper a.grey-btn {
+    color: #999;
+    border: 1px solid #444;
+    background: rgba(255, 255, 255, .05);
+}
+
+body.bg-theme-6 .chapter-control a:hover {
+    background: rgba(255, 255, 255, .03);
+    color: #ed4259;
+}
+
+body.bg-theme-6 .panel-wrapper .close-panel:hover {
+    color: #eee;
+}
+
+body.bg-theme-6 .float-wrapper .left-bar-list dd a:hover i,
+body.bg-theme-6 .float-wrapper .right-bar-list dd a:hover i,
+body.bg-theme-6 .left-bar-list .panel-wrapper.catalog .catalog-list-wrapper .volume-list li.on a,
+body.bg-theme-6 .left-bar-list .panel-wrapper.catalog .catalog-list-wrapper .volume-list li a:hover,
+body.bg-theme-6 .left-bar-list .panel-wrapper.setting li.font-size span:hover em,
+body.bg-theme-6 .left-bar-list .panel-wrapper.setting li.page-width span:hover em,
+body.bg-theme-6 .book-cover-wrapper h2 a:hover,
+body.bg-theme-6 .main-text-wrapper .book-info a:hover {
+    color: #ed4259;
+}
+
+body.bg-theme-6 .left-bar-list .panel-wrapper.setting .btn-wrapper a.grey-btn:hover,
+body.bg-theme-6 .left-bar-list .panel-wrapper.setting li.font-family span.active {
+    color: #ed4259;
+    border: 1px solid #ed4259;
+}
+
+body.bg-theme-6 .left-bar-list .panel-wrapper.setting li.font-size b,
+body.bg-theme-6 .left-bar-list .panel-wrapper.setting li.page-width b {
+    border-right: 1px solid #666;
+}
+
+body.bg-theme-6 .panel-wrapper.comment,
+body.bg-theme-6 #J_commentWrapper .comment-text-wrap .count-text {
+    border: 1px solid #444;
+}
+
+body.bg-theme-6 #J_commentWrapper .comment-text-wrap .count-text,
+body.bg-theme-6 #J_commentWrapper .comment-text-wrap .count-text textarea {
+    color: #bbb;
+    background: #444;
+}
+
+body.bg-theme-6 .body-mark {
+    opacity: .25;
+    background: #000;
+}
+
+.read-main-wrapper.font-family-1 .read-content {
+    font-family: 'Microsoft YaHei', PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', sans-serif;
+}
+
+.read-main-wrapper.font-family-2 .read-content {
+    font-family: PingFangSC-Regular, '-apple-system', Simsun;
+}
+
+.read-main-wrapper.font-family-3 .read-content {
+    font-family: Kaiti;
+}
+
+/* bookManage.html 作品管理页 */
+.modify {
+    display: none;
+}
+
+.personal-wrapper {
+    height: 100%;
+    padding-top: 26px;
+    padding-bottom: 15px;
+}
+
+.personal-sideBar {
+    float: left;
+    width: 174px;
+    background: #fff;
+    height: 100%;
+    padding: 10px;
+    margin-right: 10px;
+}
+
+.personal-sideBar h4 {
+    font-size: 16px;
+    padding: 10px 0;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.personal-sideBar li {
+    font-size: 14px;
+    line-height: 36px;
+    position: relative;
+    cursor: pointer;
+    color: #3e3d43;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.personal-sideBar li a {
+    display: block;
+    overflow: hidden;
+    padding: 0 20px;
+    color: #555;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-radius: 4px;
+}
+
+.personal-sideBar li.active a {
+    background: #ee4259;
+    color: #fff; /* ee4259 */
+    font-weight: 600;
+}
+
+.personal-sideBar li:hover a {
+    background: #ee4259;
+    color: #fff;
+}
+
+.personal-sideBar li i {
+    margin: 0 12px 0 0;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.personal-content {
+    float: left;
+    width: calc(100% - 214px);
+    border: 1px solid #e6e6e6;
+    background: #fff;
+    border-radius: 5px;
+    box-sizing: content-box;
+}
+
+.personal-content .personal-title {
+    margin: 15px 0 10px 15px;
+    font-size: 16px;
+    padding: 3px 0 3px 10px;
+    border-left: 3px solid #ee4259;
+}
+
+.personal-content .personal-toolbar {
+    padding: 10px;
+}
+
+.personal-content .table.book-table {
+    border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.personal-content .table.book-table thead {
+    background: #f9f9f9;
+}
+
+.personal-content .table.book-table thead th {
+    height: 50px;
+    font-size: 14px;
+    color: #333;
+}
+
+.personal-content .table.book-table th,
+.personal-content .table.book-table td {
+    font-family: PingFangSC-Regular, HelveticaNeue-Light, "Helvetica Neue Light", "Microsoft YaHei", sans-serif;
+    font-size: 14px;
+    color: #666;
+    vertical-align: middle;
+    border-color: #e6e6e6;
+}
+
+.personal-content .table.book-table td a {
+    font-size: 13px;
+    color: #666;
+}
+
+.personal-content .table.book-table td a:hover {
+    color: #ed4259;
+}
+
+.personal-content .table.book-table tr th:first-child,
+.personal-content .table.book-table tr td:first-child {
+    padding-left: 20px;
+}
+
+.personal-content .table.book-table tr th:nth-child(1),
+.personal-content .table.book-table tr td:nth-child(1),
+.personal-content .table.book-table tr th:nth-child(2),
+.personal-content .table.book-table tr td:nth-child(2) {
+    text-align: left;
+}
+
+.personal-content .table.book-table tr td .button {
+    display: inline-block;
+    width: 68px;
+    height: 68px;
+    text-indent: 0;
+    border-radius: 3px;
+}
+
+.personal-content .table.book-table tr td .button.blue {
+    margin-right: 10px;
+    color: #fff;
+}
+
+.personal-content .table.book-table tr td .button span {
+    margin: 10px auto;
+    display: block;
+    width: 20px;
+    height: 24px;
+    font-size: 24px;
+}
+
+.personal-content .table.book-table tr td .button.blue span {
+    color: #fff;
+}
+
+.personal-content .table.book-table tr td .button.white,
+.personal-content .table.book-table tr td .button.white span {
+    color: #AAA;
+}
+
+.personal-content .table.book-table img {
+    width: 83px;
+    height: 108px;
+}
+
+.personal-content .table.book-table img + span {
+    margin-left: 10px;
+    color: #575757;
+}
+
+.personal-content .table.book-table span:hover {
+    color: #ee4259;
+    transition: color .3s ease;
+}
+
+.personal-content .table.book-table .time {
+    color: #999;
+}
+
+.personal-tab ul {
+    font-size: 0;
+    padding: 0 15px;
+}
+
+.personal-tab li {
+    display: inline-block;
+}
+
+.personal-tab li a {
+    display: block;
+    margin-bottom: -1px;
+    padding: 8px 12px;
+    border-bottom: 2px solid transparent;
+    font-size: 15px;
+    vertical-align: middle;
+}
+
+.personal-tab li.active a {
+    color: #ee4259;
+    border-color: #ee4259;
+}
+
+.btn-newVolume,
+.btn-newChapter {
+    display: none;
+}
+
+.personal-tab li[data-target='chapterList'].active ~ .btn-newVolume {
+    display: block;
+}
+
+.personal-tab li[data-target='draftBox'].active ~ .btn-newChapter {
+    display: block;
+}
+
+.personal-tab .btn {
+    margin-left: 10px;
+}
+
+.personal-tab .btn-default {
+    color: #999;
+    border-color: #ddd;
+}
+
+.personal-content .personal-toolbar .btn,
+.personal-tab .btn {
+    border-radius: 3px;
+    padding: 3px 20px;
+}
+
+.personal-content .personal-toolbar .btn-link {
+    color: #ccc;
+}
+
+.personal-content .personal-toolbar .btn-link:hover {
+    text-decoration: none;
+    color: #ed4259;
+}
+
+.personal-tab-content {
+    border-top: 1px solid #e6e6e6;
+}
+
+.workStateWrapper {
+    padding: 40px 0 20px 40px;
+}
+
+.workStateWrapper .fmBox {
+    border: 1px solid #E6E6E6;
+    width: 120px;
+    height: 158px;
+    margin: 8px 40px 0 0;
+}
+
+.fmBox .fm {
+    position: relative;
+    text-align: center;
+}
+
+.workStateWrapper .fmBox img {
+    display: block;
+    width: 114px;
+    height: 152px;
+    margin: 3px 0 0 3px;
+}
+
+.workStateWrapper .fmBox .fm span {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 120px;
+    height: 33px;
+    font: 14px/33px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+    text-align: center;
+    color: #999;
+    border: 1px solid #DDD;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    background: #FFF;
+    filter: alpha(opacity=90);
+    cursor: pointer;
+}
+
+.fmBox .fm a.blue {
+    display: block;
+    margin-top: 10px;
+    font: 12px/18px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+}
+
+.workSetList {
+    width: 640px;
+}
+
+.workSetList li {
+    position: relative;
+    margin-bottom: 10px;
+    padding-left: 90px;
+    vertical-align: bottom;
+    min-height: 30px;
+}
+
+.workSetList li em {
+    position: absolute;
+    left: 0;
+    width: 75px;
+    font: 14px/30px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+    text-align: right;
+    color: #858585;
+}
+
+.workSetList li p {
+    font: 14px/30px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+}
+
+.workSetList li p.saved,
+.workSetList li p.modify {
+    float: left;
+    font: 14px/30px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+}
+
+.workSetList li p.intro {
+    float: none;
+    width: 420px;
+}
+
+.workSetList li p.tip {
+    color: #999;
+    font-size: 12px;
+}
+
+.workSetList li p.tip.modify {
+    float: none;
+}
+
+.workSetList li p.f12 {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #999;
+}
+
+.workSetList li .midInput {
+    border: 1px solid #DDD;
+    width: 345px;
+    height: 28px;
+    padding-left: 5px;
+    line-height: 28px;
+}
+
+.workSetList li b {
+    display: inline-block;
+    width: 140px;
+    margin-right: 100px;
+    font: 14px/30px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+}
+
+.workSetList li cite {
+    font: 14px/30px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+    color: #858585;
+}
+
+.workSetList li textarea {
+    outline: none;
+    font: 14px/1.8 "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+    resize: none;
+    overflow-y: auto;
+    border: 1px solid #DDD;
+    width: 343px;
+    height: 88px;
+    padding-left: 5px;
+}
+
+.workSetList .confirm,
+.workSetList .modify-btn {
+    padding: 10px 0 0 90px;
+}
+
+.workSetList .button {
+    width: 178px;
+    height: 34px;
+    font: 14px/34px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+    vertical-align: middle;
+    box-sizing: content-box;
+    display: inline-block;
+    letter-spacing: normal;
+    word-spacing: normal;
+}
+
+.workSetList .confirm .button {
+    width: 78px;
+    height: 28px;
+    margin-right: 10px;
+    line-height: 28px;
+}
+
+.select-category select {
+    width: 86px;
+    height: 30px;
+    margin-right: 8px;
+    border: 1px solid #DDD;
+}
+
+.chapterList {
+    float: left;
+    width: 230px;
+    height: 796px;
+    border-right: 1px solid #E6E6E6;
+}
+
+.chapterList .titleBox {
+    height: 47px;
+    background: #F6F6F6;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+.chapterList .titleBox p {
+    padding-left: 9px;
+    font: 12px/56px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+    color: #999;
+    margin: 0;
+}
+
+.chapter-wrapper {
+    float: left;
+    width: calc(100% - 230px);
+}
+
+.chapterList .chapterListScroll {
+    height: calc(100% - 47px);
+}
+
+.chapterList .chapterListScroll ul {
+    height: 100%;
+    overflow: hidden;
+}
+
+.chapterList li {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.chapterList li.active {
+    border-bottom: 1px solid #D0E9FF;
+    background: #E1F2FF;
+}
+
+.chapterList .sectionBox {
+    padding: 10px 20px 3px 9px;
+    border-bottom: 1px solid #E6E6E6;
+    box-sizing: content-box;
+}
+
+.chapterList li.active .sectionBox {
+    border-bottom: none;
+}
+
+.chapterList li:last-of-type .sectionBox {
+    border-bottom: none;
+}
+
+.sectionBox p {
+    overflow: hidden;
+    font: 14px/1.8 "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+    color: #333;
+}
+
+.sectionBox p.f12 {
+    font-size: 12px;
+    color: #999;
+}
+
+.chapterList li.active .sectionBox p {
+    color: #376590;
+}
+
+.chapterList li.active .sectionBox p.f12 {
+    color: #8BAECE;
+}
+
+.sectionBox p.f12 i {
+    float: right;
+}
+
+.sectionBox p em {
+    display: inline-block;
+    overflow: hidden;
+    width: 180px;
+    min-height: 25px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.sectionBtnBox {
+    border-bottom: 1px solid #E6E6E6;
+    width: 100%;
+    height: 47px;
+    padding: 1px 24px 0 24px;
+    font-size: 12px;
+    background: #FAFAFA;
+}
+
+.titleBtn {
+    padding: 8px 0 0;
+}
+
+.titleBtn a {
+    float: left;
+    margin-right: 10px;
+    font: 14px/28px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+}
+
+.titleBtn .button {
+    height: 28px;
+    padding: 0 13px;
+}
+
+.titleBtn .button.white {
+    color: #999;
+}
+
+.sectionBtnBox em {
+    float: left;
+    margin-right: 10px;
+    line-height: 47px;
+    color: #999;
+}
+
+.select-wrapper {
+    position: relative;
+    float: left;
+    margin: 8px 20px 0 0;
+}
+
+.select-wrapper.mid {
+    width: 150px;
+}
+
+.drop-down {
+    position: relative;
+    border: 1px solid #DDD;
+    height: 28px;
+    cursor: pointer;
+    background: #FFF;
+    box-sizing: content-box;
+}
+
+.drop-down span {
+    display: block;
+    overflow: hidden;
+    padding: 0 20px 0 10px;
+    font: 12px/28px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.combo-arrow {
+    float: none !important;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 100%;
+    margin: 0 !important;
+    font-size: 12px;
+    cursor: pointer;
+    text-align: center;
+    color: #999;
+    background: #FFF;
+    line-height: 1 !important;
+}
+
+.combo-arrow:before {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    bottom: 0;
+    display: block;
+    border-top: 5px solid #CCC;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    width: 0;
+    height: 0;
+    margin: auto 0;
+    content: '';
+}
+
+.sectionBtnBox b i {
+    vertical-align: bottom;
+}
+
+.drop-list-box {
+    position: absolute;
+    display: none;
+    top: 29px;
+    border: 1px solid #DDD;
+    cursor: pointer;
+    background: #FFF;
+}
+
+.drop-list-box ul {
+    overflow-x: hidden;
+    max-height: 203px;
+}
+
+.drop-list-box li a {
+    display: block;
+    height: 29px;
+    padding: 0 20px 0 10px;
+    font: 12px/29px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+    white-space: nowrap;
+}
+
+.drop-list-box .create {
+    display: block;
+    border-top: 1px solid #DDD;
+    height: 29px;
+    font: 12px/29px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+    text-align: center;
+}
+
+.chapter-wrapper .zwText {
+    padding: 10px 20px 0;
+    font: 16px/1.8 "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+    word-break: break-all;
+    color: #575757;
+    box-sizing: content-box;
+    overflow:hidden;
+}
+
+.chapter-wrapper .sectionWrapper {
+    display: none;
+}
+
+.chapter-wrapper .sectionWrapper.active {
+    display: block;
+}
+
+.chapter-wrapper .zwText input {
+    display: block;
+    border: none;
+    border-bottom: 1px solid #E6E6E6;
+    width: 100%;
+    margin: 16px 0 10px;
+    padding: 0 0 6px 0;
+    height: 40px;
+    font: 18px/40px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+    text-indent: 4px;
+    transition: color .3s, border .3s;
+    box-sizing: content-box;
+}
+
+.chapter-wrapper .zwText input.modify {
+    display: none;
+}
+
+.chapter-wrapper .zwText textarea {
+    outline: none;
+    font: 14px/1.8 "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+    resize: none;
+    overflow: hidden;
+    overflow-y: auto;
+    border: none;
+    width: 100%;
+    height: 540px;
+    padding: 0 4px;
+    word-break: break-all;
+    color: #575757;
+    box-sizing: content-box;
+}
+
+.chapter-wrapper .zwText p {
+    margin: .8em 0;
+    height: 540px;
+}
+
+.chapter-wrapper .zwText > h3 {
+    border-bottom: 1px solid #E6E6E6;
+    border-left: 0;
+    margin: 16px 0 10px;
+    padding: 0 4px 6px;
+    font: 18px/40px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+}
+
+.chapter-wrapper .zwText h3 {
+    font-size: 20px;
+    margin: .5em 0;
+}
+
+.say-area {
+    border-top: 1px solid #E6E6E6;
+    margin-top: 16px;
+    font: 14px/1.8 "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+    box-sizing: content-box;
+}
+
+.say-area p {
+    padding: 0 10px 0 24px;
+    margin: 0;
+    box-sizing: content-box;
+}
+
+.say-area textarea {
+    outline: none;
+    resize: none;
+    overflow-y: auto;
+    border: none;
+    width: 763px;
+    height: 80px;
+    margin-top: 10px;
+    padding-right: 10px;
+    font: 14px/1.8 "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+    color: #575757;
+    box-sizing: content-box;
+}
+
+.say-area .authorSay {
+    padding: 10px 0 10px 20px;
+}
+
+.sectionWrapper h3 {
+    border: none;
+    border-bottom: 1px solid #E6E6E6;
+    padding-bottom: 20px;
+    font: 16px/1 "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+}
+
+.sectionWrapper h3 span {
+    margin-left: 10px;
+    font-size: 12px;
+    color: #999;
+}
+
+.volumeForm {
+    width: 100%;
+    padding: 30px 0 0 5px;
+    box-sizing: content-box;
+}
+
+.volumeForm li {
+    position: relative;
+    margin-bottom: 20px;
+    padding-left: 100px;
+    line-height: 30px;
+}
+
+.volumeForm li em {
+    position: absolute;
+    left: 0;
+    width: 80px;
+    font: 14px/30px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+    text-align: right;
+    color: #858585;
+}
+
+.volumeForm li input.midInput {
+    border: 1px solid #DDD;
+    width: 373px;
+    height: 28px;
+    padding-left: 5px;
+    font: 14px/28px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+}
+
+.volumeForm li textarea {
+    outline: none;
+    font: 14px/1.8 "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+    resize: none;
+    border: 1px solid #DDD;
+    width: 373px;
+    height: 88px;
+    padding-left: 5px;
+}
+
+.volumeForm li p {
+    height: 30px;
+    font: 14px/30px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+}
+
+.windowForm {
+    padding: 20px;
+    display: none;
+}
+
+.windowForm p {
+    font-size: 14px;
+    text-align: left;
+    color: #858585;
+}
+
+.windowForm input.longInput {
+    display: block;
+    border: 1px solid #DDD;
+    width: 311px;
+    height: 28px;
+    margin: 8px auto;
+    font: 14px/28px Arial;
+    text-indent: 5px;
+    color: #858585;
+    background: #FFF;
+}
+
+.windowForm textarea {
+    outline: none;
+    font: 14px/1.8 "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+    resize: none;
+    overflow-y: hidden;
+    border: 1px solid #DDD;
+    width: 311px;
+    height: 74px;
+    margin-top: 5px;
+    padding-left: 5px;
+    line-height: 1.8;
+}
+
+.windowForm .confirmBtn {
+    padding-top: 15px;
+}
+
+.windowForm .confirmBtn a {
+    display: inline-block;
+    border-radius: 3px;
+    width: 100%;
+    height: 34px;
+    font: 14px/34px "PingFangSC-Regular", "HelveticaNeue-Light", "Helvetica Neue Light", "Microsoft YaHei", "sans-serif";
+    vertical-align: middle;
+    letter-spacing: normal;
+    word-spacing: normal;
+}
+
+body .newVolumeWrapper {
+    width: auto;
+    border-radius: 5px;
+}
+
+/* personSetting.html 个人信息 */
+.user-wrapper-header {
+    position: relative;
+    padding: 20px 0 5px 0;
+    background: #fff url("../images/home-index-bg.png") center center/cover no-repeat;
+    border-radius: 5px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.user-wrapper-header .user-related {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 13px 20px 20px 0;
+    margin: 10px 0 10px 40px;
+    color: #fff;
+}
+
+.user-wrapper-header .user-related .name {
+    display: block;
+    width: 400px;
+    color: #fff;
+    padding: 0 10px 15px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #fff;
+}
+
+.user-wrapper-header .user-related span {
+    font-size: 15px;
+    font-weight: normal;
+    margin-left: 10px;
+}
+
+.user-wrapper-header .user-related span em {
+    color: #ccc;
+    margin-left: 5px;
+}
+
+.user-wrapper-header .user-wrapper-btn {
+    position: absolute;
+    right: 20px;
+    bottom: 15px;
+}
+
+.user-wrapper-header .user-wrapper-btn a {
+    font-size: 16px;
+    line-height: 1;
+    padding: 5px;
+    display: inline-block;
+    margin: 0 0 0 16px;
+    transition: background .15s, border-color .15s;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, .5);
+    border-radius: 100%;
+    background: rgba(0, 0, 0, .2);
+    text-align: center;
+}
+
+.user-wrapper-header .user-wrapper-btn a:hover {
+    border-color: #ee4259;
+    background: #ee4259;
+}
+
+.user-wrapper-header .user-wrapper-btn a i {
+    display: block;
+    height: 16px;
+    width: 16px;
+    text-align: center;
+}
+
+.user-wrapper-content {
+    padding: 25px 40px 40px;
+    color: #3e3d43;
+}
+
+.user-wrapper-content dl {
+    margin: 0;
+    padding: 15px 0;
+}
+
+.user-wrapper-content dl.higher {
+    padding: 10px 0;
+}
+
+.user-wrapper-content dt {
+    display: inline-block;
+    min-width: 100px;
+    text-align: right;
+    vertical-align: top;
+    color: #a6a6a6;
+}
+
+.user-wrapper-content dl.higher dt {
+    line-height: 36px;
+}
+
+.user-wrapper-content dd {
+    display: inline-block;
+    margin: 0 0 0 35px;
+    vertical-align: top;
+}
+
+.user-wrapper-content dd input[type=text] {
+    font-size: 14px;
+    line-height: 20px;
+    height: 20px;
+    padding: 7px 8px;
+    color: #3e3d43;
+    border: 1px solid #e0deda;
+    outline: 0;
+    background-color: #fff;
+    -webkit-transition: border-color .15s, background-color .15s;
+    transition: border-color .15s, background-color .15s;
+    box-sizing: content-box;
+}
+
+.user-wrapper-content dd p {
+    width: 400px;
+}
+
+.user-wrapper-content dd button {
+    padding: 5px 20px;
+}
+
+.user-wrapper-content dd input:hover,
+.user-wrapper-content .count-text:hover {
+    border-color: #ababaf;
+}
+
+.user-wrapper-content .count-text {
+    position: relative;
+    z-index: 1;
+    height: 88px;
+    border: 1px solid #e6e6e6;
+    background: #fff;
+    width: 400px;
+    margin-bottom: 12px;
+    padding-top: 8px;
+}
+
+.user-wrapper-content .count-text .count {
+    font: 12px/14px PingFangSC-Regular, '-apple-system', Simsun;
+    position: absolute;
+    z-index: 1;
+    right: 5px;
+    bottom: 5px;
+    color: #bfbfbf;
+}
+
+.user-wrapper-content .count-text textarea {
+    font-family: PingFangSC-Regular, '-apple-system', Simsun;
+    font-size: 12px;
+    display: block;
+    overflow: hidden;
+    width: 100%;
+    height: 58px;
+    line-height: 1.8;
+    padding: 0 12px;
+    color: #666;
+    border: none;
+    resize: none;
+}
+
+/* message.html 消息中心 */
+.messageList-wrapper {
+    border-top: 1px solid #e6e6e6;
+    margin: 0 15px;
+    padding-bottom: 15px;
+}
+
+.messageList-wrapper .message-list li {
+    position: relative;
+    border-top: 1px dashed #e6e6e6;
+    padding: 20px 10px;
+    font-size: 0;
+}
+
+.messageList-wrapper .message-list li:first-child {
+    border: 0;
+}
+
+.messageList-wrapper .message-list li .message-wrapper {
+    display: inline-block;
+    font-size: 13px;
+    width: calc(100% - 100px);
+}
+
+.messageList-wrapper .message-list li .message-wrapper .message-title span em{
+    color:blue;
+}
+
+.messageList-wrapper .message-list li .time {
+    font-size: 13px;
+    display: inline-block;
+    width: 100px;
+    padding-top: 3px;
+    color: #999;
+    text-align: center;
+}
+
+.messageList-wrapper .message-list li .message-wrapper .message-title {
+    font-size: 13px;
+    color: #333;
+}
+
+.messageList-wrapper .message-list li .message-wrapper.unread .message-title::before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 5px;
+    width: 5px;
+    border-radius: 5px;
+    background: #ee4259;
+}
+
+.messageList-wrapper .message-list li .message-wrapper .label {
+    display: inline-block;
+    margin: 7px 0;
+}
+
+.messageList-wrapper .message-list li .message-wrapper .message-title .user,
+.messageList-wrapper .message-list li .message-wrapper .message-title .book-name,
+.messageList-wrapper .message-list li .message-wrapper .message-title .chapter-title {
+    color: #666;
+    font-size: 16px;
+}
+
+.messageList-wrapper .message-list li .message-wrapper .message-title .book-name:hover,
+.messageList-wrapper .message-list li .message-wrapper .message-title .chapter-title:hover {
+    color: #ee4259;
+}
+
+.messageList-wrapper .message-list li .message-wrapper .message-content {
+    font-size: 13px;
+    color: #888;
+}
+
+.messageList-wrapper .message-list li .message-btn {
+    margin-bottom: 10px;
+}
+
+.messageList-wrapper .message-list li .message-btn a {
+    display: inline-block;
+    font-size: 12px;
+    color: #666;
+    margin-left: 5px;
+}
+
+.messageList-wrapper .message-list li .message-btn a:hover {
+    color: #ee4259;
+}
+
+.messageList-wrapper .message-list li .reply-comment {
+    display: none;
+}
+
+.messageList-wrapper .message-list li .reply-comment textarea {
+    resize: none;
+    margin-bottom: 10px;
+}
+
+.messageList-wrapper .message-list li .reply-comment textarea:hover,
+.messageList-wrapper .message-list li .reply-comment textarea:focus {
+    border-color: #ababaf;
+}
+
+.messageList-wrapper .message-list li .reply-comment .reply-btn {
+    height: 30px;
+    line-height: 18px;
+}
+
+/* bookcase.html 书架页面 */
+.bookcase-wrapper {
+    padding: 15px;
+}
+
+.bookcase-wrapper .table {
+    width: 100%;
+}
+
+.bookcase-wrapper .table th,
+.bookcase-wrapper .table td {
+    text-align: left;
+}
+
+.bookcase-wrapper .table th {
+    color: #7f7f7f;
+}
+
+.bookcase-wrapper .table td:first-child a.book-category {
+    display: inline-block;
+    margin-left: -8px;
+    color: #a6a6a6;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.bookcase-wrapper .table td:first-child a.book-name {
+    font-weight: bold;
+    font-size: 14px;
+    color: #3e3d43;
+}
+
+.bookcase-wrapper .table td:first-child a.chapter-name {
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0 0 0 8px;
+}
+
+.bookcase-wrapper .table td:last-child a {
+    color: #666;
+}
+
+.bookcase-wrapper .table td:first-child a.book-category:hover,
+.bookcase-wrapper .table td:first-child a.book-name:hover,
+.bookcase-wrapper .table td:last-child a:hover {
+    color: #ee4259;
+}
+
+.bookcase-wrapper .table td .time,
+.bookcase-wrapper .table td .author {
+    color: #888;
+}
+.swiper-container {
+    width: 201px;
+    float:left;
+    margin-right:30px;
+    height: 428px;
+}
+

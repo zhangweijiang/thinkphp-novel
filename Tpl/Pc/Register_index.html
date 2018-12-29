@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册页</title>
+    <!-- 插件样式引入 -->
+    <link rel="stylesheet" href="__PUBLIC__/Pc/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Pc/plugins/font-awesome/css/font-awesome.css">
+
+    <!-- 插件重写样式、公共样式及页面主要样式引入 -->
+    <link rel="stylesheet" href="__PUBLIC__/Pc/css/plugins.reset.css">
+    <link rel="stylesheet" href="__PUBLIC__/Pc/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/Pc/css/icon.css">
+    <link rel="stylesheet" href="__PUBLIC__/Pc/css/main.css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="header">
+        <div class="container">
+            <div class="row">
+                <div class="logo"><a href="#" target="_blank"></a></div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="login-area-wrapper cf">
+                <div class="login-op-img pull-left">
+                    <img src="__PUBLIC__/Pc/images/loginBg.jpg" alt="登录">
+                </div>
+                <div class="login-wrapper pull-left">
+                    <div class="login-header">
+                        <h4 class="login-title">用户注册</h4>
+                    </div>
+                    <div class="login-body">
+                        <form action="{:U('Pc/Register/index')}" method="post" id="form">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-user"></i>
+                                </span>
+                                <input type="text" name="name" class="form-control" placeholder="请输入用户名" required>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                                <input type="password" name="password" class="form-control" placeholder="请输入密码" required>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="fa fa-lock"></i>
+                                </span>
+                                <input type="password" name="repassword" class="form-control" placeholder="再一次输入密码" required>
+                            </div>
+                            <input type="submit" class="btn red-btn form-control" value="注 册">
+                            <div class="login-footer">
+                                <a class="pull-right" href="{:U('Pc/Login/index')}">已有账号？立即登录</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="site-map">
+                    <ul>
+                        <li><a href="javascript:">系统简介</a></li>
+                        <li><a href="javascript:">广告服务</a></li>
+                        <li><a href="javascript:">试用洽谈</a></li>
+                        <li><a href="javascript:">网站地图</a></li>
+                        <li><a href="javascript:">联系方式</a></li>
+                        <li><a href="javascript:">关于我们</a></li>
+                    </ul>
+                </div>
+                <div class="copyright">
+                    Copyright © 2017 <a href="javascript:">Gallonce</a> , Inc. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+
+<script src="__PUBLIC__/Pc/plugins/jquery/jquery.min.js"></script>
+<script src="__PUBLIC__/Pc/plugins/layui/layui.all.js"></script>
+<script src="__PUBLIC__/Pc/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/Pc/js/common.js"></script>
+<script src="__PUBLIC__/Pc/js/main.js"></script>
+<script>
+    $('#form').submit(function(e){
+        var password = $('input[name=password]').val();
+        var repassword = $('input[name=repassword]').val();
+        if(password!=repassword){
+            layer.msg('两次密码输入不一致！');
+            return false;
+        }
+        $(this).submit();
+    })
+</script>
+</body>
+</html>

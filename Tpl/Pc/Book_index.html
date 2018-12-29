@@ -1,0 +1,294 @@
+<extend name="Public/base"/>
+<block name="body">
+    <div class="top-bg-box " id="j-topBgBox" style="background-image:url('__PUBLIC__/Pc/images/banner.jpg')">
+    </div>
+    <div class="border-shadow" style="margin-top: 179px;">
+        <span></span>
+        <span></span>
+    </div>
+    <div class="book-detail-wrapper w990">
+        <div class="book-information cf">
+            <div class="book-img">
+                <a class="J-getJumpUrl" id="bookImg" href="javascript:"><img src="__UPLOAD__/{$book.img}"></a>
+            </div>
+            <div class="book-info ">
+                <h1>
+                    <em>{$book.name}</em>
+                    <span>
+                        <a class="writer" href="javascript:" target="_blank">{$book.username}</a> 著
+                    </span>
+                </h1>
+                <p class="tag">
+                    <if condition="$book.status eq 1">
+                        <span class="blue">连载</span>
+                        <elseif condition="$book.status eq 2"/>
+                        <span class="blue">完本</span>
+                    </if>
+                    <a href="javascript:" class="red" target="_blank">{$book.class_name}</a>
+                </p>
+                <p class="intro">{$book.intro}</p>
+                <p>
+                    <em>{$book.count}</em>
+                    <cite>字</cite>
+                </p>
+                <p>
+                    <a class="red-btn J-getJumpUrl " href="{:U('Pc/Chapter/index')}/book_id/{$book.id|base64_encode}/id/{$book.chapter_first.id|base64_encode}" id="readBtn">免费试读</a>
+                    <notempty name="book.is_collection">
+                        <a class="blue-btn add-book disabled"  href="javascript:" >已在书架</a>
+                        <else/>
+                        <a class="blue-btn add-book"  href="javascript:" >加入书架</a>
+                    </notempty>
+                </p>
+            </div>
+        </div>
+        <div class="content-nav-wrapper cf">
+            <div class="tab nav-wrapper pull-left">
+                <ul>
+                    <li class="active" data-target="bookContenWrapper">
+                        <a class="lang" id="j-bookInfoPage" href="javascript:">作品信息</a>
+                    </li>
+                    <li class="J_catalog_block" data-target="catalogWrapper">
+                        <a class="lang" href="javascript:" id="j_catalogPage">
+                            目录<i><span id="J-catalogCount">({$dirCount}章)</span></i>
+                        </a>
+                    </li>
+
+                    <li class="J_comment_block" data-target="userCommentWrapper">
+                        <a class="lang" href="javascript:">
+                            作品讨论<i><span id="J-discusCount">({$commentList|count}条)</span></i>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="tab-pane catalog-content-wrapper" id="catalogWrapper">
+            <!-- start 目录分卷 -->
+            <div class="volume-wrapper">
+                <div class="volume">
+                    <div class="cover"></div>
+                    <h3>
+                        <a class="subscri" href="javascript:" target="_blank"></a>
+                        作品相关<i>·</i>共{$freeDir|count}章<span class="free"> 免费</span><em class="count">本卷共<cite>{$freeCount}</cite>字</em></h3>
+                    <ul class="cf">
+                        <volist name="freeDir" id="vo">
+                            <li>
+                                <a href="{:U('Pc/Chapter/index')}/book_id/{$vo.book_id|base64_encode}/id/{$vo.id|base64_encode}" target="_blank" title="首发时间：{$vo.ctime|date='Y-m-d H:i:s',###} 章节字数：{$vo.count}">{$vo.title}</a>
+                            </li>
+                        </volist>
+
+                    </ul>
+                </div>
+            </div>
+            <!-- end 目录分卷 -->
+            <!-- start 目录分卷 -->
+            <div class="volume-wrapper">
+                <div class="volume">
+                    <div class="cover"></div>
+                    <h3>
+                        <a class="subscribe j_subscribe" href="javascript:"></a>
+                        正文<i>·</i>共{$vipDir|count}章<span class="vip"> VIP</span><em class="count">本卷共<cite>{$vipCount}</cite>字</em>
+                    </h3>
+                    <ul class="cf">
+                        <volist name="vipDir" id="vo">
+                            <li>
+                                <a href="{:U('Pc/Chapter/index')}/book_id/{$vo.book_id|base64_encode}/id/{$vo.id|base64_encode}" target="_blank" title="首发时间：{$vo.ctime|date='Y-m-d H:i:s',###} 章节字数：{$vo.count}">{$vo.title}</a>
+                                <em class="fa fa-lock "></em>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+            <!-- end 目录分卷 -->
+        </div>
+        <div class="tab-pane book-content-wrapper cf active" id="bookContenWrapper">
+            <div class="left-wrapper pull-left">
+                <div class="book-info-detail">
+                    <cite class="icon-pin"></cite>
+                    <div class="book-intro">
+                        <p>
+                            　　身怀佛家神通，进入国公府成为杂役，江湖之中，庙堂之上，儿女情长，英雄壮歌。<br>　　VIP群：129395774，全订可进。
+                        </p>
+                    </div>
+                    <div class="book-state">
+                        <ul>
+                            <li>
+                                <b>作者自定义标签</b>
+                                <div class="detail">
+                                    <p class="tag-wrapper">
+                                        <volist name="book.label" id="vo">
+                                            <a class="tags" href="javascript:" target="_blank">{$vo}</a>
+                                        </volist>
+                                    </p>
+                                </div>
+                            </li>
+                            <li class="update">
+                                <b>最近更新</b>
+                                <div class="detail">
+                                    <p class="cf">
+                                        <a class="blue" href="javascript:" title="{$book.update.title}" target="_blank">{$book.update.title}</a><i>·</i><em class="time">{$book.update.ctime|date='Y-m-d H:i:s',###}更新</em>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="like-more mb30 cf">
+                    <h3 class="lang">喜欢这本书的人还喜欢</h3>
+                    <div class="like-more-list">
+                        <ul class="cf">
+                            <volist name="loveList" id="vo">
+                                <li>
+                                    <div class="book-img" title="{$vo.name}">
+                                        <a href="{:U('Pc/Book/index')}/id/{$vo.id|base64_encode}" target="_blank">
+                                            <img class="lazy" src="__UPLOAD__/{$vo.img}" alt="{$vo.name}" style="display: inline;">
+                                        </a>
+                                    </div>
+                                    <h4>
+                                        <a href="javascript:" target="_blank" title="{$vo.name}">{$vo.name}</a>
+                                    </h4>
+                                    <p>{:mt_rand(60,99)}%的用户读过</p>
+                                </li>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="right-wrapper pull-right">
+                <div class="book-list-wrapper mb10">
+                    <div class="strongrec-list">
+                        <h3 class="wrapper-title lang">本周强推</h3>
+                        <div class="book-list">
+                            <ul>
+                                <volist name="commendList" id="vo">
+                                    <li>
+                                        <a class="channel" href="{:U('Pc/List/index')}/class_id/{$vo.class_id}" target="_blank">
+                                            <em>「</em>{$vo.class_name}
+                                            <em>」</em>
+                                        </a>
+                                        <strong>
+                                            <a class="name" href="{:U('Pc/Book/index')}/id/{$vo.id|base64_encode}" target="_blank" title="{$vo.name}">{$vo.name}</a>
+                                        </strong>
+                                    </li>
+                                </volist>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="break-rules-report cf">
+                    <i class="fa fa-warning icon-warning"></i>
+                    <a href="javascript:" target="_blank">举报违规有奖</a>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane user-commentWrapper cf" id="userCommentWrapper">
+            <div class="left-wrapper pull-left">
+                <div class="user-comment-wrapper book-friend">
+                    <div class="comment-head cf">
+                        <h3 class="lang">
+                            <span class="j_godiscuss">书友评价</span><i class="grey">|</i><span class="grey">Comment</span>
+                        </h3>
+                    </div>
+                    <div class="user-discuss" id="userDiscuss">
+                        <div class="book-discuss-wrapper">
+                            <div class="discuss-list">
+                                <ul>
+                                    <volist name="commentList" id="vo">
+                                        <li class="cf ">
+                                            <div class="user-photo">
+                                                <a href="javascript:" target="_blank">
+                                                    <img src="__UPLOAD__/{$vo.user_img}">
+                                                </a>
+                                            </div>
+                                            <div class="discuss-info">
+                                                <p class="users">
+                                                    <a class="blue" href="javascript:"><b>{$vo.user_name}</b></a><span class="gray">发表了评论</span>
+                                                </p>
+                                                <h5 class="text">
+                                                    <a href="javascript:">
+                                                        {$vo.content}
+                                                    </a>
+                                                </h5>
+                                                <p class="info dib-wrapper">
+                                                    <span class="mr20">{$vo.content_time|date='Y-m-d H:i:s',###}</span>
+                                                </p>
+                                                <notempty name="vo.reply_time">
+                                                    <div class="author-reply">
+                                                        <p>作者回复：</p>
+                                                        <p class="reply-content">
+                                                            {$vo.reply}
+                                                        </p>
+                                                        <p class="text-left time">{$vo.reply_time|date='Y-m-d H:i:s',###}</p>
+                                                    </div>
+                                                </notempty>
+                                            </div>
+                                        </li>
+                                    </volist>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-wrapper pull-right">
+                <div class="book-list-wrapper mb10">
+                    <div class="strongrec-list">
+                        <h3 class="wrapper-title lang">本周强推</h3>
+                        <div class="book-list">
+                            <ul>
+                                <volist name="commendList" id="vo">
+                                    <li>
+                                        <a class="channel" href="{:U('Pc/List/index')}/class_id/{$vo.class_id}" target="_blank">
+                                            <em>「</em>{$vo.class_name}
+                                            <em>」</em>
+                                        </a>
+                                        <strong>
+                                            <a class="name" href="{:U('Pc/Book/index')}/id/{$vo.id|base64_encode}" target="_blank" title="{$vo.name}">{$vo.name}</a>
+                                        </strong>
+                                    </li>
+                                </volist>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="break-rules-report cf">
+                    <i class="fa fa-warning icon-warning"></i>
+                    <a href="javascript:" target="_blank">举报违规有奖</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</block>
+
+<block name="script">
+    <script>
+        //加入书架点击事件
+        $('.add-book').on('click',function(){
+            var book_id = "{$book.id}";
+           $.ajax({
+               url:"{:U('Pc/Book/addCollection')}",
+               type:"post",
+               data:{book_id:book_id},
+               dataType:"json",
+               success:function(data){
+                   if(data.status==1){
+                       layer.msg(data.msg, {icon: 1,time:2000},function(){
+                           window.location.reload();
+                       });
+                   }else{
+                       if(data.data=='redirect'){
+                           layer.msg(data.msg, {icon: 2,time:2000},function(){
+                               window.location.href = "{:U('Login/index')}";
+                           });
+                       }else{
+                           layer.msg(data.msg, {icon: 2,time:2000},function(){
+                               window.location.reload();
+                           });
+                       }
+                   }
+               }
+           });
+        });
+    </script>
+</block>

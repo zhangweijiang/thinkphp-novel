@@ -1,0 +1,74 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?yx72do');
+  src:  url('../fonts/icomoon.eot?yx72do#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?yx72do') format('truetype'),
+    url('../fonts/icomoon.woff?yx72do') format('woff'),
+    url('../fonts/icomoon.svg?yx72do#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icomoon-"], [class*=" icomoon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icomoon-chapter:before {
+  content: "\e900";
+}
+.icomoon-new-chapter:before {
+  content: "\e901";
+}
+.icomoon-dushi:before {
+  content: "\e902";
+}
+.icomoon-erciyuan:before {
+  content: "\e903";
+}
+.icomoon-xianshi:before {
+  content: "\e904";
+}
+.icomoon-junshi:before {
+  content: "\e905";
+}
+.icomoon-kehuan:before {
+  content: "\e906";
+}
+.icomoon-lishi:before {
+  content: "\e907";
+}
+.icomoon-lingyi:before {
+  content: "\e908";
+}
+.icomoon-nvsheng:before {
+  content: "\e909";
+}
+.icomoon-qihuan:before {
+  content: "\e90a";
+}
+.icomoon-tiyu:before {
+  content: "\e90b";
+}
+.icomoon-wuxia:before {
+  content: "\e90c";
+}
+.icomoon-xianxia:before {
+  content: "\e90d";
+}
+.icomoon-xuanhuan:before {
+  content: "\e90e";
+}
+.icomoon-youxi:before {
+  content: "\e90f";
+}

@@ -1,0 +1,111 @@
+<extend name="Public/base"/>
+<block name="body">
+    <style>
+        .pagination .current{
+            background: #2dc3e8;
+        }
+        .pagination > div > a, .pager > div > a {
+            color: #444;
+            background-color: #fff;
+            margin: 0 -1px 0 0;
+            border-color: #ccc;
+        }
+        .pagination>div>a, .pagination>div>span {
+            position: relative;
+            float: left;
+            padding: 6px 12px;
+            margin-left: -1px;
+            line-height: 1.42857143;
+            color: #428bca;
+            text-decoration: none;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+    </style>
+    <div class="personal-wrapper container">
+        <div class="row">
+            <div class="personal-sideBar">
+                <h4>个人中心</h4>
+                <ul>
+                    <li><a href="{:U('Pc/PersonSetting/index')}"><i class="fa fa-user-o"></i>个人信息</a></li>
+                    <li><a href="{:U('Pc/BookManage/index')}"><i class="fa fa-book"></i>作品管理</a></li>
+                    <li><a href="{:U('Pc/Comment/index')}"><i class="fa fa-bell-o"></i>消息管理</a></li>
+                    <li class="active"><a href="{:U('Pc/BookCase/index')}"><i class="fa fa-desktop"></i>我的书架</a></li>
+                </ul>
+            </div>
+            <div class="personal-content">
+                <h3 class="personal-title">我的书架</h3>
+                <div class="bookcase-wrapper">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>书名/最近更新章节</th>
+                            <th>更新时间</th>
+                            <th>作者</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <volist name="bookList" id="vo">
+                            <tr>
+                                <td>
+                                    <a class="book-category" href="{:U('Pc/List/index')}/class_id/{$vo.book.class_id}">「{$vo.book.class_name}」</a>
+                                    <a class="book-name" href="{:U('Pc/Book/index')}/id/{$vo.book.id|base64_encode}">{$vo.book.name}</a>
+                                    <a class="chapter-name blue" href="{:U('Pc/Chapter/index')}/id/{$vo.bookChapter.id|base64_encode}/book_id/{$vo.book_id|base64_encode}">{$vo.bookChapter.title}</a>
+                                </td>
+                                <td>
+                                    <span class="time">{$vo.bookChapter.update_time|date='Y-m-d H:i:s',###}</span>
+                                </td>
+                                <td>
+                                    <span class="author">{$vo.book.username}</span>
+                                </td>
+                                <td>
+                                    <a href="javascript:" class="delete" data-book-id="{$vo.book.id}">删除</a>
+                                </td>
+                            </tr>
+                        </volist>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="page-box cf" data-l1="3">
+            <div class="pagination-wrapper custom-pagination pull-right" id="page-container">
+                <div class="pagination">
+                    {$page}
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script>
+        $('.delete').on('click',function(){
+            var book_id = $(this).data('book-id');
+            layer.confirm('您确定删除该书籍？', {
+                btn: ['确定','取消'] //按钮
+            }, function(){ //确定
+                $.ajax({
+                    url:"{:U('Pc/BookCase/delete')}",
+                    type:'post',
+                    dataType:"json",
+                    data:{book_id:book_id},
+                    success:function(data){
+                        if(data.status==1){
+                            layer.msg(data.msg, {icon: 1,time:2000},function(){
+                                window.location.reload();
+                            });
+                        }else{
+                            layer.msg(data.msg, {icon: 2,time:2000},function(){
+                                window.location.reload();
+                            });
+                        }
+                    }
+
+                });
+            }, function(){ //取消
+
+            });
+        });
+    </script>
+</block>

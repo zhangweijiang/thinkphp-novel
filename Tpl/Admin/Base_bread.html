@@ -1,0 +1,8 @@
+<li><i class="fa fa-home"></i><a href="{:U('Admin/Index/main')}" data-loader = "App-loader" data-loadername = "主控面板">首页</a></li>
+<volist name="bread" id="vo">
+	<if condition="$i eq count($bread)">
+	<li class="active">{$vo.name}</li>
+	<else/>
+	<li><a href="{$vo.url}" data-loader="App-loader" data-loadername="{$vo.name}">{$vo.name}</a></li>
+	</if>
+</volist>

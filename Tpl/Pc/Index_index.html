@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <!-- 插件样式引入 -->
+    <link rel="stylesheet" href="__PUBLIC__/Pc/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Pc/plugins/font-awesome/css/font-awesome.css">
+
+    <!-- 插件重写样式、公共样式及页面主要样式引入 -->
+    <link rel="stylesheet" href="__PUBLIC__/Pc/css/plugins.reset.css">
+    <link rel="stylesheet" href="__PUBLIC__/Pc/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/Pc/css/swiper.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Pc/css/icon.css">
+    <link rel="stylesheet" href="__PUBLIC__/Pc/css/main.css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="top-nav">
+        <div class="container cf">
+            <div class="row">
+                <div class="login-box text-right">
+                    <span class="pull-left">起点中文网</span>
+                    <notempty name="Think.session.user">
+                        <div class="sign-in">
+                            <span>你好，</span><a class="black" id="user-name" href="{:U('Pc/PersonSetting/index')}" target="_blank">{$Think.session.user.name}</a><em>|</em><a class="black" id="msg-btn" href="//me.qidian.com/msg/systems.aspx?page=1" target="_blank" data-eid="qd_A09">消息<cite id="msg-box">(<i class="black" id="messageCount">0</i>)</cite></a><em>|</em><a id="exit-btn" href="{:U('Pc/Login/logout')}" data-eid="qd_A10">退出</a>
+                        </div>
+                        <else/>
+                        <div class="sign-out">
+                            <a id="login-btn" class="black" href="{:U('Pc/Login/index')}" target="_blank">登录</a>
+                            <em>|</em>
+                            <a id="reg-btn" href="{:U('Pc/Register/index')}" target="_blank">注册</a>
+                        </div>
+                    </notempty>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="logo-wrapper container center-block">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="logo">
+                    <a href="javascript:">LOGO</a>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="search-wrapper center-block">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="请输入小说名称" id="s-box">
+                        <span class="input-group-btn">
+                    <button class="btn btn-default red-btn" type="button"><i class="fa fa-search" id="search-btn"></i></button>
+                </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 text-right">
+                <div class="book-shelf">
+                    <a href="{:U('Pc/BookCase/index')}"  target="_blank">
+                        <em class="fa fa-book"></em>
+                        <i>我的书架</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-nav-wrapper">
+        <div class="main-nav container">
+            <div class="row">
+                <ul>
+                    <li class="first">
+                        <span><i class="fa fa-bars"></i>作品分类</span>
+                    </li>
+                    <li class="nav-li">
+                        <a href="{:U('Pc/List/index')}">全部作品</a>
+                    </li>
+                    <li class="nav-li" data-nav="1">
+                        <a href="{:U('Pc/List/index')}/status/2/nav/1">完本</a>
+                    </li>
+                    <li class="nav-li" data-nav="2">
+                        <a href="{:U('Pc/List/index')}/type/1/nav/2">男生</a>
+                    </li>
+                    <li class="nav-li" data-nav="3">
+                        <a href="{:U('Pc/List/index')}/type/2/nav/3">女生</a>
+                    </li>
+                    <li class="nav-li">
+                        <a href="{:U('Pc/BookManage/index')}" target="_blank">作家专区</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="focus-wrapper container">
+        <div class="row">
+            <div class="classify-list pull-left so-awesome" id="classify-list">
+                <dl>
+                    <volist name="bookClassList" id="vo">
+                        <dd>
+                            <a href="{:U('Pc/List/index/class_id')}/{$vo.id}" target="_blank">
+                                <cite>
+                                    <em class="{$vo.icon}"></em>
+                                    <span class="info">
+                                    <i>{$vo.name}</i>
+                                    <b>{$vo.count}</b>
+                                </span>
+                                </cite>
+                            </a>
+                        </dd>
+                    </volist>
+                </dl>
+            </div>
+            <div class="focus-box pull-left">
+                <div id="myFocus">
+                    <div class="loading"><img src="__PUBLIC__/Pc/images/loading.gif" alt="请稍候..."/></div>
+                    <div class="pic">
+                        <ul>
+                            <li><a href="javascript:"><img src="__PUBLIC__/Pc/images/mapper01.jpg" alt=""/></a></li>
+                            <li><a href="javascript:"><img src="__PUBLIC__/Pc/images/mapper02.jpg" alt=""/></a></li>
+                            <li><a href="javascript:"><img src="__PUBLIC__/Pc/images/mapper03.jpg" alt=""/></a></li>
+                            <li><a href="javascript:"><img src="__PUBLIC__/Pc/images/mapper04.jpg" alt=""/></a></li>
+                            <li><a href="javascript:"><img src="__PUBLIC__/Pc/images/mapper05.jpg" alt=""/></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hot-work-wrapper container cf">
+        <div class="row">
+            <div class="hot-work-box pull-left">
+                <h3 class="wrapper-title lang">热门作品</h3>
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <volist name="hotList" id="vo">
+                            <div class="swiper-slide">
+                                <div class="hot-work-info">
+                                    <div class="hot-work-slide">
+                                        <div class="three-slide-wrapper">
+                                            <a href="{:U('Pc/Book/index/id')}/{$vo.id|base64_encode}" target="_blank">
+                                                <img class="lazy" src="__UPLOAD__/{$vo.img}" alt="{$vo.name}" style="display: inline;">
+                                            </a>
+                                        </div>
+                                        <div class="info-text">
+                                            <h3>
+                                                <a href="{:U('Pc/Book/index/id')}/{$vo.id|base64_encode}" target="_blank">{$vo.name}</a>
+                                            </h3>
+                                            <p class="author">
+                                                <a href="{:U('Pc/Book/index/id')}/{$vo.id|base64_encode}" target="_blank">{$vo.username}</a>
+                                            </p>
+                                            <p class="total"><b>{$vo.collection}</b><span>人气</span></p>
+                                            <p class="intro">{$vo.intro|subtext=66}</p>
+                                            <a class="read-btn" href="{:U('Pc/Book/index/id')}/{$vo.id|base64_encode}" target="_blank">书籍详情</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </volist>
+                    </div>
+                </div>
+            </div>
+            <div class="hot-classify-wrapper pull-left">
+                <ul>
+                    <volist name="bookList" id="v">
+                        <if condition="$key eq 3">
+                            <li class="mr0">
+                            <elseif condition="$key eq 4 || $key eq 5"/>
+                            <li class="mb0">
+                            <elseif condition="$key eq 6"/>
+                            <li class="erciyuan mb0">
+                            <else/>
+                            <li>
+                        </if>
+                        <h3 class="wrapper-title lang">
+                            {$v['bookClass'][0]}
+                            <noempty name="v['bookClass'][1]">
+                                <i>·</i>{$v['bookClass'][1]}
+                            </noempty>
+                        </h3>
+                        <dl class="hot-book-list">
+                            <volist name="v['book']" id="vv">
+                                <dd>
+                                    <a class="classify" href="{:U('Pc/List/index/class_id')}/{$vv.class_id}" target="_blank">
+                                        <em>「</em>{$vv.class_name}<em>」</em>
+                                    </a>
+                                    <a class="name" href="{:U('Pc/Book/index/id')}/{$vv.id|base64_encode}" target="_blank" title="{$vv.name}">{$vv.word}</a>
+                                </dd>
+                            </volist>
+                        </dl>
+                    </li>
+                    </volist>
+                    <li class="mr0 mb0">
+                        <div class="book-wrapper bd cf">
+                            <div class="book-info pull-left">
+                                <span class="tag">{$collectionList[0]['username']}</span>
+                                <h4>
+                                    <a href="javascript:" target="_blank">{$collectionList[0]['name']}</a>
+                                </h4>
+                                <p class="digital">
+                                    <em>{$collectionList[0]['collection']|number_format=###, 0}</em>人气
+                                </p>
+                                <p class="desc">{$collectionList[0]['intro']|subtext=13}</p>
+                            </div>
+                            <div class="book-cover">
+                                <a class="link" href="{:U('Pc/Book/index/id')}/{$collectionList[0]['id']|base64_encode}" target="_blank">
+                                    <img src="__UPLOAD__/{$collectionList[0]['img']}" alt="{$collectionList[0]['name']}">
+                                </a>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="book-wrapper bd0">
+                            <div class="book-info pull-left">
+                                <span class="tag">{$collectionList[1]['username']}</span>
+                                <h4>
+                                    <a href="javascript:" target="_blank">{$collectionList[1]['name']}</a>
+                                </h4>
+                                <p class="digital">
+                                    <em>{$collectionList[1]['collection']|number_format=###, 0}</em>人气
+                                </p>
+                                <p class="desc">{$collectionList[1]['intro']|subtext=13}</p>
+                            </div>
+                            <div class="book-cover">
+                                <a class="link" href="{:U('Pc/Book/index/id')}/{$collectionList[1]['id']|base64_encode}" target="_blank">
+                                    <img src="__UPLOAD__/{$collectionList[1]['img']}" alt="{$collectionList[1]['name']}">
+                                </a>
+                                <span></span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="site-map">
+                    <ul>
+                        <li><a href="javascript:">系统简介</a></li>
+                        <li><a href="javascript:">广告服务</a></li>
+                        <li><a href="javascript:">试用洽谈</a></li>
+                        <li><a href="javascript:">网站地图</a></li>
+                        <li><a href="javascript:">联系方式</a></li>
+                        <li><a href="javascript:">关于我们</a></li>
+                    </ul>
+                </div>
+                <div class="copyright">
+                    Copyright © 2017 <a href="javascript:">Gallonce</a> , Inc. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<script src="__PUBLIC__/Pc/plugins/jquery/jquery.min.js"></script>
+<script src="__PUBLIC__/Pc/plugins/layui/layui.all.js"></script>
+<script src="__PUBLIC__/Pc/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/Pc/plugins/myFocus/myfocus-2.0.1.min.js"></script>
+<script src="__PUBLIC__/Pc/js/swiper.min.js"></script>
+<script src="__PUBLIC__/Pc/js/common.js"></script>
+<script src="__PUBLIC__/Pc/js/main.js"></script>
+<!--js脚本-->
+    <script type="text/javascript">
+        (function () {
+            myFocus.set({
+                id: 'myFocus',//ID
+                pattern: 'mF_fancy'//Style
+            });
+            //swiper轮播
+            var mySwiper = new Swiper('.swiper-container', {
+                autoplay: 3000,//可选选项，自动滑动
+                loop : true,
+                autoplayDisableOnInteraction : false
+            });
+            //搜索
+            $('#search-btn').click(function(){
+                var name = $('#s-box').val();
+                if(name==""){
+                    window.open('/Pc/Search/index');
+                }else{
+                    window.open('/Pc/Search/index/name/'+name);
+                }
+            });
+            //我的消息
+            function message(){
+                $.ajax({
+                    url:"{:U('Pc/Base/myMessage')}",
+                    type:"post",
+                    dataType:"json",
+                    success:function(data){
+                        if(data.status==1){
+                            $('#messageCount').html(data.data);
+                        }
+                    }
+                });
+            }
+            message();
+            setInterval(function(){
+                message();
+            },10000);
+        })();
+    </script>
+<!--js脚本-->
+</body>
+</html>

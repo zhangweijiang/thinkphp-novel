@@ -1,0 +1,313 @@
+<extend name="Public/base"/>
+<block name="body">
+    <div class="personal-wrapper container">
+        <div class="row">
+            <div class="personal-sideBar">
+                <h4>个人中心</h4>
+                <ul>
+                    <li class="active"><a href="{:U('Pc/PersonSetting/index')}"><i class="fa fa-user-o"></i>个人信息</a></li>
+                    <li><a href="{:U('Pc/BookManage/index')}"><i class="fa fa-book"></i>作品管理</a></li>
+                    <li><a href="{:U('Pc/Comment/index')}"><i class="fa fa-bell-o"></i>消息管理</a></li>
+                    <li><a href="{:U('Pc/BookCase/index')}"><i class="fa fa-desktop"></i>我的书架</a></li>
+                </ul>
+            </div>
+            <div class="personal-content">
+                <div class="user-wrapper">
+                    <div class="user-wrapper-header cf">
+                        <div class="user-related">
+                            <a class="name" href="#">{$user.name}</a>
+                            <span>作品<em>{$user.book}</em></span>
+                            <span>收藏<em>{$user.collection}</em></span>
+                        </div>
+                        <div class="user-wrapper-btn">
+                            <a id="userSettingBtn" href="javascript:" class="btn-userSetting"><i class="fa fa-pencil"></i></a>
+                            <a id="passwordSettingBtn" href="javascript:" class="btn-passwordSetting"><i class="fa fa-cog"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-wrapper-content">
+                    <dl class="saved">
+                    <dt>昵称</dt>
+                    <dd>
+                        <p id="name">{$user.name}</p>
+                    </dd>
+                </dl>
+                    <dl class="higher modify">
+                        <dt>昵称</dt>
+                        <dd>
+                            <span class="modify">
+                                <input id="idInput" type="hidden" value="{$user.id}">
+                                <input id="nameInput" type="text" value="{$user.name}" required>
+                            </span>
+                        </dd>
+                    </dl>
+                    <dl class="saved">
+                        <dt>性别</dt>
+                        <dd>
+                                <p id="sex">
+                                    <if condition="$user.sex eq 1">
+                                        男
+                                        <elseif condition="$user.sex eq 2"/>
+                                        女
+                                    </if>
+                                </p>
+
+                            </if>
+                        </dd>
+                    </dl>
+                    <dl class="modify">
+                        <dt>性别</dt>
+                        <dd>
+                            <if condition="$user.sex eq 1">
+                            <input class="radio-danger" type="radio" name="sex" value="1" checked>男
+                            <input class="radio-danger" type="radio" name="sex" value="2">女
+                                <elseif condition="$user.sex eq 2"/>
+                             <input class="radio-danger" type="radio" name="sex" value="1">男
+                             <input class="radio-danger" type="radio" name="sex" value="2" checked>女
+                            </if>
+                        </dd>
+                    </dl>
+                    <dl class="saved">
+                        <dt>生日</dt>
+                        <dd>
+                                <p id="birthday">
+                                    <notempty name="user.birthday">
+                                        {$user.birthday|date='Y-m-d',###}
+                                    </notempty>
+                                </p>
+
+
+                        </dd>
+                    </dl>
+                    <dl class="higher modify">
+                        <dt>生日</dt>
+                        <dd>
+                            <input id="birthdayInput" type="text" <notempty name="user.birthday">value="{$user.birthday|date='Y-m-d',###}"</notempty> >
+                        </dd>
+                    </dl>
+                    <dl class="saved">
+                        <dt>手机</dt>
+                        <dd>
+                            <p id="tel">{$user.tel}</p>
+                        </dd>
+                    </dl>
+                    <dl class="higher modify">
+                        <dt>手机</dt>
+                        <dd>
+                            <span class="modify">
+                                <input id="telInput" type="text" value="{$user.tel}">
+                            </span>
+                        </dd>
+                    </dl>
+                    <dl class="saved">
+                        <dt>邮箱</dt>
+                        <dd>
+                            <p id="email">{$user.email}</p>
+                        </dd>
+                    </dl>
+                    <dl class="higher modify">
+                        <dt>邮箱</dt>
+                        <dd>
+                            <span class="modify">
+                                <input id="emailInput" type="text" value="{$user.email}">
+                            </span>
+                        </dd>
+                    </dl>
+                    <dl class="saved">
+                        <dt>地址</dt>
+                        <dd>
+                            <p id="address">{$user.address}</p>
+                        </dd>
+                    </dl>
+                    <dl class="higher modify">
+                        <dt>地址</dt>
+                        <dd>
+                            <span class="modify">
+                                <input id="addressInput" type="text" value="{$user.address}">
+                            </span>
+                        </dd>
+                    </dl>
+                    <dl class="saved">
+                        <dt>简介</dt>
+                        <dd>
+                            <p id="intro">{$user.intro}</p>
+                        </dd>
+                    </dl>
+                    <dl class="higher modify">
+                        <dt>简介</dt>
+                        <dd>
+                            <div class="count-text">
+                                <span class="count"><em id="J_descCounter">0</em>/200</span>
+                                <textarea id="introInput" placeholder="可以简单地描述自己">{$user.intro}</textarea>
+                            </div>
+                        </dd>
+                    </dl>
+                    <dl class="higher modify">
+                        <dt></dt>
+                        <dd>
+                            <button id="saveInfoBtn" class="button red-btn">保存</button>
+                            <button id="cancelInfoBtn" class="button white">取消</button>
+                        </dd>
+                    </dl>
+                </div>
+                <div id="changePasswordWrapper" class="windowForm" style="display: none; padding: 20px;">
+                    <p>新密码</p>
+                    <p class="mb20">
+                        <input class="longInput" type="password" value="" id="password">
+                    </p>
+                    <p>确认密码</p>
+                    <p class="mb20">
+                        <input class="longInput" type="password" value="" id="repassword">
+                    </p>
+                    <div class="confirmBtn">
+                        <a id="newVolumeConfirm" class="button red-btn" href="javascript:">确定</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script>
+        (function () {
+            var laydate = layui.laydate,
+                oldName = $('#nameInput').val(),
+                oldSex = $('.user-wrapper-content input[type=radio][name="sex"]').val(),
+                oldBirthday = $('#birthdayInput').val(),
+                oldIntro = $('#introInput').val();
+                oldTel = $('#telInput').val();
+                oldEmail = $('#emailInput').val();
+                oldAddress = $('#addressInput').val();
+
+            // 初始化日期选择组件
+            laydate.render({
+                elem: '#birthdayInput',
+                theme: '#ee4259',
+                showBottom: false
+            });
+
+            // 绑定简介字数
+            wordCount('#introInput', '#J_descCounter', 200);
+
+            // 编辑按钮
+            $('#userSettingBtn').on('click', function () {
+                $('.user-wrapper-content').find('.modify').show();
+                $('.user-wrapper-content').find('.saved').hide();
+                $('#J_descCounter').text($('#introInput').val().length);
+            });
+
+            // 保存
+            $('#saveInfoBtn').on('click', function () {
+                var telres = /^1[3|4|5|8][0-9]\d{8}$/;
+                var emailres = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
+                var tel = $('#telInput').val();
+                var email = $('#emailInput').val();
+                if($('#nameInput').val()==""){
+                    layer.msg('昵称不能为空');
+                    return false;
+                }
+                if(!telres.test(tel)){
+                    layer.msg('请填写正确手机号');
+                    return false;
+                }
+                if(!emailres.test(email)){
+                    layer.msg('请填写正确邮箱');
+                    return false;
+                }
+                $.ajax({
+                    url:"{:U('Pc/PersonSetting/save')}",
+                    type:"post",
+                    data:{
+                        id:$('#idInput').val(),
+                        name:$('#nameInput').val(),
+                        birthday:$('#birthdayInput').val(),
+                        intro:$('#introInput').val(),
+                        tel:$('#telInput').val(),
+                        email:$('#emailInput').val(),
+                        address:$('#addressInput').val(),
+                        sex:$('.user-wrapper-content input[type=radio][name="sex"]:checked').val()
+                    },
+                    dataType:"json",
+                    success:function(data){
+                        if(data.status==1){
+                            $('#name').text($('#nameInput').val());
+                            $('#birthday').text($('#birthdayInput').val());
+                            $('#intro').text($('#introInput').val());
+                            $('#sex').text($('.user-wrapper-content input[type=radio][name="sex"]:checked').val() == 1 ? '男' : '女');
+                            $('#tel').text($('#telInput').val());
+                            $('#email').text($('#emailInput').val());
+                            $('#address').text($('#addressInput').val());
+                            $('.user-wrapper-content').find('.modify').hide();
+                            $('.user-wrapper-content').find('.saved').show();
+                        }else{
+                            layer.msg(data.msg,{time:2000},function(){
+                                window.location.reload();//刷新页面
+                            });
+                        }
+                    }
+                });
+
+            });
+
+            // 取消保存
+            $('#cancelInfoBtn').on('click', function () {
+
+                $('#nameInput').val(oldName);
+                $('.user-wrapper-content input[type=radio][name="sex"]').val(oldSex);
+                $('#birthdayInput').val(oldBirthday);
+                $('#introInput').val(oldIntro);
+                $('#telInput').val(oldTel);
+                $('#emailInput').val(oldEmail);
+                $('#addressInput').val(oldAddress);
+
+                $('.user-wrapper-content').find('.modify').hide();
+                $('.user-wrapper-content').find('.saved').show();
+            });
+
+            // 修改密码
+            $('#passwordSettingBtn').on('click', function () {
+                layer.open({
+                    type: 1,
+                    title: '修改密码',
+                    area: ['auto'],
+                    content: layui.jquery('#changePasswordWrapper')
+                });
+            });
+
+            //修改密码的确定按钮点击事件
+            $('#newVolumeConfirm').on('click',function(){
+               var password = $('#password').val();
+               var repassword = $('#repassword').val();
+               if(password==""){
+                   layer.msg('请输入密码！');
+                   return false;
+                }
+                if(password != repassword){
+                    layer.msg('您两次输入的密码不一致，请重新输入');
+                   return false;
+                }
+                $.ajax({
+                   url:"{:U('Pc/PersonSetting/savePwd')}",
+                   type:"post",
+                   data:{
+                        id:$('#idInput').val(),
+                        password:password
+                    },
+                    dataType:'json',
+                    success:function(data){
+                       if(data.status==1){
+                           layer.msg(data.msg,{time:2000},function(){
+                               window.location = "{:U('Pc/Login/logout')}";
+                           });
+                       }else{
+                           layer.msg(data.msg,{time:2000},function(){
+                               window.location.reload();//刷新页面
+                           });
+                       }
+                    }
+                });
+            });
+
+        })();
+    </script>
+</block>

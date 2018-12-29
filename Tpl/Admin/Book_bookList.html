@@ -1,0 +1,238 @@
+<style>
+	td {
+		text-align:center; /*设置水平居中*/
+		vertical-align:middle !important;/*设置垂直居中*/
+	}
+</style>
+<div class="row">
+	<div class="col-xs-12 col-md-12">
+		<div class="widget">
+			<div class="widget-header bg-blue">
+				<i class="widget-icon fa fa-arrow-down"></i>
+				<span class="widget-caption">书籍列表</span>
+				<div class="widget-buttons">
+					<a href="#" data-toggle="maximize">
+						<i class="fa fa-expand"></i>
+					</a>
+					<a href="#" data-toggle="collapse">
+						<i class="fa fa-minus"></i>
+					</a>
+					<a href="#" data-toggle="dispose">
+						<i class="fa fa-times"></i>
+					</a>
+				</div>
+			</div>
+			<div class="widget-body">
+				<div class="table-toolbar">
+					<!--<a href="#" class="btn btn-danger" id="App-delall">
+						<i class="fa fa-delicious"></i>全部删除
+					</a>-->
+					<div class="pull-right">
+						<form id="App-search">
+							<label for="">上下架:</label>
+							<label style="margin-bottom: 0px;">
+								<select name="on_sale" >
+									<option value="">请选择...</option>
+									<option value="1" <eq name="on_sale" value="1">selected</eq>>上架</option>
+									<option value="0" <eq name="on_sale" value="0">selected</eq>>下架</option>
+								</select>
+							</label>
+							<label for="">类型:</label>
+							<label style="margin-bottom: 0px;">
+								<select name="class_id" >
+									<option value="0">请选择...</option>
+									<volist name='bookClassList' id="vo">
+										<option value="{$vo.id}" <eq name="class_id" value="$vo['id']">selected</eq> >{$vo.name}</option>
+									</volist>
+								</select>
+							</label>
+							<label for="">书籍名称:</label>
+							<label style="margin-bottom: 0px;">
+								<input name="name" type="search" class="form-control input-sm" value="{$name}" placeholder="请输入书籍名称">
+							</label>
+							<a href="{:U('Admin/Book/bookList/')}" class="btn btn-success" data-loader="App-loader" data-loadername="书籍列表" data-search="App-search">
+								<i class="fa fa-search"></i>搜索
+							</a>
+						</form>
+					</div>
+				</div>
+
+				<table id="App-table" class="table table-bordered table-hover">
+					<thead class="bordered-darkorange">
+						<tr role="row">
+							<th width="30px"><div class="checkbox" style="margin-bottom: 0px; margin-top: 0px;">
+									<label style="padding-left: 4px;"> <input type="checkbox" class="App-checkall colored-blue">
+                                     <span class="text"></span>
+									</label>                                    
+                                </div></th>
+							<th>ID</th>
+							<th>书籍名称</th>
+							<th>作家姓名</th>
+							<th>分类名称</th>
+							<th>是否推荐</th>
+							<th>字数</th>
+							<th>收藏数</th>
+							<th>状态</th>
+							<th>标签</th>
+							<th>介绍</th>
+							<th>阅读权限</th>
+							<th>是否上架</th>
+							<th>上架时间</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<volist name="cache" id="vo">
+							<tr id="item{$vo.id}" >
+								<td valign="middle">
+									<div class="checkbox" style="margin-bottom: 0px; margin-top: 0px;">
+										<label style="padding-left: 4px;"> <input name="checkvalue" type="checkbox" class="colored-blue App-check" value="{$vo.id}">
+	                                     <span class="text"></span>
+										</label>                                    
+	                                </div>
+								</td>
+								<td class="sorting_1">{$vo.id}</td>
+								<td>{$vo.name}</td>
+								<td>{$vo.username}</td>
+								<td>{$vo.class_name}</td>
+								<td>
+									<if condition="$vo['commend'] eq 1">否
+									<elseif condition="$vo['commend'] eq 2"/>是</if>
+								</td>
+								<td>{$vo.count}</td>
+								<td>{$vo.collection}</td>
+								<td>
+									<if condition="$vo['status'] eq 1">加载中
+									<elseif condition="$vo['status'] eq 2"/>已完结</if>
+								</td>
+								<td>
+									<if condition="mb_strlen($vo['label'],'utf-8') gt 7">
+										<a href="javascript:void(0)" class="label1" data-label="{$vo.label}">{$vo.label|subtext=7}</a>
+										<else/>
+										{$vo.label}
+									</if>
+
+								</td>
+								<td><span title="{$vo.intro}">{$vo.intro|subtext=7}</span></td>
+								<td style="width:33px;"><input style="width:33px;" type="text" value="{$vo.outh}" class="outh"></td>
+								<td>
+									<if condition="$vo.on_sale eq 0">
+										下架
+										<else/>
+										上架
+									</if>
+								</td>
+								<notempty name="vo.on_sale_time">
+									<td>{$vo.on_sale_time|date="Y-m-d H:i:s",###}</td>
+									<else/>
+									<td></td>
+								</notempty>
+								<td>
+									<if condition="$vo['on_sale'] eq 0">
+										<button class="btn btn-success btn-xs on-sale" data-id="{$vo.id}" data-on-sale="1"><i class="fa fa-arrow-up"></i>上架</button>
+										<else/>
+										<button class="btn btn-danger btn-xs on-sale" data-id="{$vo.id}" data-on-sale="0"><i class="fa fa-arrow-down"></i>下架</button>
+									</if>
+									<a href="{:U('Admin/Book/bookChapterList/',array('book_id'=>$vo['id']))}" class="btn btn-success btn-xs" data-loader="App-loader" data-loadername="章节列表"> 查看章节</a>
+									<!--<a href="javascript:void(0)" class="btn btn-danger btn-xs" data-type = "del" data-ajax="{:U('Admin/Book/bookDel/',array('id'=>$vo['id']))}"><i class="fa fa-trash-o"></i> 删除</a>-->
+								</td>
+							</tr>
+						</volist>
+												
+					</tbody>
+				</table>
+				<div class="row DTTTFooter">
+					{$page}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--面包屑导航封装-->
+<div id="tmpbread" style="display: none;">{$breadhtml}</div>
+<script type="text/javascript">
+	setBread($('#tmpbread').html());
+</script>
+<!--/面包屑导航封装-->
+<!--全选特效封装/全部删除-->
+<script type="text/javascript">
+	//全选
+	var checkall=$('#App-table .App-checkall');
+	var checks=$('#App-table .App-check');
+	var trs=$('#App-table tbody tr');
+	$(checkall).on('click',function(){
+		if($(this).is(":checked")){			
+			$(checks).prop("checked","checked");
+		}else{
+			$(checks).removeAttr("checked");
+		}		
+	});
+	$(trs).on('click',function(){
+		var c=$(this).find("input[type=checkbox]");
+		if($(c).is(":checked")){
+			$(c).removeAttr("checked");
+		}else{
+			$(c).prop("checked","checked");
+		}		
+	});
+	//全删
+	$('#App-delall').on('click',function(){
+		var checks=$(".App-check:checked");
+		var chk='';
+		$(checks).each(function(){
+			chk+=$(this).val()+',';
+		});
+		if(!chk){
+			$.App.alert('danger','请选择要删除的项目！');
+			return false;
+		}
+		var toajax="{:U('Admin/book/bookDel')}"+"/id/"+chk;
+		var funok=function(){
+			var callok=function(){
+				//成功删除后刷新
+				$('#refresh-toggler').trigger('click');
+				return false;
+			};
+			var callerr=function(){
+				//拦截错误
+				return false;
+			};
+			$.App.ajax('post',toajax,'nodata',callok,callerr);
+		}						
+		$.App.confirm("确认要删除吗？",funok);
+	});
+
+    //标签内容点击事件
+    $('.label1').click(function(){
+        var label = $(this).data('label');
+        var label = "<div>"+label+"</div>";
+        bootbox.dialog({
+            message: label,
+            title: "标签",
+            className: "modal-darkorange",
+            buttons: {
+                success: {
+                    label: "确定",
+                    className: "btn-blue",
+                    callback: function() {}
+                },
+                "取消": {
+                    className: "btn-danger",
+                    callback: function() {}
+                }
+            }
+        });
+    });
+
+    //上下架点击事件
+	$('.on-sale').click(function(){
+	   var id = $(this).data('id');
+	   var on_sale = $(this).data('on-sale');
+        $.App.ajax("post","{:U('Admin/Book/updateBookOnSale')}",{id:id,on_sale:on_sale},function(){
+           $('#refresh-toggler').trigger('click');
+	   });
+	});
+
+
+</script>
+<!--/全选特效封装-->

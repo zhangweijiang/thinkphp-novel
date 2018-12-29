@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>书籍列表页</title>
+    <!-- 插件样式引入 -->
+    <link rel="stylesheet" href="__PUBLIC__/Pc/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Pc/plugins/font-awesome/css/font-awesome.css">
+
+    <!-- 插件重写样式、公共样式及页面主要样式引入 -->
+    <link rel="stylesheet" href="__PUBLIC__/Pc/css/plugins.reset.css">
+    <link rel="stylesheet" href="__PUBLIC__/Pc/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/Pc/css/icon.css">
+    <link rel="stylesheet" href="__PUBLIC__/Pc/css/main.css">
+    <style>
+        .pagination .current{
+            background: #2dc3e8;
+        }
+        .pagination > div > a, .pager > div > a {
+            color: #444;
+            background-color: #fff;
+            margin: 0 -1px 0 0;
+            border-color: #ccc;
+        }
+        .pagination>div>a, .pagination>div>span {
+            position: relative;
+            float: left;
+            padding: 6px 12px;
+            margin-left: -1px;
+            line-height: 1.42857143;
+            color: #428bca;
+            text-decoration: none;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="top-nav">
+        <div class="container cf">
+            <div class="row">
+                <div class="login-box text-right">
+                    <span class="pull-left">起点中文网</span>
+                    <notempty name="Think.session.user">
+                        <div class="sign-in">
+                            <span>你好，</span><a class="black" id="user-name" href="{:U('Pc/PersonSetting/index')}" target="_blank">{$Think.session.user.name}</a><em>|</em><a class="black" id="msg-btn" href="//me.qidian.com/msg/systems.aspx?page=1" target="_blank" data-eid="qd_A09">消息<cite id="msg-box">(<i class="black" id="messageCount">0</i>)</cite></a><em>|</em><a id="exit-btn" href="{:U('Pc/Login/logout')}" data-eid="qd_A10">退出</a>
+                        </div>
+                        <else/>
+                        <div class="sign-out">
+                            <a id="login-btn" class="black" href="{:U('Pc/Login/index')}" target="_blank">登录</a>
+                            <em>|</em>
+                            <a id="reg-btn" href="{:U('Pc/Register/index')}" target="_blank">注册</a>
+                        </div>
+                    </notempty>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="logo-wrapper container center-block">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="logo">
+                    <a href="javascript:">LOGO</a>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="search-wrapper center-block">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="请输入小说名称" id="s-box">
+                        <span class="input-group-btn">
+                    <button class="btn btn-default red-btn" type="button" id="search-btn"><i class="fa fa-search"></i></button>
+                </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 text-right">
+                <div class="book-shelf">
+                    <a href="{:U('Pc/BookCase/index')}"  target="_blank">
+                        <em class="fa fa-book"></em>
+                        <i>我的书架</i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main-nav-wrapper">
+        <div class="main-nav container" id="type-hover">
+            <div class="classify-list pull-left so-awesome" id="classify-list" style="display: none;">
+                <dl>
+                    <volist name="bookClassList" id="vo">
+                        <dd>
+                            <a href="{:U('Pc/List/index/class_id')}/{$vo.id}/type/{:I('get.type')}">
+                                <cite>
+                                    <em class="{$vo.icon}"></em>
+                                    <span class="info">
+                                    <i>{$vo.name}</i>
+                                    <b>{$vo.count}</b>
+                                </span>
+                                </cite>
+                            </a>
+                        </dd>
+                    </volist>
+                </dl>
+            </div>
+            <div class="row">
+                <ul>
+                    <li class="first">
+                        <b><strong></strong></b>
+                        <span><i class="fa fa-bars"></i>作品分类</span>
+                    </li>
+                    <li class="nav-li active">
+                        <a href="{:U('Pc/List/index')}">全部作品</a>
+                    </li>
+                    <li class="nav-li" data-nav="1">
+                        <a href="{:U('Pc/List/index')}/status/2/nav/1">完本</a>
+                    </li>
+                    <li class="nav-li" data-nav="2">
+                        <a href="{:U('Pc/List/index')}/type/1/nav/2">男生</a>
+                    </li>
+                    <li class="nav-li" data-nav="3">
+                        <a href="{:U('Pc/List/index')}/type/2/nav/3">女生</a>
+                    </li>
+                    <li class="nav-li">
+                        <a href="{:U('Pc/BookManage/index')}" target="_blank">作家专区</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="all-pro-wrapper container center-block cf">
+        <div class="row">
+            <div class="range-sidebar pull-left">
+                <div class="site">
+                    <ul class="tab">
+                        <li class="active" data-target="male" id="tab_male"><a href="{:U('Pc/List/index/type/1')}">男生</a></li>
+                        <li data-target="female" id="tab_female"><a href="{:U('Pc/List/index/type/2')}">女生</a></li>
+                    </ul>
+                </div>
+                <div class="select-list">
+                    <div class="work-filter type-filter">
+                        <h3>分类</h3>
+                        <ul class="tab-pane active" id="male" type="category">
+                            <li class="active arrow bookClass">
+                                <a href="{:U('Pc/List/index')}<notempty name='Think.GET.status'>/status/{:I('get.status')}</notempty>/type/{:I('get.type')}<notempty name='Think.GET.count'>/count/{:I('get.count')}</notempty>">全部</a>
+                            </li>
+                            <volist name="maleClassList" id="vo">
+                                <li class="bookClass" data-class-id="{$vo.id}">
+                                    <a href="{:U('Pc/List/index')}<notempty name='Think.GET.status'>/status/{:I('get.status')}</notempty>/type/{:I('get.type')}<notempty name='Think.GET.count'>/count/{:I('get.count')}</notempty>/class_id/{$vo.id}">{$vo.name}</a>
+                                </li>
+                            </volist>
+                        </ul>
+                        <ul class="tab-pane" id="female" type="category">
+                            <li class="active arrow bookClass">
+                                <a href="{:U('Pc/List/index')}<notempty name='Think.GET.status'>/status/{:I('get.status')}</notempty>/type/{:I('get.type')}<notempty name='Think.GET.count'>/count/{:I('get.count')}</notempty>">全部</a>
+                            </li>
+                            <volist name="femaleClassList" id="vo">
+                                 <li class="bookClass" data-class-id="{$vo.id}">
+                                    <a href="{:U('Pc/List/index')}<notempty name='Think.GET.status'>/status/{:I('get.status')}</notempty>/type/{:I('get.type')}<notempty name='Think.GET.count'>/count/{:I('get.count')}</notempty>/class_id/{$vo.id}">{$vo.name}</a>
+                                 </li>
+                            </volist>
+                        </ul>
+                    </div>
+                    <div class="work-filter action-filter">
+                        <h3>状态</h3>
+                        <ul type="action">
+                            <li class="active bookStatus">
+                                <a href="{:U('Pc/List/index')}<notempty name='Think.GET.class_id'>/class_id/{:I('get.class_id')}</notempty>/type/{:I('get.type')}<notempty name='Think.GET.count'>/count/{:I('get.count')}</notempty>">全部</a>
+                            </li>
+                            <li class="bookStatus" data-status="1">
+                                <a href="{:U('Pc/List/index')}<notempty name='Think.GET.class_id'>/class_id/{:I('get.class_id')}</notempty>/type/{:I('get.type')}<notempty name='Think.GET.count'>/count/{:I('get.count')}</notempty>/status/1">连载</a>
+                            </li>
+                            <li class="bookStatus" data-status="2">
+                                <a href="{:U('Pc/List/index')}<notempty name='Think.GET.class_id'>/class_id/{:I('get.class_id')}</notempty>/type/{:I('get.type')}<notempty name='Think.GET.count'>/count/{:I('get.count')}</notempty>/status/2">完本</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="work-filter">
+                        <h3>字数</h3>
+                        <ul type="size">
+                            <li class="active bookCount">
+                                <a href="{:U('Pc/List/index')}<notempty name='Think.GET.class_id'>/class_id/{:I('get.class_id')}</notempty>/type/{:I('get.type')}<notempty name='Think.GET.status'>/status/{:I('get.status')}</notempty>">全部</a>
+                            </li>
+                            <li class="bookCount" data-count="1">
+                                <a href="{:U('Pc/List/index')}<notempty name='Think.GET.class_id'>/class_id/{:I('get.class_id')}</notempty>/type/{:I('get.type')}<notempty name='Think.GET.status'>/status/{:I('get.status')}</notempty>/count/1">30万字以下</a>
+                            </li>
+                            <li class="bookCount" data-count="2">
+                                <a href="{:U('Pc/List/index')}<notempty name='Think.GET.class_id'>/class_id/{:I('get.class_id')}</notempty>/type/{:I('get.type')}<notempty name='Think.GET.status'>/status/{:I('get.status')}</notempty>/count/2">30-50万字</a>
+                            </li>
+                            <li class="bookCount" data-count="3">
+                                <a href="{:U('Pc/List/index')}<notempty name='Think.GET.class_id'>/class_id/{:I('get.class_id')}</notempty>/type/{:I('get.type')}<notempty name='Think.GET.status'>/status/{:I('get.status')}</notempty>/count/3">50-100万字</a>
+                            </li>
+                            <li class="bookCount" data-count="4">
+                                <a href="{:U('Pc/List/index')}<notempty name='Think.GET.class_id'>/class_id/{:I('get.class_id')}</notempty>/type/{:I('get.type')}<notempty name='Think.GET.status'>/status/{:I('get.status')}</notempty>/count/4">100-200万字</a>
+                            </li>
+                            <li class="bookCount" data-count="5">
+                                <a href="{:U('Pc/List/index')}<notempty name='Think.GET.class_id'>/class_id/{:I('get.class_id')}</notempty>/type/{:I('get.type')}<notempty name='Think.GET.status'>/status/{:I('get.status')}</notempty>/count/5">200万字以上</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="main-content-wrapper pull-left">
+                <div class="all-book-list">
+                    <div class="book-img-text">
+                        <ul class="all-img-list cf">
+                            <volist name="bookList" id="vo">
+                                <li>
+                                    <div class="book-img-box">
+                                        <a href="{:U('Pc/Book/index/id')}/{$vo.id|base64_encode}" target="_blank"><img src="__UPLOAD__/{$vo.img}"></a>
+                                    </div>
+                                    <div class="book-mid-info">
+                                        <h4>
+                                            <a href="{:U('Pc/Book/index/id')}/{$vo.id|base64_encode}" target="_blank">{$vo.name}</a>
+                                        </h4>
+                                        <p class="author">
+                                            <img src="__PUBLIC__/Pc/images/user.png">
+                                            <a class="name" href="{:U('Pc/Book/index/id')}/{$vo.id|base64_encode}" target="_blank">{$vo.username}</a>
+                                            <em>|</em>
+                                            <a href="{:U('Pc/List/index/id')}/{$vo.class_id}" target="_blank">{$vo.class_name}</a>
+                                            <em>|</em>
+                                            <if condition="$vo.status eq 1">
+                                                <span>连载中</span>
+                                                <elseif condition="$vo.status eq 2"/>
+                                                <span>已完结</span>
+                                            </if>
+                                        </p>
+                                        <p class="intro">
+                                            {$vo.intro}
+                                        </p>
+                                        <p class="update">
+                                            <span>{$vo.count}字</span>
+                                        </p>
+                                    </div>
+                                </li>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+                <div class="page-box cf">
+                    <div class="pagination-wrapper custom-pagination pull-right" id="page-container">
+                        <div class="pagination">
+                            {$page}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="site-map">
+                    <ul>
+                        <li><a href="javascript:">系统简介</a></li>
+                        <li><a href="javascript:">广告服务</a></li>
+                        <li><a href="javascript:">试用洽谈</a></li>
+                        <li><a href="javascript:">网站地图</a></li>
+                        <li><a href="javascript:">联系方式</a></li>
+                        <li><a href="javascript:">关于我们</a></li>
+                    </ul>
+                </div>
+                <div class="copyright">
+                    Copyright © 2017 <a href="javascript:">Gallonce</a> , Inc. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+
+
+<script src="__PUBLIC__/Pc/plugins/jquery/jquery.min.js"></script>
+<script src="__PUBLIC__/Pc/plugins/layui/layui.all.js"></script>
+<script src="__PUBLIC__/Pc/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/Pc/js/common.js"></script>
+<script src="__PUBLIC__/Pc/js/main.js"></script>
+<script>
+    (function () {
+        var timer, timer2 = null;
+        // 移入作品分类时触发显示列表事件，用户快速划过鼠标时不触发
+        $('#type-hover .first').mouseover(function () {
+            //鼠标停留200毫秒才会赋值触发事件
+            timer = setTimeout(function () {
+                $('#classify-list').show();
+            }, 300);
+            clearTimeout(timer2);
+        });
+        // hover到列表时仍然保持显示123
+        $('#type-hover #classify-list').mouseover(function () {
+            clearTimeout(timer2);
+            $('#classify-list').show();
+        });
+        // 移开作品分类和列表时，列表隐藏
+        $('#type-hover .first, #type-hover #classify-list').mouseout(function () {
+            clearTimeout(timer);
+            timer2 = setTimeout(function () {
+                $('#classify-list').hide();
+            }, 100)
+        });
+
+        // 点击展开按钮
+        $('#unfold').on('click', function () {
+            $(this).siblings('.hide').removeClass('hide');
+            $(this).remove();
+        });
+
+        var type = "{:I('get.type')}";
+        if(type==1){
+            $('#tab_male').trigger('click');
+        }else if(type==2){
+            $('#tab_female').trigger('click');
+        }
+
+        //分类选中设置
+        $('.bookClass').each(function(){
+            if($(this).attr('data-class-id')=="{:I('get.class_id')}"){
+                $('.bookClass').removeClass('active');
+                $(this).addClass('active');
+            }
+        });
+        //状态选中设置
+        $('.bookStatus').each(function(){
+            if($(this).attr('data-status')=="{:I('get.status')}"){
+                $('.bookStatus').removeClass('active');
+                $(this).addClass('active');
+            }
+        });
+        //字数选中设置
+        $('.bookCount').each(function(){
+            if($(this).attr('data-count')=="{:I('get.count')}"){
+                $('.bookCount').removeClass('active');
+                $(this).addClass('active');
+            }
+        });
+        //导航栏选中
+        $('.main-nav-wrapper .main-nav li.nav-li').each(function(){
+            if($(this).attr('data-nav')=="{:I('get.nav')}"){
+                $('.main-nav-wrapper .main-nav li.nav-li').removeClass('active');
+                $(this).addClass('active');
+            }
+        });
+        //搜索
+        $('#search-btn').click(function(){
+            var name = $('#s-box').val();
+            if(name==""){
+                window.open('/Pc/Search/index');
+            }else{
+                window.open('/Pc/Search/index/name/'+name);
+            }
+        });
+        //我的消息
+        function message(){
+            $.ajax({
+                url:"{:U('Pc/Base/myMessage')}",
+                type:"post",
+                dataType:"json",
+                success:function(data){
+                    if(data.status==1){
+                        $('#messageCount').html(data.data);
+                    }
+                }
+            });
+        }
+        message();
+        setInterval(function(){
+            message();
+        },10000);
+    })();
+</script>
+</body>
+</html>

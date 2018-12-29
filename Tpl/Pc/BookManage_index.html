@@ -1,0 +1,311 @@
+<extend name="Public/base"/>
+<block name="body">
+    <style>
+        .pagination .current{
+            background: #2dc3e8;
+        }
+        .pagination > div > a, .pager > div > a {
+            color: #444;
+            background-color: #fff;
+            margin: 0 -1px 0 0;
+            border-color: #ccc;
+        }
+        .pagination>div>a, .pagination>div>span {
+            position: relative;
+            float: left;
+            padding: 6px 12px;
+            margin-left: -1px;
+            line-height: 1.42857143;
+            color: #428bca;
+            text-decoration: none;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+    </style>
+    <div class="personal-wrapper container">
+    <div class="row">
+        <div class="personal-sideBar">
+            <h4>个人中心</h4>
+            <ul>
+                <li><a href="{:U('Pc/PersonSetting/index')}"><i class="fa fa-user-o"></i>个人信息</a></li>
+                <li class="active"><a href="{:U('Pc/BookManage/index')}"><i class="fa fa-book"></i>作品管理</a></li>
+                <li><a href="{:U('Pc/Comment/index')}"><i class="fa fa-bell-o"></i>消息管理</a></li>
+                <li><a href="{:U('Pc/BookCase/index')}"><i class="fa fa-desktop"></i>我的书架</a></li>
+            </ul>
+        </div>
+        <div class="personal-content">
+            <h3 class="personal-title">作品管理</h3>
+            <div class="personal-toolbar text-right">
+                <button class="btn red-btn btn-creatBook"><i class="fa fa-plus"></i> 创建作品</button>
+            </div>
+            <table class="table book-table">
+                <thead>
+                <tr>
+                    <th>作品名称</th>
+                    <th>最新章节</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <volist name="bookList" id="vo">
+                    <tr>
+                        <td>
+                            <img src="__UPLOAD__/{$vo.img}" alt="{$vo.name}">
+                            <span>{$vo.name}</span>
+                        </td>
+                        <notempty name="vo.chapter">
+                            <td>
+                                <span>{$vo.chapter.title}</span><br><em class="time">{$vo.chapter.ctime|date='Y-m-d H:i:s',###}</em>
+                            </td>
+                            <if condition="$vo.status eq 1">
+                                <td>完结</td>
+                                <else/>
+                                <td>新建</td>
+                            </if>
+                            <else/>
+                            <td>
+                                <span>无</span><br>
+                            </td>
+                            <td>无</td>
+                        </notempty>
+                        <td>
+                            <div class="dib-wrap">
+                                <a class="button blue" href="{:U('Pc/BookManage/chapter')}/id/{$vo.id}/type/2">
+                                    <span class="icomoon-new-chapter"></span><i>写新章节</i>
+                                </a>
+                                <a class="button white" href="{:U('Pc/BookManage/chapter')}/id/{$vo.id}/chapter_id/{$vo.chapter.id}/type/2">
+                                    <span class="icomoon-chapter"></span><i>已发布章节</i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </volist>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+        <div class="page-box cf" data-l1="3">
+            <div class="pagination-wrapper custom-pagination pull-right" id="page-container">
+                <div class="pagination">
+                    {$page}
+                </div>
+            </div>
+        </div>
+</div>
+
+  <!--  创建作品-->
+<div id="newVolumeWrapper" class="windowForm">
+    <div class="tab-pane cf active" id="bookSetting">
+        <div class="workStateWrapper cf">
+            <form id="bookInfo">
+                <div class="fmBox pull-left">
+                    <div class="fm">
+                        <img id="previewImg" src="https://ccstatic-1252317822.file.myqcloud.com/bookcoverimg/2017-12-25/default_5a4070b49d7b4.png" width="114" height="152">
+                        <span  id="selectBookCoverBtn">上传新封面</span>
+                        <input id="bookImage" name="bookImage" type="file" class="hidden">
+                    </div>
+                </div>
+                <div class="workSetList pull-left">
+                    <ul>
+                        <li>
+                            <em>作品名称：</em>
+                            <div class="cf">
+                                <input id="bookName" name="bookName" class="midInput recTagInput" value="" type="text">
+                            </div>
+                        </li>
+                        <li>
+                            <em>作品类型：</em>
+                            <b id="classificationWorks" class="select-category">
+                                <select id="bookType" name="bookType">
+                                   <volist name="bookClassList" id="vo">
+                                       <option value="{$vo.id}">{$vo.name}</option>
+                                   </volist>
+                                </select>
+                            </b>
+                        </li>
+                        <li>
+                            <em>作品状态：</em>
+                            <p>新建</p>
+                        </li>
+                        <li>
+                            <em>作品标签：</em>
+                            <div>
+                                <input id="bookLabel" name="bookLabel" class="filterTagBox" type="text" value="">
+                            </div>
+                            <p class="tip">作品审核通过后，1个自然月内仅允许修改一次</p>
+                        </li>
+                        <li>
+                            <em>作品介绍：</em>
+                            <div>
+                                <textarea id="bookIntro" name="bookIntro"></textarea>
+                            </div>
+                        </li>
+                        <li class="flyleaf">
+                            <em>扉页寄语：</em>
+                            <textarea id="bookWord" name="bookWord" placeholder=""></textarea>
+                            <p class="tip">0-32字，扉页寄语将展示在您作品的版权页</p>
+                        </li>
+                    </ul>
+                    <p class="dib-wrap confirm">
+                        <a id="saveBookInfoBtn" class="button" href="javascript:">保存</a>
+                        <a id="cancelBookInfoBtn" class="button white" href="javascript:">取消</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    <!--  创建作品-->
+</block>
+<block name="script">
+    <script src="__PUBLIC__/Pc/plugins/tagsinput/jquery.tagsinput.min.js"></script>
+<script>
+
+
+    (function () {
+        // 新建作品点击事件
+        $('.btn-creatBook').on('click', function () {
+            layer.open({
+                type: 1,
+                title: '新建作品',
+                area: [{'height':'300'}],
+                content: layui.jquery('#newVolumeWrapper')
+            });
+        });
+
+        /* ---------------------- 作品信息部分 ----------------------------- */
+
+        var selector = "#bookSetting ",
+            oldBookImage = "",
+            oldBookName = "",
+            oldBookType = "",
+            oldBookLabel = "",
+            oldBookIntro = "",
+            oldBookWord = "";
+
+        // 页面初始化操作
+        function init() {
+            // 初始化，存储表单数值
+            oldBookImage = $(selector + '#previewImg').attr('src');
+            oldBookName = $(selector + '#bookName').val();
+            oldBookType = $(selector + '#bookType').val();
+            oldBookLabel = $(selector + '#bookLabel').val();
+            oldBookIntro = $(selector + '#bookIntro').val();
+            oldBookWord = $(selector + '#bookWord').val();
+        }
+
+        // 保存编辑信息
+        function saveBookInfo() {
+            //TODO:使用ajaxSubmit提交，这样可以提交文件，后台再判断文件是否为null，为null就不修改封面图片
+            var data = new FormData(document.getElementById('bookInfo'));
+            $.ajax({
+                url:"{:U('Pc/BookManage/addBook')}",
+                type:"post",
+                data:data,
+                dataType:"json",
+                contentType: false,
+                processData: false,
+                success:function(data){
+                    if(data.status==1){
+                        layer.msg(data.msg, {icon: 1,time:2000},function(){
+                            window.location.reload();
+                        });
+                    }else{
+                        layer.msg(data.msg, {icon: 2,time:2000},function(){
+                            window.location.reload();
+                        });
+                    }
+                },
+            });
+
+        }
+
+        // 取消编辑
+        function cancelBookInfo() {
+            // 取消编辑，将表单的值修改为原来的值
+            $(selector + '#bookImage').val(null);
+            $(selector + '#previewImg').attr('src', oldBookImage);
+            $(selector + '#bookName').val(oldBookName);
+            $(selector + '#bookType').val(oldBookType);
+            $(selector + '#bookLabel').val(oldBookLabel);
+            $(selector + '#bookLabel').importTags(oldBookLabel);
+            $(selector + '#bookIntro').val(oldBookIntro);
+            $(selector + '#bookWord').val(oldBookWord);
+
+        }
+
+        init();
+
+        // 标签插件初始化
+        $("#bookLabel").tagsInput({
+            defaultText: 'Enter生成',
+            width: "345px",
+            height: "60px",
+            interactive: true
+        });
+        $('#saveBookInfoBtn').on('click', function () {
+            saveBookInfo();
+        });
+        $('#cancelBookInfoBtn').on('click', function () {
+            cancelBookInfo();
+        });
+
+        // 上传封面按钮点击事件
+        $('#selectBookCoverBtn').on('click', function () {
+            $('#bookSetting #bookImage').trigger('click');
+        });
+
+        // 上传封面
+        $('#bookImage').on('change', function () {
+            var val = $(this).val();
+            if (val != "") {
+                if (val.indexOf(".jpg") > 0 || val.indexOf(".jpeg") > 0 || val.indexOf(".JPG") > 0 || val.indexOf(".JPEG") > 0) {
+                    $('#previewImg').attr('src', fnGetPath(this));
+                } else {
+                    layer.msg('请上传JPG、JPEG格式图片');
+                    $(this).val(oldBookImage);
+                }
+            } else {
+                layer.msg('图片不能为空');
+                $(this).val(oldBookImage);
+            }
+        });
+
+        /***
+         * 获取图片对象,低版本IE获取路径
+         * @param obj
+         * @returns {*}
+         */
+        function fnGetPath(obj) {
+            if (obj) {
+                //古代浏览器,IE7、8、9
+                if (navigator.userAgent.indexOf("MSIE") > 0 && !(navigator.userAgent.indexOf("MSIE 10.0") > 0)) {
+                    //IE7、8、9浏览器特殊处理,要先Select一下获取所选的内容,但是选中情况下不能获取所以要执行blur()再获取
+                    obj.select();
+                    obj.blur();
+                    //IE下取得图片的本地路径
+                    return document.selection.createRange().text;
+                } else {
+                    //如果支持files对象表示是现代浏览器
+                    if (obj.files) {
+                        var objectURL = window.URL.createObjectURL(obj.files[0]);
+                        //IE10+版本使用window.URL
+                        //if (navigator.userAgent.indexOf("MSIE 10.0") > 0) {
+                        //    var objectURL = window.URL.createObjectURL(obj.files[0]);
+                        //} else {
+                        //    //Chrome和FireFox分别使用    window.webkitURL  和 webkitURL
+                        //    var objectURL = (window.webkitURL ? webkitURL : URL).createObjectURL(obj.files.item(0));
+                        //}
+                        return objectURL;
+                    }
+                    //基本不可能用到
+                    return obj.value;
+                }
+            }
+            return obj.value;
+        }
+    })();
+</script>
+</block>

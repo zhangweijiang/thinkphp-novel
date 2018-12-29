@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{$title}</title>
+    <!-- 插件样式引入 -->
+    <link rel="stylesheet" href="__PUBLIC__/Pc/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/Pc/plugins/font-awesome/css/font-awesome.css">
+
+    <!-- 插件重写样式、公共样式及页面主要样式引入 -->
+    <link rel="stylesheet" href="__PUBLIC__/Pc/css/plugins.reset.css">
+    <link rel="stylesheet" href="__PUBLIC__/Pc/css/common.css">
+    <link rel="stylesheet" href="__PUBLIC__/Pc/css/icon.css">
+    <link rel="stylesheet" href="__PUBLIC__/Pc/css/main.css">
+</head>
+<body class="bg-theme-1 w800">
+<div class="wrapper">
+    <div id="pin-nav" class="pin-nav-wrapper need-search">
+        <div class="container center-block cf">
+            <div class="nav-list site-nav pull-left">
+                <ul>
+                    <li class="site">
+                        <a class="pin-logo" href="javascript:">LOGO</a>
+                    </li>
+                    <volist name="bookClassList1" id="vo">
+                        <li class=""><a href="{:U('Pc/Search/index')}/class_id/{$vo.id}">{$vo.name}</a></li>
+                    </volist>
+                    <li class="more">
+                        <a href="javascript:" id="top-nav-more" target="#">更多<span class="fa fa-caret-down"></span></a>
+                        <div class="dropdown">
+                            <a href="{:U('Pc/Search/index')}" >全部作品</a>
+                            <volist name="bookClassList2" id="vo">
+                                <a href="{:U('Pc/Search/index')}/class_id/{$vo.id}">{$vo.name}</a>
+                            </volist>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="nav-list min-user pull-right">
+                <ul>
+                    <li id="min-search">
+                        <input id="pin-input" class="pin-input" type="text" name="kw" placeholder="不朽凡人" value="{:I('get.name')}">
+                        <button class="btn btn-link" id="pin-search"><i class="fa fa-search"></i></button>
+                    </li>
+                    <li class="line"></li>
+                    <notempty name="Think.session.user">
+                        <li class="sign-in">
+                            <a href="javascript:" target="_blank"><i id="nav-user-name">{$Think.session.user.name}</i><span></span></a>
+                            <div class="dropdown">
+                                <a href="{:U('Pc/Comment/index')}" target="_blank">消息(<i id="messageCount">0</i>)</a>
+                                <a href="{:U('Pc/PersonSetting/index')}" target="_blank">个人中心</a>
+                                <a id="exit" href="{:U('Pc/Login/logout')}">退出</a>
+                            </div>
+                        </li>
+                        <else/>
+                        <li class="sign-out hidden">
+                            <a id="pin-login" href="{:U('Pc/Login/index')}">登录</a>
+                            <a class="reg" href="{:U('Pc/Register/index')}" target="_blank">注册</a>
+                        </li>
+                    </notempty>
+                    <li class="line"></li>
+                    <li class="book-shelf" id="top-book-shelf">
+                        <a href="{:U('Pc/BookCase/index')}" target="_blank">
+                            <i class="fa fa-book"></i>
+                            <i>我的书架</i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 该隐藏域存储章节ID -->
+    <input id="chapterId" type="hidden" name="chapterId" value="{$id}">
+    <div class="read-wrapper">
+        <ol class="crumbs-nav breadcrumb">
+            <li><a href="javascript:">首页</a></li>
+            <li><a href="javascript:">玄幻</a></li>
+            <li class="active" id="bookFlag">穿梭诸天</li>
+        </ol>
+        <div class="body-mark"></div>
+        <div class="read-main-wrapper" id="J_readMainWrapper">
+            <div id="chapter-box">
+                <div class="text-wrapper" id="bookInfo">
+                    <div class="book-cover-wrapper">
+                        <div class="book-photo">
+                            <img src="__UPLOAD__/{$book.img}" alt="">
+                        </div>
+                        <h1>{$book.name}</h1>
+                        <h2>
+                            <a href="javascript:" target="_blank">{$book.username}</a>著
+                        </h2>
+                        <div class="info-list cf">
+                            <ul>
+                                <li><p>{$book.class_name}</p><span>类型</span></li>
+                                <li><em>{$book.on_sale_time|date='Y-m-d',###}</em><span>上架</span></li>
+                                <li><p><em>{$book.count}</em></p><span>连载（字）</span></li>
+                            </ul>
+                        </div>
+                        <h3>与<span>{$book.collection}</span>位书友共同开启《{$book.name}》的{$book.class_name}之旅</h3>
+                        <h5>本书由本网站首发</h5>
+                        <h6>©版权所有 侵权必究</h6>
+                    </div>
+                </div>
+                <div class="text-wrapper">
+                    <div class="main-text-wrapper">
+                        <div class="text-head">
+                            <a class="book-mark" href="javascript:" title="书签"></a>
+                            <h3 class="chapter-name">{$chapter.title}</h3>
+                            <div class="book-info">
+                                <a href="javascript:" target="_blank"><i></i>{$book.name}</a>
+
+                                <a href="javascript:" target="_blank"><i></i>{$book.username}</a>
+
+                                <span class="chapter-word-count"><i></i><em>{$chapter.count}</em>字</span>
+                                <span class="update-time"><i class="fa fa-clock-o"></i>{$chapter.update_time|date='Y-m-d H:i:s',###}</span>
+                            </div>
+                        </div>
+                        <div class="read-content">
+                            <volist name="chapter.content_arr" id="vo">
+                                <p>{$vo}</p>
+                            </volist>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chapter-control">
+                <a id="j_chapterPrev" href="javascript:">上一章</a><span>|</span>
+                <a href="javascript:" target="_blank" id="dir">目录</a><span>|</span>
+                <a id="j_chapterNext" href="javascript:">下一章</a>
+            </div>
+        </div>
+        <div class="float-wrapper cf">
+            <div class="left-bar-list" id="J_leftBarList">
+                <dl>
+                    <dd id="J_navCatalogBtn" data-target="catalog">
+                        <a href="javascript:">
+                            <i class="fa fa-list"></i>
+                            <span>目录</span>
+                        </a>
+                    </dd>
+                    <dd id="J_navSettingBtn" data-target="setting">
+                        <a href="javascript:">
+                            <i class="fa fa-cog"></i>
+                            <span>设置</span>
+                        </a>
+                    </dd>
+                    <dd>
+                        <notempty name="book.is_collection">
+                            <a href="javascript:">
+                                <i class="fa fa-book disabled"></i>
+                                <span>已在书架</span>
+                            </a>
+                            <else/>
+                            <a href="javascript:" class="add-book">
+                                <i class="fa fa-book"></i>
+                                <span>书架</span>
+                            </a>
+                        </notempty>
+                    </dd>
+                    <dd>
+                        <a href="{:U('Pc/Book/index')}/id/{$book_id|base64_encode}" target="_blank">
+                            <i class="fa fa-book"></i>
+                            <span>书页</span>
+                        </a>
+                    </dd>
+                </dl>
+                <div class="panel-wrapper catalog" id="J_catalog">
+                    <a class="close-panel" href="javascript:"><i class="fa fa-close"></i></a>
+                    <div class="panel-box">
+                        <div class="catalog-tab" id="J_catalogTab">
+                            <span class="lang active">目录</span>
+                        </div>
+                        <div id="J_catalogTabWrap">
+                            <div class="panel-list-wrapper catalog-scroll-wrapper" id="J_catalogListWrapper">
+                                <div class="catalog-list-wrapper">
+                                    <h3 class="active">
+                                        <i>
+                                            <em class="fa fa-chevron-up"></em>
+                                            <em class="fa fa-chevron-down"></em>
+                                            <cite>免费</cite>
+                                        </i>
+                                    </h3>
+                                    <div class="volume-list" style="display: block;">
+                                        <ul>
+                                            <volist name="freeDir" id="vo">
+                                                <li id="nav-chapter-{$vo.id}">
+                                                    <a href="{:U('Pc/Chapter/index')}/book_id/{$book_id|base64_encode}/id/{$vo.id|base64_encode}">{$vo.title}</a>
+                                                </li>
+                                            </volist>
+                                        </ul>
+                                    </div>
+                                    <h3>
+                                        <i>
+                                            <em class="fa fa-chevron-up"></em>
+                                            <em class="fa fa-chevron-down"></em>
+                                            <cite>VIP</cite>
+                                        </i>
+                                    </h3>
+                                    <div class="volume-list" style="display: none;">
+                                        <ul>
+                                            <volist name="vipDir" id="vo">
+                                                <li id="nav-chapter-{$vo.id}">
+                                                    <a href="{:U('Pc/Chapter/index')}/book_id/{$book_id|base64_encode}/id/{$vo.id|base64_encode}">{$vo.title}</a>
+                                                </li>
+                                            </volist>
+                                        </ul>
+                                    </div>
+                                    <!-- end 卷列表 -->
+                                </div>
+                            </div>
+                            <!-- end 目录列表 -->
+
+                        </div>
+                        <!-- end 目录书签切换容器-->
+                    </div>
+                </div>
+                <div class="panel-wrapper setting" id="J_setting">
+                    <a class="close-panel setting-close" href="javascript:"><i class="fa fa-close"></i></a>
+                    <div class="panel-box">
+                        <h4 class="lang">设置</h4>
+                        <div class="setting-list-wrap">
+                            <ul>
+                                <li class="theme-list" id="J_themeList">
+                                    <i>阅读主题</i>
+                                    <span title="默认" class="theme-0 active" data-index="1"></span>
+                                    <span title="牛皮纸" class="theme-1" data-index="2"></span>
+                                    <span title="淡绿色" class="theme-2" data-index="3"></span>
+                                    <span title="淡蓝色" class="theme-3" data-index="4"></span>
+                                    <span title="灰色" class="theme-5" data-index="5"></span>
+                                    <span title="黑色" class="theme-6" data-index="6"></span>
+                                </li>
+                                <li class="font-family" id="J_fontFamily"><i>正文字体</i>
+
+                                    <span class="yahei active" data-index="1">雅黑</span>
+
+                                    <span class="yahei " data-index="2">宋体</span>
+
+                                    <span class="yahei " data-index="3">楷书</span>
+
+
+                                </li>
+                                <li class="font-size" id="J_fontSize"><i>字体大小</i>
+                                    <cite>
+                                        <span class="prev"><em class="fa fa-minus"></em></span>
+                                        <b></b>
+                                        <span class="lang">18</span>
+                                        <b></b>
+                                        <span class="next"><em class="fa fa-plus"></em></span>
+                                    </cite>
+                                </li>
+                                <li class="page-width" id="J_pageWidth">
+                                    <i>页面宽度</i>
+                                    <cite>
+                                        <span class="prev"><em class="fa fa-minus"></em></span>
+                                        <b></b>
+                                        <span class="lang">800</span>
+                                        <b></b>
+                                        <span class="next"><em class="fa fa-plus"></em></span>
+                                    </cite>
+                                </li>
+                            </ul>
+                            <div class="btn-wrapper">
+                                <a class="red-btn" id="J_setSave" href="javascript:">保存</a>
+                                <a class="grey-btn" id="J_setCancel" href="javascript:">取消</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-bar-list" id="J_rightBarList">
+                <dl>
+                    <dd id="J_comment">
+                        <a href="javascript:">
+                            <i class="fa fa-commenting"></i>
+                            <span>评论</span>
+                        </a>
+                    </dd>
+                    <dd class="backTop" id="J_goTop">
+                        <a href="javascript:">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div id="J_commentWrapper">
+        <div class="comment-text-wrap">
+            <h3><span>评</span>{$chapter.title}</h3>
+            <div class="count-text">
+                <span class="count"><em id="J_commentCounter">0</em>/200</span>
+                <textarea id="J_commentText" placeholder="请点击输入评论内容"></textarea>
+            </div>
+            <p><a class="red-btn" id="J_chapterReply" href="javascript:">发表评论</a></p>
+        </div>
+    </div>
+</div>
+
+<script src="__PUBLIC__/Pc/plugins/jquery/jquery.min.js"></script>
+<script src="__PUBLIC__/Pc/plugins/layui/layui.all.js"></script>
+<script src="__PUBLIC__/Pc/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/Pc/js/common.js"></script>
+<script src="__PUBLIC__/Pc/js/main.js"></script>
+<script src="__PUBLIC__/Pc/js/chapter.js"></script>
+<script>
+    //搜索
+    $('#pin-search').click(function(){
+        var name = $('#pin-input').val();
+        if(name==""){
+            window.location.href = '/Pc/Search/index';
+        }else{
+            window.location.href = '/Pc/Search/index/name/'+name;
+        }
+    });
+
+    //初始化
+    var id = "{$id}";
+    var first_id = "{$book.chapter_first_id}";
+    if(id==first_id){
+        $('#bookInfo').show();
+    }else{
+        $('#bookInfo').hide();
+    }
+
+    //加入书架点击事件
+    $('.add-book').on('click',function(){
+        var book_id = "{$book.id}";
+        $.ajax({
+            url:"{:U('Pc/BookCase/addCollection')}",
+            type:"post",
+            data:{book_id:book_id},
+            dataType:"json",
+            success:function(data){
+                if(data.status==1){
+                    layer.msg(data.msg, {icon: 1,time:2000},function(){
+                        window.location.reload();
+                    });
+                }else{
+                    if(data.data=='redirect'){
+                        layer.msg(data.msg, {icon: 2,time:2000},function(){
+                            window.location.href = "{:U('Login/index')}";
+                        });
+                    }else{
+                        layer.msg(data.msg, {icon: 2,time:2000},function(){
+                            window.location.reload();
+                        });
+                    }
+                }
+            }
+        });
+    });
+
+    //目录
+    $('#dir').on('click',function(){
+        $('.panel-wrapper').hide();
+        $('.panel-wrapper.catalog').show();
+    });
+
+    //下一章
+    $('#j_chapterNext').on('click',function(){
+       var href = $('#J_catalogListWrapper ul li.on').next().find('a').attr('href');
+       if(href==undefined){
+           layer.msg('当前已是最新章节');
+       }else{
+           window.location.href = href;
+       }
+    });
+
+    //上一章
+    $('#j_chapterPrev').on('click',function(){
+        var href = $('#J_catalogListWrapper ul li.on').prev().find('a').attr('href');
+        if(href==undefined){
+            layer.msg('当前章节为第一章节！');
+        }else{
+            window.location.href = href;
+        }
+    });
+
+    //评论
+    $('#J_chapterReply').on('click',function(){
+       var content = $('#J_commentText').val();
+       var chapter_id = $('#chapterId').val();
+        $.ajax({
+            url:"{:U('Pc/Chapter/comment')}",
+            type:"post",
+            data:{
+                    chapter_id:chapter_id,
+                    content:content,
+                    book_id:"{$book_id}"
+            },
+            dataType:"json",
+            success:function(data){
+                if(data.status==1){
+                    layer.msg(data.msg, {icon: 1,time:2000},function(){
+                        window.location.reload();
+                    });
+                }
+            }
+        });
+    });
+
+    //我的消息
+    function message(){
+        $.ajax({
+            url:"{:U('Pc/Base/myMessage')}",
+            type:"post",
+            dataType:"json",
+            success:function(data){
+                if(data.status==1){
+                    $('#messageCount').html(data.data);
+                }
+            }
+        });
+    }
+    message();
+    setInterval(function(){
+        message();
+    },10000);
+
+
+</script>
+</body>
+</html>

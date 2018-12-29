@@ -1,0 +1,631 @@
+<extend name="Public/base" />
+<block name="body">
+    <div class="personal-wrapper container">
+        <div class="row">
+            <div class="personal-sideBar">
+                <h4>个人中心</h4>
+                <ul>
+                    <li><a href="{:U('Pc/PersonSetting/index')}"><i class="fa fa-user-o"></i>个人信息</a></li>
+                    <li class="active"><a href="{:U('Pc/BookManage/index')}"><i class="fa fa-book"></i>作品管理</a></li>
+                    <li><a href="{:U('Pc/Comment/index')}"><i class="fa fa-bell-o"></i>消息管理</a></li>
+                    <li><a href="{:U('Pc/BookCase/index')}"><i class="fa fa-desktop"></i>我的书架</a></li>
+                </ul>
+            </div>
+            <div class="personal-content">
+                <h3 class="personal-title">作品管理</h3>
+                <div class="personal-tab tab">
+                    <ul>
+                        <li data-type="1" data-target="bookSetting"><a href="javascript:">作品设置</a></li>
+                        <li data-type="2" data-target="draftBox" id="draft"><a href="javascript:">草稿箱</a></li>
+                        <li data-type="3" data-target="chapterList"><a href="javascript:">已发布章节</a></li>
+                        <li data-type="4" data-target="draftList"><a href="javascript:">回收站</a></li>
+                        <button class="btn red-btn pull-right" id="btn-newChapter"><i class="fa fa-plus"></i> 新建章节</button>
+                    </ul>
+                </div>
+                <div class="personal-tab-content">
+                    <div class="tab-pane cf active" id="bookSetting">
+                        <div class="workStateWrapper cf">
+                            <form id="bookInfo">
+                                <div class="fmBox pull-left">
+                                    <div class="fm">
+                                        <img id="previewImg" src="__UPLOAD__/{$book.img}" width="114" height="152">
+                                        <span class="modify" id="selectBookCoverBtn">上传新封面</span>
+                                        <input id="bookImage" name="bookImage" type="file" class="hidden">
+                                    </div>
+                                </div>
+                                <div class="workSetList pull-left">
+                                    <ul>
+                                        <li>
+                                            <em>作品名称：</em>
+                                            <p class="saved">{$book.name} </p>
+                                            <div class="modify cf">
+                                                <input type="hidden" id="bookId" name="bookId" value="{$book.id}">
+                                                <input id="bookName" name="bookName" class="midInput recTagInput" value="{$book.name}" type="text">
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <em>作品类型：</em>
+                                            <b id="classificationWorks" class="select-category">
+                                                <span class="saved">{$book.class_name}</span>
+                                                <select id="bookType" name="bookType" class="modify">
+                                                    <volist name="bookClassList" id="vo">
+                                                        <option value="{$vo.id}"
+                                                        <eq name="book['class_id']" value="$vo['id']">selected</eq>
+                                                        >{$vo.name}</option>
+                                                    </volist>
+                                                </select>
+                                            </b>
+                                        </li>
+                                        <li>
+                                            <em>字数：</em>
+                                            <p>{$book.count}</p>
+                                        </li>
+                                        <li>
+                                            <em>收藏：</em>
+                                            <p>{$book.collection}</p></li>
+                                        <li>
+                                            <em>作品状态：</em>
+                                            <if condition="$book.status eq 1">
+                                                <p>完结</p>
+                                                <else />
+                                                <p>新建</p>
+                                            </if>
+                                        </li>
+                                        <li>
+                                            <em>作品标签：</em>
+                                            <p class="saved">{$book.label}</p>
+                                            <div class="modify">
+                                                <input id="bookLabel" name="bookLabel" class="filterTagBox" type="text" value="">
+                                            </div>
+                                            <p class="tip modify">作品审核通过后，1个自然月内仅允许修改一次</p>
+                                        </li>
+                                        <li>
+                                            <em>作品介绍：</em>
+                                            <div class="modify">
+                                                <textarea id="bookIntro" name="bookIntro">{$book.intro}</textarea>
+                                                <p class="f12">20~300个字，修改后1个工作日内审核完毕，审核完毕后7天内不得再次修改</p>
+                                                <p class="f12">请注意：根据国家相关法律法规要求，请勿上传任何色情、低俗、涉政等违法违规内容，我们将会根据法规进行审核处理和上报。</p>
+                                            </div>
+                                            <p class="saved intro">{$book.intro}</p>
+                                        </li>
+                                        <li class="flyleaf">
+                                            <em>扉页寄语：</em>
+                                            <textarea class="modify" id="bookWord" name="bookWord" placeholder="">{$book.word}</textarea>
+                                            <p class="saved intro">{$book.word}</p>
+                                            <p class="tip modify">0-32字，扉页寄语将展示在您作品的版权页</p>
+                                        </li>
+                                    </ul>
+                                    <p class="dib-wrap saved modify-btn">
+                                        <a id="switchModifyModeBtn" class="button" href="javascript:">修改作品设置</a>
+                                    </p>
+                                    <p class="dib-wrap confirm modify">
+                                        <a id="saveBookInfoBtn" class="button" href="javascript:">保存</a>
+                                        <a id="cancelBookInfoBtn" class="button white" href="javascript:">取消</a>
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="tab-pane cf" id="draftBox">
+                        <div class="chapterList">
+                            <div class="titleBox">
+                                <p>共 {$chapterCount}章</p>
+                            </div>
+                            <div class="chapterListScroll">
+                                <ul>
+                                    <empty name="Think.GET.chapter_id">
+                                        <li class="active">
+                                            <div class="sectionBox">
+                                                <p>
+                                                    <em>无标题</em>
+                                                </p>
+                                                <p class="f12">
+                                                    <i></i><span>&nbsp</span>
+                                                </p>
+                                            </div>
+                                        </li>
+                                    </empty>
+                                    <volist name="chapterList" id="vo">
+                                        <if condition="$Think.get.chapter_id eq $vo['id']">
+                                            <li class="active">
+                                                <div class="sectionBox" data-chapter-id="{$vo.id}">
+                                                    <p>
+                                                        <em>{$vo.title}</em>
+                                                    </p>
+                                                    <p class="f12">
+                                                        <i>{$vo.utime|date='m-d H:i',###}</i>共<span>{$vo.count}</span>字
+                                                    </p>
+                                                </div>
+                                            </li>
+                                            <else />
+                                            <li data-chapter-id="{$vo.id}">
+                                                <div class="sectionBox">
+                                                    <p>
+                                                        <em>{$vo.title}</em>
+                                                    </p>
+                                                    <p class="f12">
+                                                        <i>{$vo.utime|date='m-d H:i',###}</i>共<span>{$vo.count}</span>字
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        </if>
+                                    </volist>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="chapter-wrapper">
+                            <div class="sectionBtnBox">
+                                <div class="titleBtn pull-right">
+                                    <a class="button white" href="javascript:">删除</a>
+                                    <a class="button white" id="btn-draft-save" href="javascript:">保存</a>
+                                    <a class="button white" id="btn-word-count" href="javascript:">统计字数</a>
+                                    <a class="button green" href="javascript:">发布</a>
+                                </div>
+                            </div>
+                            <div class="zwText">
+                                <input id="titleInput" type="text" placeholder="此处输入章节号与章节名。示例：“第十章 天降奇缘”" style="color: rgb(51, 51, 51);">
+                                <textarea id="mainContentInput" placeholder="请输入正文。请注意：根据国家相关法律法规要求，请勿上传任何色情、低俗、涉政等违法违规内容，我们将会根据法规进行审核处理和上报。" style="color: rgb(51, 51, 51);"></textarea>
+                            </div>
+                            <div class="say-area">
+                                <p>
+                                    <textarea id="authorWordInput" placeholder="作者的话（此段不计入字数）" style="color: rgb(51, 51, 51);"></textarea>
+                                </p>
+                            </div>
+                        </div>
+                        <div id="wordCount" class="windowForm">
+                            <p>分卷名称</p>
+                            <p class="mb20">
+                                <input class="longInput" type="text" value="">
+                            </p>
+                            <p>分卷介绍</p>
+                            <textarea></textarea>
+                            <div class="confirmBtn">
+                                <a id="wordCountConfirm" class="button" href="javascript:">确定</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane cf" id="chapterList">
+                        <div class="chapterList">
+                            <div class="titleBox">
+                                <p>共 2 章</p>
+                            </div>
+                            <div class="chapterListScroll">
+                                <ul>
+                                    <li class="active">
+                                        <div class="sectionBox">
+                                            <p>
+                                                <em>月黑风高杀人夜</em>
+                                            </p>
+                                            <p class="f12">
+                                                <i>12-25 17:26</i>共<span>7</span>字
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="chapter-wrapper">
+                            <div class="sectionBtnBox">
+                                <div class="titleBtn pull-right">
+                                    <a id="deleteChapter" class="button white saved" href="javascript:">删除</a>
+                                    <a id="editChapter" class="button green saved" href="javascript:">修改</a>
+                                    <a id="saveChapter" class="button green modify" href="javascript:"><i class="fa fa-save"></i> 保存</a>
+                                </div>
+                            </div>
+                            <div class="sectionWrapper" data-type="volume">
+                                <h3><b>第一卷</b><span>本卷章节 <em>2</em> 章</span></h3>
+                                <div class="volumeForm" data-node="viewContentBox">
+                                    <ul>
+                                        <li>
+                                            <em>分卷名称</em>
+                                            <p class="saved">ee</p>
+                                            <input id="volumeName" class="midInput modify" type="text" placeholder="请输入分卷名称">
+                                        </li>
+                                        <li>
+                                            <em>分卷介绍</em>
+                                            <p class="saved">ee</p>
+                                            <textarea id="volumeDesc" class="modify" placeholder="请输入分卷介绍"></textarea>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sectionWrapper active" data-type="chapter">
+                                <div class="zwText">
+                                    <h3 class="saved" id="chapterTitle">第二章 活着的艰难</h3>
+                                    <input class="modify" id="chapterTitleInput" type="text" placeholder="此处输入章节号与章节名。示例：“第十章 天降奇缘”" style="color: rgb(51, 51, 51);">
+                                    <p class="saved" id="chapterContent">莫无忌没有去拉烟儿，他能够感受到莫星河疯了后，烟儿承受的压力和苦难。此刻他只是看着远处影影绰绰的高楼大厦，暗自握紧了拳头，就算是从头再来，哪又如何？？</p>
+                                    <textarea class="modify" id="chapterContentInput" placeholder="请输入正文。请注意：根据国家相关法律法规要求，请勿上传任何色情、低俗、涉政等违法违规内容，我们将会根据法规进行审核处理和上报。" style="color: rgb(51, 51, 51);"></textarea>
+                                </div>
+                                <div class="say-area">
+                                    <div class="authorSay saved" id="authorSpeak">莫无忌没有去拉烟儿</div>
+                                    <p>
+                                        <textarea class="modify" id="authorSpeakInput" placeholder="作者的话（此段不计入字数）" style="color: rgb(51, 51, 51);"></textarea>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane cf" id="draftList">
+                        <div class="chapterList">
+                            <div class="titleBox">
+                                <p>共 2 章</p>
+                            </div>
+                            <div class="chapterListScroll">
+                                <ul>
+                                    <li class="active">
+                                        <div class="sectionBox">
+                                            <p>
+                                                <em>月黑风高杀人夜</em>
+                                            </p>
+                                            <p class="f12">
+                                                <i>12-25 17:26</i>共<span>7</span>字
+                                            </p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="chapter-wrapper">
+                            <div class="sectionBtnBox">
+                                <div class="titleBtn pull-right">
+                                    <a class="button white saved" href="javascript:">彻底删除</a>
+                                    <a class="button green saved" href="javascript:">恢复为草稿</a>
+                                </div>
+                            </div>
+                            <div class="zwText">
+                                <h3>第二章 活着的艰难</h3>
+                                <p>莫无忌没有去拉烟儿，他能够感受到莫星河疯了后，烟儿承受的压力和苦难。此刻他只是看着远处影影绰绰的高楼大厦，暗自握紧了拳头，就算是从头再来，哪又如何？？</p>
+                            </div>
+                            <div class="say-area">
+                                <div class="authorSay">莫无忌没有去拉烟儿</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</block>
+<block name="script">
+    <script src="__PUBLIC__/Pc/plugins/tagsinput/jquery.tagsinput.min.js"></script>
+    <script src="__PUBLIC__/Pc/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script>
+        (function () {
+
+            /* ---------------------- 作品信息部分 ----------------------------- */
+
+            var selector = "#bookSetting ",
+                oldBookImage = "",
+                oldBookName = "",
+                oldBookType = "",
+                oldBookLabel = "",
+                oldBookIntro = "",
+                oldBookWord = "";
+
+            // 页面初始化操作
+            function init() {
+                // 初始化，存储表单数值
+                oldBookImage = $(selector + '#previewImg').attr('src');
+                oldBookName = $(selector + '#bookName').val();
+                oldBookType = $(selector + '#bookType').val();
+                oldBookLabel = $(selector + '#bookLabel').val();
+                oldBookIntro = $(selector + '#bookIntro').val();
+                oldBookWord = $(selector + '#bookWord').val();
+            }
+
+            // 保存编辑信息
+            function saveBookInfo() {
+                //TODO:使用ajaxSubmit提交，这样可以提交文件，后台再判断文件是否为null，为null就不修改封面图片
+                var data = new FormData(document.getElementById('bookInfo'));
+                $.ajax({
+                    url: "{:U('Pc/BookManage/editBook')}",
+                    type: "post",
+                    data: data,
+                    dataType: "json",
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        if (data.status == 1) {
+                            layer.msg(data.msg, {icon: 1, time: 2000}, function () {
+                                // 更新存储的表单值
+                                oldBookImage = $(selector + '#previewImg').attr('src');
+                                oldBookName = $(selector + '#bookName').val();
+                                oldBookType = $(selector + '#bookType').val();
+                                oldBookLabel = $(selector + '#bookLabel').val();
+                                oldBookIntro = $(selector + '#bookIntro').val();
+                                oldBookWord = $(selector + '#bookWord').val();
+                            });
+                        } else {
+                            layer.msg(data.msg, {icon: 2, time: 2000}, function () {
+                                window.location.reload();
+                            });
+                        }
+                    },
+                });
+
+
+                // 隐藏编辑状态内容，显示正常状态内容
+                $(selector + '.modify').hide();
+                $(selector + '.saved').show();
+            }
+
+            // 取消编辑
+            function cancelBookInfo() {
+                // 取消编辑，将表单的值修改为原来的值
+                $(selector + '#bookImage').val(null);
+                $(selector + '#previewImg').attr('src', oldBookImage);
+                $(selector + '#bookName').val(oldBookName);
+                $(selector + '#bookType').val(oldBookType);
+                $(selector + '#bookLabel').val(oldBookLabel);
+                $(selector + '#bookLabel').importTags(oldBookLabel);
+                $(selector + '#bookIntro').val(oldBookIntro);
+                $(selector + '#bookWord').val(oldBookWord);
+
+                // 隐藏编辑状态内容，显示正常状态内容
+                $(selector + '.modify').hide();
+                $(selector + '.saved').show();
+            }
+
+            init();
+
+            // 标签插件初始化
+            $("#bookLabel").tagsInput({
+                defaultText: 'Enter生成',
+                width: "345px",
+                height: "60px",
+                interactive: true
+            });
+
+            // 小说基本信息修改、保存及取消保存
+            $('#switchModifyModeBtn').on('click', function () {
+                $('#bookSetting').find('.modify').show();
+                $('#bookSetting').find('.saved').hide();
+            });
+            $('#saveBookInfoBtn').on('click', function () {
+                saveBookInfo();
+            });
+            $('#cancelBookInfoBtn').on('click', function () {
+                cancelBookInfo();
+            });
+
+            // 上传封面按钮点击事件
+            $('#selectBookCoverBtn').on('click', function () {
+                $('#bookSetting #bookImage').trigger('click');
+            });
+
+            // 上传封面
+            $('#bookImage').on('change', function () {
+                var val = $(this).val();
+                if (val != "") {
+                    if (val.indexOf(".jpg") > 0 || val.indexOf(".jpeg") > 0 || val.indexOf(".JPG") > 0 || val.indexOf(".JPEG") > 0) {
+                        $('#previewImg').attr('src', fnGetPath(this));
+                    } else {
+                        layer.msg('请上传JPG、JPEG格式图片');
+                        $(this).val(oldBookImage);
+                    }
+                } else {
+                    layer.msg('图片不能为空');
+                    $(this).val(oldBookImage);
+                }
+            });
+
+            /***
+             * 获取图片对象,低版本IE获取路径
+             * @param obj
+             * @returns {*}
+             */
+            function fnGetPath(obj) {
+                if (obj) {
+                    //古代浏览器,IE7、8、9
+                    if (navigator.userAgent.indexOf("MSIE") > 0 && !(navigator.userAgent.indexOf("MSIE 10.0") > 0)) {
+                        //IE7、8、9浏览器特殊处理,要先Select一下获取所选的内容,但是选中情况下不能获取所以要执行blur()再获取
+                        obj.select();
+                        obj.blur();
+                        //IE下取得图片的本地路径
+                        return document.selection.createRange().text;
+                    } else {
+                        //如果支持files对象表示是现代浏览器
+                        if (obj.files) {
+                            var objectURL = window.URL.createObjectURL(obj.files[0]);
+                            //IE10+版本使用window.URL
+                            //if (navigator.userAgent.indexOf("MSIE 10.0") > 0) {
+                            //    var objectURL = window.URL.createObjectURL(obj.files[0]);
+                            //} else {
+                            //    //Chrome和FireFox分别使用    window.webkitURL  和 webkitURL
+                            //    var objectURL = (window.webkitURL ? webkitURL : URL).createObjectURL(obj.files.item(0));
+                            //}
+                            return objectURL;
+                        }
+                        //基本不可能用到
+                        return obj.value;
+                    }
+                }
+                return obj.value;
+            }
+
+            /* --------------------------- 已发布章节部分 ----------------------------- */
+            // TODO:该部分可结合ajax获取页面方式进行页面刷新, 容器为 .tab-pane#draftBox
+            // 编辑章节
+            $('#editChapter').on('click', function () {
+                var btnWrap = $('#chapterList .titleBtn');
+                var contentWrap = $('#chapterList .sectionWrapper.active');
+                btnWrap.find('.modify').show();
+                btnWrap.find('.saved').hide();
+                contentWrap.find('.modify').show();
+                contentWrap.find('.saved').hide();
+            });
+
+            // 保存章节
+            $('#saveChapter').on('click', function () {
+                var btnWrap = $('#chapterList .titleBtn'),
+                    contentWrap = $('#chapterList .sectionWrapper.active'),
+                    type = contentWrap.data('type'),
+                    id = contentWrap.data('id'), param = {};
+                param.id = id;
+
+                if (type == "chapter") {
+                    param.volumeTitle = contentWrap.find('#chapterTile').val();
+                    param.volumeDesc = contentWrap.find('#chapterContent').val();
+                    param.authorSpeak = contentWrap.find('#authorSpeak').val();
+                    param.wordCount = contentWrap.find('#chapterContent').val().length;
+                    // TODO:ajax保存对应id的章节数据，成功后执行以下部分
+                    btnWrap.find('.modify').hide();
+                    btnWrap.find('.saved').show();
+                    contentWrap.find('.modify').hide();
+                    contentWrap.find('.saved').show();
+                } else {
+                    param.volumeTitle = contentWrap.find('#volumeTitle').val();
+                    param.volumeDesc = contentWrap.find('#volumeDesc').val();
+                    // TODO:ajax保存对应id的分卷数据，成功后执行以下部分
+                    btnWrap.find('.modify').hide();
+                    btnWrap.find('.saved').show();
+                    contentWrap.find('.modify').hide();
+                    contentWrap.find('.saved').show();
+                }
+            });
+
+            // 删除章节
+            $('#deleteChapter').on('click', function () {
+                var contentWrap = $('#chapterList .sectionWrapper.active'),
+                    id = contentWrap.data('id'), param = {};
+                param.id = id;
+                // TODO: ajax请求删除，删除成功返回该容器页面进行刷新，删除失败则返回错误信息
+            });
+
+            /* -------------------------- 草稿箱部分 -------------------------- */
+            //新建章节点击事件
+            $('#btn-newChapter').on('click',function(){
+               $('#draft').trigger('click');
+                $('#draftBox .chapterList .chapterListScroll ul li:first').before($('<li class="active">' +
+                    '<div class="sectionBox" data-chapter-id="{$vo.id}"><p><em>无标题</em></p>'+
+                    '<p class="f12"><i></i><span>&nbsp;</span></p></div>'+
+                    '</li>'));
+                $('#draftBox .chapterList .chapterListScroll ul li').not(':first').removeClass('active');
+            });
+
+            var old_mainContentInput = $('#mainContentInput').val();
+            var old_titleInput = $('#titleInput').val();
+            // 字数统计点击事件
+            $('#btn-word-count').on('click', function () {
+                var length = $('.chapter-wrapper').find('#mainContentInput').val().length;
+                layer.alert('共计字数：' + length + '字');
+            });
+            //章节选择点击事件
+            $('#draftBox .chapterList .chapterListScroll ul li').on('click',function(){
+               var _this = $(this);
+               var chapter_id = $(this).data('chapter-id');
+               var old_chapter_id = $('#draftBox .chapterList .chapterListScroll ul li.active').data('chapter-id');
+               if(old_chapter_id==undefined){  //在新建章节中修改内容
+                   if($('#titleInput').val().length>0||$('#mainContentInput').val().length>0){
+                       layer.confirm('您编辑的章节内容尚未保存，确定要离开吗？', {
+                           btn: ['确定','取消'] //按钮
+                       }, function(){ //确定
+                           layer.closeAll('dialog');//layer弹窗关闭
+                           $('#draftBox .chapterList .chapterListScroll ul li:first').remove();
+                           _this.addClass('active').siblings().removeClass('active');
+                           $.ajax({
+                               url:"{:U('BookManage/draftChapterContent')}",
+                               type:"post",
+                               dataType:"json",
+                               data:{chapter_id:chapter_id},
+                               success:function(data){
+                                   if(data.status==1){
+                                       $('#titleInput').val(data.data.title);
+                                       $('#mainContentInput').val(data.data.content);
+                                       old_mainContentInput = $('#mainContentInput').val();
+                                       old_titleInput =  $('#titleInput').val();
+                                   }
+                               }
+                           });
+                       }, function(){ //取消
+
+                       });
+                   }
+               }else{
+                    if(old_mainContentInput==$('#mainContentInput').val()&&old_titleInput==$('#titleInput').val()){  //内容未修改
+                        _this.addClass('active').siblings().removeClass('active');
+                        $.ajax({
+                            url:"{:U('BookManage/draftChapterContent')}",
+                            type:"post",
+                            dataType:"json",
+                            data:{chapter_id:chapter_id},
+                            success:function(data){
+                                if(data.status==1){
+                                    $('#titleInput').val(data.data.title);
+                                    $('#mainContentInput').val(data.data.content);
+                                    old_mainContentInput = $('#mainContentInput').val();
+                                    old_titleInput =  $('#titleInput').val();
+                                }
+                            }
+                        });
+                    }else{   //内容修改过弹窗提示
+                        layer.confirm('您编辑的章节内容尚未保存，确定要离开吗？', {
+                            btn: ['确定','取消'] //按钮
+                        }, function(){ //确定
+                            layer.closeAll('dialog');//layer弹窗关闭
+                            _this.addClass('active').siblings().removeClass('active');
+                            $.ajax({
+                                url:"{:U('BookManage/draftChapterContent')}",
+                                type:"post",
+                                dataType:"json",
+                                data:{chapter_id:chapter_id},
+                                success:function(data){
+                                    if(data.status==1){
+                                        $('#titleInput').val(data.data.title);
+                                        $('#mainContentInput').val(data.data.content);
+                                        old_mainContentInput = $('#mainContentInput').val();
+                                        old_titleInput =  $('#titleInput').val();
+                                    }
+                                }
+                            });
+                        }, function(){ //取消
+
+                        });
+                    }
+               }
+            });
+            //保存点击事件
+            $('#btn-draft-save').on('click',function(){
+                var chapter_id;
+                $('#draftBox .chapterList .chapterListScroll ul li').each(function(){
+                    if($(this).hasClass('active')){
+                        chapter_id = $(this).data('chapter-id');
+                    }
+                });
+                alert(chapter_id);
+            });
+
+
+            /* ------------------------- 公共部分 --------------------------------- */
+            $(".chapterListScroll ul").slimScroll({
+                height: "100%", railOpacity: .9, alwaysVisible: !1
+            });
+
+            // 初始化tab页面
+            $('.personal-content .personal-tab li').each(function () {
+                if ($(this).data('type') == "{:I('get.type')}") {
+                    $(this).addClass('active');
+                }
+            });
+            $('.personal-tab li.active').trigger('click');
+            $('.personal-content .personal-tab li').on('click',function(){
+                if(old_titleInput!=$('#titleInput').val()||old_mainContentInput!=$('#mainContentInput').val()){
+                    layer.confirm('您编辑的章节内容尚未保存，确定要离开吗？', {
+                        btn: ['确定','取消'] //按钮
+                    }, function(){ //确定
+                        layer.closeAll('dialog');//layer弹窗关闭
+                        var type = $(this).data('type');
+                        window.location.href = "{:U('Pc/BookManage/draft')}/id/{:I('get.id')}/chapter_id/{:I('get.chapter_id')}/type/"+type;
+                    }, function(e){ //取消
+
+                    });
+                }else{
+                    var type = $(this).data('type');
+                    window.location.href = "{:U('Pc/BookManage/draft')}/id/{:I('get.id')}/chapter_id/{:I('get.chapter_id')}/type/"+type;
+                }
+             })
+
+
+        })();
+    </script>
+</block>

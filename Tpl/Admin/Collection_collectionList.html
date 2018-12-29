@@ -1,0 +1,113 @@
+<style>
+	td {
+		text-align:center; /*设置水平居中*/
+		vertical-align:middle !important;/*设置垂直居中*/
+	}
+</style>
+<div class="row">
+	<div class="col-xs-12 col-md-12">
+		<div class="widget">
+			<div class="widget-header bg-blue">
+				<i class="widget-icon fa fa-arrow-down"></i>
+				<span class="widget-caption">收藏列表</span>
+				<div class="widget-buttons">
+					<a href="#" data-toggle="maximize">
+						<i class="fa fa-expand"></i>
+					</a>
+					<a href="#" data-toggle="collapse">
+						<i class="fa fa-minus"></i>
+					</a>
+					<a href="#" data-toggle="dispose">
+						<i class="fa fa-times"></i>
+					</a>
+				</div>
+			</div>
+			<div class="widget-body">
+				<div class="table-toolbar">
+
+					<div class="pull-right">
+						<form id="App-search">
+							<label for="">书籍名称:</label>
+							<label style="margin-bottom: 0px;">
+								<input name="name" type="search" class="form-control input-sm" value="{$name}" placeholder="请输入书籍名称">
+							</label>
+							<a href="{:U('Admin/Collection/collectionList/')}" class="btn btn-success" data-loader="App-loader" data-loadername="收藏列表" data-search="App-search">
+								<i class="fa fa-search"></i>搜索
+							</a>
+						</form>
+					</div>
+				</div>
+
+				<table id="App-table" class="table table-bordered table-hover">
+					<thead class="bordered-darkorange">
+						<tr role="row">
+							<th width="30px"><div class="checkbox" style="margin-bottom: 0px; margin-top: 0px;">
+									<label style="padding-left: 4px;"> <input type="checkbox" class="App-checkall colored-blue">
+                                     <span class="text"></span>
+									</label>                                    
+                                </div></th>
+							<th>ID</th>
+							<th>书籍名称</th>
+							<th>作家姓名</th>
+							<th>收藏者姓名</th>
+							<th>收藏时间</th>
+						</tr>
+					</thead>
+					<tbody>
+						<volist name="cache" id="vo">
+							<tr id="item{$vo.id}">
+								<td>
+									<div class="checkbox" style="margin-bottom: 0px; margin-top: 0px;">
+										<label style="padding-left: 4px;"> <input name="checkvalue" type="checkbox" class="colored-blue App-check" value="{$vo.id}">
+	                                     <span class="text"></span>
+										</label>                                    
+	                                </div>
+								</td>
+								<td class="sorting_1">{$vo.id}</td>
+								<td><img style="width:50px;height:50px;" class="img" data-img="__UPLOAD__/{$vo.img}" src="__UPLOAD__/{$vo.img}" alt="">{$vo.name}</td>
+								<td>{$vo.username}</td>
+								<td>{$vo.username}</td>
+								<td>{$vo.ctime|date="Y-m-d H:i:s",###}</td>
+							</tr>
+						</volist>
+												
+					</tbody>
+				</table>
+				<div class="row DTTTFooter">
+					{$page}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--面包屑导航封装-->
+<div id="tmpbread" style="display: none;">{$breadhtml}</div>
+<script type="text/javascript">
+	setBread($('#tmpbread').html());
+</script>
+<!--/面包屑导航封装-->
+
+<script>
+    //图片放大点击事件
+    $('.img').click(function(){
+        var img_src = $(this).data('img');
+        var img = "<img src='"+img_src+"'>";
+        bootbox.dialog({
+            message: img,
+            title: "头像",
+            className: "modal-darkorange",
+            buttons: {
+                success: {
+                    label: "确定",
+                    className: "btn-blue",
+                    callback: function() {}
+                },
+                "取消": {
+                    className: "btn-danger",
+                    callback: function() {}
+                }
+            }
+        });
+    });
+</script>
+
